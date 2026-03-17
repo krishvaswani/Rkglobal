@@ -5,10 +5,10 @@ const StatsSection = () => {
   return (
     <div className="w-full bg-gray-50 p-[10px]">
       <section 
-        className="w-full py-16 md:py-24 bg-white rounded-[28px] overflow-hidden shadow-sm"
+        className="w-full py-10 md:py-24 bg-white rounded-[28px] overflow-hidden shadow-sm"
         style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
       >
-        <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[220px] lg:grid-rows-[260px_260px] gap-6 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] lg:grid-rows-[260px_260px] gap-4 md:gap-6 px-4 md:px-8">
           
           {/* Card 1: 22+ Programmes (Tall) */}
           <div className="relative rounded-[2rem] overflow-hidden lg:col-span-1 lg:row-span-2 shadow-sm border border-gray-100 group flex flex-col justify-end p-8">

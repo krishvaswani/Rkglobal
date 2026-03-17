@@ -17,11 +17,11 @@ const UnlockGlobalMobility = () => {
         </div>
 
         {/* Left Content */}
-        <div className="relative z-10 w-full md:w-[60%] p-8 md:p-16 lg:p-20 flex flex-col items-start text-white">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight uppercase font-sans">
+        <div className="relative z-10 w-full md:w-[60%] p-6 md:p-16 lg:p-20 flex flex-col items-start text-white text-center md:text-left">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight uppercase font-sans">
             Unlock Global Mobility
           </h2>
-          <p className="text-blue-100 text-lg md:text-xl font-medium max-w-xl mb-10 leading-relaxed">
+          <p className="text-blue-100 text-base md:text-xl font-medium max-w-xl mb-8 md:mb-10 leading-relaxed">
             Fill out the form and our advisors will guide you through the best residency and citizenship investment options.
           </p>
           

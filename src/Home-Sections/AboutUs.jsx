@@ -37,9 +37,9 @@ const AboutUs = () => {
         <div className="w-full md:w-[40%] flex flex-col gap-3 relative">
 
           {/* Top Row */}
-          <div className="flex gap-3">
+          <div className="flex gap-3 h-48 sm:h-56 md:h-[260px]">
             {/* Passport image – wider */}
-            <div className="w-[62%] h-[230px] md:h-[260px] overflow-hidden rounded-2xl shadow-sm">
+            <div className="w-[62%] h-full overflow-hidden rounded-2xl shadow-sm">
               <img
                 src={leftTopImg}
                 alt="Passport concept"
@@ -48,7 +48,7 @@ const AboutUs = () => {
             </div>
 
             {/* Building handshake image – narrower */}
-            <div className="w-[38%] h-[230px] md:h-[260px] overflow-hidden rounded-2xl shadow-sm relative">
+            <div className="w-[38%] h-full overflow-hidden rounded-2xl shadow-sm relative">
               <img
                 src={rightTopImg}
                 alt="Business handshake over building"
@@ -58,7 +58,7 @@ const AboutUs = () => {
           </div>
 
           {/* Bottom Row – full width */}
-          <div className="w-full h-[230px] md:h-[240px] overflow-hidden rounded-2xl shadow-sm">
+          <div className="w-full h-48 sm:h-56 md:h-[240px] overflow-hidden rounded-2xl shadow-sm">
             <img
               src={bottomImg}
               alt="Professional handshake in office"

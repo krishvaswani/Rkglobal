@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import stkittsImg from '../assets/stkitts.png';
 import saoImg from '../assets/sao.png';
 import naruImg from '../assets/naru.png';
@@ -39,7 +39,38 @@ const programs = [
 ];
 
 const CitizenshipPrograms = () => {
-  const [activeCard, setActiveCard] = useState(2);
+  const [activeCard, setActiveCard] = useState(1);
+  const scrollContainerRef = useRef(null);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const cards = container.querySelectorAll('.program-card');
+      let closestId = activeCard;
+      let minDistance = Infinity;
+      const containerCenter = container.getBoundingClientRect().left + container.clientWidth / 2;
+      
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(containerCenter - cardCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestId = parseInt(card.dataset.id);
+        }
+      });
+      
+      if (closestId !== activeCard) {
+        setActiveCard(closestId);
+      }
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    // Trigger once on mount to set initial if needed, though default is 2
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [activeCard]);
 
   return (
     <div className="w-full bg-gray-50 p-[10px]">
@@ -66,7 +97,11 @@ const CitizenshipPrograms = () => {
           </div>
 
           {/* Carousel / Card Grid */}
-          <div className="flex flex-nowrap overflow-x-auto w-full gap-4 md:gap-6 lg:gap-8  pb-12 pt-4 snap-x snap-mandatory hide-scrollbar justify-start" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <div 
+            ref={scrollContainerRef}
+            className="flex flex-nowrap overflow-x-auto w-full gap-4 md:gap-6 lg:gap-8 pb-12 pt-4 px-4 md:px-8 lg:px-0 snap-x snap-mandatory hide-scrollbar justify-start" 
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             <style dangerouslySetInnerHTML={{__html: `
               .hide-scrollbar::-webkit-scrollbar { display: none; }
             `}} />
@@ -77,10 +112,11 @@ const CitizenshipPrograms = () => {
                 <div
                   key={program.id}
                   id={`citizenship-card-${program.id}`}
+                  data-id={program.id}
                   onMouseEnter={() => setActiveCard(program.id)}
                   onClick={() => setActiveCard(program.id)}
-                  className={`relative rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-500 ease-in-out shrink-0 snap-center
-                    ${isActive ? 'w-[320px] md:w-[380px] lg:w-[380px] h-[480px] md:h-[490px] shadow-2xl z-10' : 'w-[240px] md:w-[280px] lg:w-[320px] h-[440px] md:h-[480px] shadow-lg opacity-90'}
+                  className={`program-card relative rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-500 ease-in-out shrink-0 snap-center
+                    ${isActive ? 'w-[85vw] sm:w-[320px] md:w-[380px] lg:w-[380px] h-[480px] md:h-[490px] shadow-2xl z-10' : 'w-[75vw] sm:w-[240px] md:w-[280px] lg:w-[320px] h-[440px] md:h-[480px] shadow-lg opacity-90'}
                   `}
                 >
                   {/* Background Image */}

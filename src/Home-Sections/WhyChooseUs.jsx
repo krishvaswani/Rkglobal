@@ -63,11 +63,11 @@ const WhyChooseUs = () => {
         </p>
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto h-[500px] flex items-center justify-center">
+      <div className="relative w-full max-w-6xl mx-auto h-auto md:h-[500px] lg:h-[600px] flex flex-col md:block items-center justify-center md:mt-10">
         
         {/* Center Globe Background Elements */}
-        <div className="absolute inset-0 flex  justify-center z-0 pointer-events-none">
-          <img src={bgImage} alt="Why Choose Us" className="w-[300px] md:w-[500px] lg:w-[600px] h-auto object-contain" />
+        <div className="md:absolute md:inset-0 flex justify-center z-0 pointer-events-none mb-8 md:mb-0">
+          <img src={bgImage} alt="Why Choose Us" className="w-[280px] sm:w-[320px] md:w-[450px] lg:w-[550px] h-auto object-contain" />
         </div>
 
         {/* Floating Accordion Cards Container */}
@@ -107,7 +107,7 @@ const WhyChooseUs = () => {
           </div>
 
           {/* Mobile Layout (flow column instead of floating) */}
-          <div className="md:hidden flex flex-col gap-4 mt-80 px-4 pointer-events-auto pb-20">
+          <div className="md:hidden flex flex-col gap-4 px-4 pointer-events-auto pb-10 w-full sm:max-w-md sm:mx-auto">
              {accordionData.map((item) => (
                <AccordionCard 
                  key={item.id} 

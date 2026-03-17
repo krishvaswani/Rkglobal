@@ -10,7 +10,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Determine if scrolled past top
       if (currentScrollY > 50) {
         setIsScrolled(true);
@@ -42,15 +42,15 @@ const Header = () => {
       <div className="max-w-[100vw] mx-auto p-[10px]">
         {/* The header content should appear inside the Hero's padded area */}
         <div className="flex items-center justify-between px-8 md:px-16 py-2 pointer-events-auto">
-          
+
           {/* Logo Area */}
           <NavLink to="/" className="flex items-center gap-3 no-underline group">
             <div className="flex flex-col">
               <div className="flex items-center gap-3">
-                <img 
-                  src={logoUrl} 
-                  alt="RK Global Immigration Logo" 
-                  className={`w-[263px] h-[83px] object-contain transition-all duration-300 ${logoFilter}`} 
+                <img
+                  src={logoUrl}
+                  alt="RK Global Immigration Logo"
+                  className={`w-[263px] h-[83px] object-contain transition-all duration-300 ${logoFilter}`}
                 />
               </div>
             </div>
