@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import uaeImg from '../assets/UAE.png';
-import portugalImg from '../assets/Portugal.png';
-import greeceImg from '../assets/Greece.png';
+import portugalImg from '../assets/portugal.png';
+import greeceImg from '../assets/greece.png';
 
 const programs = [
   {
