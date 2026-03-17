@@ -5,6 +5,8 @@ import CitizenshipPrograms from '../Home-Sections/CitizenshipPrograms';
 import ResidencePrograms from '../Home-Sections/ResidencePrograms';
 import StatsSection from '../Home-Sections/StatsSection';
 import WhyChooseUs from '../Home-Sections/WhyChooseUs';
+import ProcessSection from '../Home-Sections/ProcessSection';
+import TestimonialsSection from '../Home-Sections/TestimonialsSection';
 import FAQ from '../Home-Sections/FAQ';
 import UnlockGlobalMobility from '../Home-Sections/UnlockGlobalMobility';
 
@@ -17,6 +19,8 @@ const Home = () => {
       <ResidencePrograms />
       <StatsSection />
       <WhyChooseUs />
+      <ProcessSection />
+      <TestimonialsSection />
       <UnlockGlobalMobility />
       <FAQ />
     </div>
