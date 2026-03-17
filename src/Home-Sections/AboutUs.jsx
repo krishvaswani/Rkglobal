@@ -1,4 +1,7 @@
 import React from 'react';
+import leftTopImg from '../assets/lefttop.png';
+import rightTopImg from '../assets/righttop.png';
+import bottomImg from '../assets/bottom.png';
 
 const AboutUs = () => {
   return (
@@ -38,7 +41,7 @@ const AboutUs = () => {
             {/* Passport image – wider */}
             <div className="w-[62%] h-[230px] md:h-[260px] overflow-hidden rounded-2xl shadow-sm">
               <img
-                src="/src/assets/lefttop.png"
+                src={leftTopImg}
                 alt="Passport concept"
                 className="w-full h-full object-cover"
               />
@@ -47,7 +50,7 @@ const AboutUs = () => {
             {/* Building handshake image – narrower */}
             <div className="w-[38%] h-[230px] md:h-[260px] overflow-hidden rounded-2xl shadow-sm relative">
               <img
-                src="/src/assets/righttop.png"
+                src={rightTopImg}
                 alt="Business handshake over building"
                 className="w-full h-full object-cover"
               />
@@ -57,7 +60,7 @@ const AboutUs = () => {
           {/* Bottom Row – full width */}
           <div className="w-full h-[230px] md:h-[240px] overflow-hidden rounded-2xl shadow-sm">
             <img
-              src="/src/assets/bottom.png"
+              src={bottomImg}
               alt="Professional handshake in office"
               className="w-full h-full object-cover object-center"
             />

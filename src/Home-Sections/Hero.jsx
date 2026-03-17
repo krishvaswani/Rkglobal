@@ -1,4 +1,5 @@
 import React from 'react';
+import heroBanner from '../assets/Hero-banner.png';
 
 const Hero = () => {
   return (
@@ -11,7 +12,7 @@ const Hero = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/Hero-banner.png"
+            src={heroBanner}
             alt="Family with RK Global Immigration"
             className="w-full h-full object-cover object-center scale-105"
           />

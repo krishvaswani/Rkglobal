@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import stkittsImg from '../assets/stkitts.png';
+import saoImg from '../assets/sao.png';
+import naruImg from '../assets/naru.png';
 
 const programs = [
   {
     id: 1,
     name: 'ST. KITTS & NEVIS',
-    image: '/src/assets/stkitts.png',
+    image: stkittsImg,
     subtitle: 'Seamless Visa-Free Access to 157+ Countries',
     price: 'USD 150,000',
     time: '3-6 Months'
@@ -12,7 +15,7 @@ const programs = [
   {
     id: 2,
     name: 'SÃO TOMÉ & PRÍNCIPE',
-    image: '/src/assets/sao.png',
+    image: saoImg,
     subtitle: 'Seamless Visa-Free Access to 93+ Countries',
     price: 'USD 90,000',
     time: '1-2 Months'
@@ -20,7 +23,7 @@ const programs = [
   {
     id: 3,
     name: 'NAURU',
-    image: '/src/assets/naru.png',
+    image: naruImg,
     subtitle: 'Seamless Visa-Free Access to 89+ Countries',
     price: 'USD 100,000',
     time: '2-4 Months'
@@ -28,7 +31,7 @@ const programs = [
   {
     id: 4,
     name: 'VANUATU',
-     image: '/src/assets/naru.png',
+     image: naruImg,
     subtitle: 'Seamless Visa-Free Access to 130+ Countries',
     price: 'USD 130,000',
     time: '1-2 Months'

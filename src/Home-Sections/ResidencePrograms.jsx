@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import uaeImg from '../assets/UAE.png';
+import portugalImg from '../assets/Portugal.png';
+import greeceImg from '../assets/Greece.png';
 
 const programs = [
   {
     id: 1,
     name: 'UAE',
-    image: '/src/assets/UAE.png',
+    image: uaeImg,
     subtitle: 'Golden Visa - Long-term residence for investors',
     price: '2,000,000 AED',
     time: '2-4 Weeks'
@@ -12,7 +15,7 @@ const programs = [
   {
     id: 2,
     name: 'PORTUGAL',
-    image: '/src/assets/Portugal.png',
+    image: portugalImg,
     subtitle: 'Explore the Schengen Area Visa-Free',
     price: '200,000 EUR',
     time: '8-9 Months'
@@ -20,7 +23,7 @@ const programs = [
   {
     id: 3,
     name: 'GREECE',
-    image: '/src/assets/Greece.png',
+    image: greeceImg,
     subtitle: 'Golden Visa - Permanent residency in Europe',
     price: '250,000 EUR',
     time: '3-4 Months'
@@ -28,7 +31,7 @@ const programs = [
   {
     id: 4,
     name: 'SPAIN',
-    image: '/src/assets/Greece.png',
+    image: greeceImg,
     subtitle: 'Golden Visa - Live and work in Spain',
     price: '500,000 EUR',
     time: '2-3 Months'

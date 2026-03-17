@@ -17,8 +17,8 @@ const Home = () => {
       <ResidencePrograms />
       <StatsSection />
       <WhyChooseUs />
-      <FAQ />
       <UnlockGlobalMobility />
+      <FAQ />
     </div>
   );
 };
