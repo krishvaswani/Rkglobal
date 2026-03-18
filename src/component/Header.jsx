@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import logoUrl from '../assets/logo.svg';
+import footerLogoUrl from '../assets/footer-logo.svg';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -8,25 +9,6 @@ const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const inProcessSection = useRef(false);
-
-  // Watch the Process section — hide header whenever it is on screen
-  useEffect(() => {
-    const processSection = document.querySelector('[data-section="process"]');
-    if (!processSection) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        inProcessSection.current = entry.isIntersecting;
-        if (entry.isIntersecting) {
-          setIsVisible(false);
-        }
-      },
-      { threshold: 0, rootMargin: '0px' }
-    );
-
-    observer.observe(processSection);
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,8 +20,17 @@ const Header = () => {
         setIsScrolled(false);
       }
 
+      const processSection = document.querySelector('[data-section="process"]');
+      let isInProcess = false;
+      if (processSection) {
+        const rect = processSection.getBoundingClientRect();
+        isInProcess = rect.top < window.innerHeight && rect.bottom > 0;
+      }
+      
+      inProcessSection.current = isInProcess;
+
       // While inside the process section — always keep header hidden
-      if (inProcessSection.current) {
+      if (isInProcess) {
         setIsVisible(false);
         setLastScrollY(currentScrollY);
         return;
@@ -56,6 +47,7 @@ const Header = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Trigger once on mount to set initial state
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
@@ -71,7 +63,9 @@ const Header = () => {
 
   const headerBgClass = isScrolled || menuOpen ? 'bg-white/95 shadow-md backdrop-blur-lg' : 'bg-transparent';
   const textColorClass = isScrolled || menuOpen ? 'text-gray-900' : 'text-white';
-  const logoFilter = isScrolled || menuOpen ? 'brightness-0' : 'brightness-0 invert';
+  const currentLogo = isScrolled || menuOpen ? footerLogoUrl : logoUrl;
+  const logoFilter = isScrolled || menuOpen ? '' : 'brightness-0 invert';
+  const logoSizeClass = isScrolled || menuOpen ? 'w-[140px] sm:w-[170px] md:w-[200px]' : 'w-[180px] sm:w-[220px] md:w-[263px]';
   const hamburgerColor = isScrolled || menuOpen ? '#111' : '#fff';
 
   const navLinks = [
@@ -92,9 +86,9 @@ const Header = () => {
           {/* Logo */}
           <NavLink to="/" className="flex items-center gap-3 no-underline group" onClick={() => setMenuOpen(false)}>
             <img
-              src={logoUrl}
+              src={currentLogo}
               alt="RK Global Immigration Logo"
-              className={`w-[180px] sm:w-[220px] md:w-[263px] h-auto object-contain transition-all duration-300 ${logoFilter}`}
+              className={`${logoSizeClass} h-auto object-contain transition-all duration-300 ${logoFilter}`}
             />
           </NavLink>
 
