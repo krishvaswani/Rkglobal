@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaQuoteLeft } from 'react-icons/fa';
+import testimonialBanner from '../assets/testimonial-background.png';
 
 const testimonials = [
   {
@@ -51,10 +52,12 @@ const OrbitingImage = ({ image, radius, duration, initialAngle, size = 'w-16 h-1
         marginLeft: `-${radius}px`,
         marginTop: `-${radius}px`,
       }}
-      animate={{ rotate: 360 }}
-      transition={{ 
-        duration: duration, 
-        repeat: Infinity, 
+      animate={{
+        rotate: [-90, 90]
+      }}
+      transition={{
+        duration: duration,
+        repeat: Infinity,
         ease: "linear",
         delay: delay
       }}
@@ -66,12 +69,12 @@ const OrbitingImage = ({ image, radius, duration, initialAngle, size = 'w-16 h-1
           top: 0,
           left: '50%',
           x: '-50%',
-          y: '-50%' // Precisely centers the image exactly on the line border
+          y: '-50%'
         }}
-        animate={{ rotate: -360 }} // Counter-rotate to stay upright
-        transition={{ 
-          duration: duration, 
-          repeat: Infinity, 
+        animate={{ rotate: [90, -90] }} // Reverse of parent rotate to stay upright
+        transition={{
+          duration: duration,
+          repeat: Infinity,
           ease: "linear",
           delay: delay
         }}
@@ -85,6 +88,8 @@ const OrbitingImage = ({ image, radius, duration, initialAngle, size = 'w-16 h-1
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef(null);
+  const scrollCooldown = useRef(false);
 
   // Auto-play interval
   useEffect(() => {
@@ -94,65 +99,101 @@ const TestimonialsSection = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Scroll wheel / trackpad navigation
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const handleWheel = (e) => {
+      // Use horizontal scroll (trackpad two-finger swipe) or vertical scroll
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (Math.abs(delta) < 30) return; // ignore tiny nudges
+
+      if (scrollCooldown.current) return; // debounce
+      scrollCooldown.current = true;
+      setTimeout(() => { scrollCooldown.current = false; }, 700);
+
+      e.preventDefault();
+      if (delta > 0) {
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      } else {
+        setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      }
+    };
+
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleWheel);
+  }, []);
+
   const getVisibleCards = () => {
     const cards = [];
     for (let i = 0; i < 3; i++) {
-        // wrap around logic
+      // wrap around logic
       cards.push(testimonials[(currentIndex + i) % testimonials.length]);
     }
     return cards;
   };
 
   return (
-    <section className="relative bg-[#0d2350] w-full min-h-screen overflow-hidden flex flex-col items-center justify-between pb-12 pt-16">
-      
-      {/* 
-        Background Concentric Lines
-        Made them white (opacity adjusted for aesthetics) and positioned carefully 
-        so the arc forms out from the bottom center roughly.
-      */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1800px] h-full pointer-events-none z-0">
-         {/* Inner Circle */}
-        <div className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full border-[1px] border-white/30" />
-         {/* Middle Circle */}
-        <div className="absolute bottom-[-225px] left-1/2 -translate-x-1/2 w-[1300px] h-[1300px] rounded-full border-[1px] border-white/20" />
-         {/* Outer Circle */}
-        <div className="absolute bottom-[-350px] left-1/2 -translate-x-1/2 w-[1800px] h-[1800px] rounded-full border-[1px] border-white/10" />
-      </div>
+    <section
+      className="relative w-full min-h-[950px] overflow-hidden flex flex-col items-center justify-between pb-12 pt-16"
+      style={{
+        backgroundImage: `url(${testimonialBanner})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
 
       {/* 
-        Orbiting Images. 
-        Positioned relative to the exact center of the circles defined above 
+        Background Concentric Lines & Orbiting Images
+        Anchored cleanly at a single central point so the orbital math perfectly aligns with the visual borders.
       */}
-      <div className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 pointer-events-none w-0 h-0 z-0">
+      <div className="absolute top-[75%] left-1/2 w-0 h-0 flex pointer-events-none z-0">
+        {/* Inner Circle (800x404 -> 400px radius half-circle) */}
+        <div className="absolute top-[-400px] left-[-400px] w-[800px] h-[404px] rounded-t-[400px] border-[1px] border-b-0 border-white/50" />
+        {/* Middle Circle (1091x542 -> 545.5px radius half-circle) */}
+        <div className="absolute top-[-545.5px] left-[-545.5px] w-[1091px] h-[542px] rounded-t-[545.5px] border-[1px] border-b-0 border-white/30" />
+        {/* Outer Circle (1344x715 -> 672px radius half-circle) */}
+        <div className="absolute top-[-672px] left-[-672px] w-[1344px] h-[715px] rounded-t-[672px] border-[1px] border-b-0 border-white/20" />
+
+        {/* Orbiting Images relative to exact same center */}
+        {/* Frequency boosted - more images added across tracks */}
+
         {/* Inner orbit on 800px circle (radius = 400) */}
-        <OrbitingImage image={testimonials[0].image} radius={400} duration={60} initialAngle={-45} />
-        <OrbitingImage image={testimonials[4].image} radius={400} duration={60} initialAngle={45} size="w-12 h-12" />
+        <OrbitingImage image={testimonials[0].image} radius={400} duration={25} delay={0} size="w-14 h-14" />
+        <OrbitingImage image={testimonials[4].image} radius={400} duration={25} delay={12} size="w-12 h-12" />
 
-        {/* Middle orbit on 1300px circle (radius = 650) */}
-        <OrbitingImage image={testimonials[1].image} radius={650} duration={85} initialAngle={-20} size="w-20 h-20" />
-        <OrbitingImage image={testimonials[3].image} radius={650} duration={85} initialAngle={160} />
-        
-        {/* Outer orbit on 1800px circle (radius = 900) */}
-        <OrbitingImage image={testimonials[2].image} radius={900} duration={110} initialAngle={35} size="w-14 h-14" />
+        {/* Middle orbit on 1091px circle (radius = 545.5) */}
+        <OrbitingImage image={testimonials[1].image} radius={545.5} duration={35} delay={0} size="w-20 h-20" />
+        <OrbitingImage image={testimonials[2].image} radius={545.5} duration={35} delay={17} size="w-16 h-16" />
+        <OrbitingImage image={testimonials[3].image} radius={545.5} duration={35} delay={8} size="w-14 h-14" />
+
+        {/* Outer orbit on 1344px circle (radius = 672) */}
+        <OrbitingImage image={testimonials[4].image} radius={672} duration={45} delay={0} size="w-14 h-14" />
+        <OrbitingImage image={testimonials[0].image} radius={672} duration={45} delay={22} size="w-16 h-16" />
+        <OrbitingImage image={testimonials[1].image} radius={672} duration={45} delay={11} size="w-12 h-12" />
       </div>
 
-      {/* Header Content pushed towards the top/middle */}
-      <div className="relative z-10 text-center w-full mt-10 md:mt-[15vh]">
-        <div className="flex items-center justify-center gap-2 text-yellow-500 font-bold mb-3 tracking-wide text-sm md:text-base">
-          <FaQuoteLeft /> Testimonials
-        </div>
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight uppercase">
-          What are our clients saying
-        </h2>
-      </div>
-
-      {/* Spacer to push carousel strictly to the end */}
+      {/* Spacer to push everything to the bottom */}
       <div className="flex-grow z-0"></div>
 
-      {/* Carousel Container pinned at the bottom */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center mt-auto px-4 sm:px-6 lg:px-8">
-        
+      {/* Header & Carousel Container pinned at the bottom */}
+      <div ref={carouselRef} className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center mt-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Header Content moved directly above carousel */}
+        <div className="text-center w-full mb-10 md:mb-16">
+          <div className="flex items-center justify-center gap-2 text-yellow-500 font-bold mb-3 tracking-wide text-sm md:text-base">
+            <FaQuoteLeft /> Testimonials
+          </div>
+          <h2
+            className="text-[50px] font-medium leading-[1.41] tracking-normal text-white uppercase text-center"
+            style={{ fontFamily: "'Helvetica Now Display', sans-serif" }}
+          >
+            What are our clients saying
+          </h2>
+        </div>
+
         {/* Desktop View (3 cards) */}
         <div className="hidden lg:grid grid-cols-3 gap-6 w-full">
           <AnimatePresence mode="popLayout">
@@ -165,20 +206,20 @@ const TestimonialsSection = () => {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className="bg-[rgba(255,255,255,0.06)] backdrop-blur-md border border-[rgba(255,255,255,0.15)] rounded-2xl p-8 flex flex-col shadow-[0_8px_32px_rgba(0,0,0,0.12)] min-h-[280px]"
               >
-                 <div className="mb-6">
-                    <div className="w-10 h-10 rounded-full border border-yellow-500/80 flex items-center justify-center">
-                        <FaQuoteLeft className="text-yellow-500 text-sm" />
-                    </div>
+                <div className="mb-6">
+                  <div className="w-10 h-10 rounded-full border border-yellow-500/80 flex items-center justify-center">
+                    <FaQuoteLeft className="text-yellow-500 text-sm" />
+                  </div>
                 </div>
-                
+
                 <p className="text-white/90 text-[15px] leading-relaxed mb-8 flex-grow font-light">
                   {testimonial.text}
                 </p>
-                
+
                 <div className="flex items-center gap-4 mt-auto">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name} 
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
                     className="w-12 h-12 rounded-full object-cover border-2 border-[rgba(255,255,255,0.2)]"
                   />
                   <div>
@@ -194,36 +235,36 @@ const TestimonialsSection = () => {
         {/* Mobile/Tablet View (1 card) */}
         <div className="lg:hidden w-full max-w-md mx-auto relative min-h-[300px]">
           <AnimatePresence mode="wait">
-             <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.4 }}
-                className="absolute inset-0 bg-[rgba(255,255,255,0.06)] backdrop-blur-md border border-[rgba(255,255,255,0.15)] rounded-2xl p-6 sm:p-8 flex flex-col shadow-xl"
-              >
-                <div className="mb-6">
-                    <div className="w-10 h-10 rounded-full border border-yellow-500/80 flex items-center justify-center">
-                        <FaQuoteLeft className="text-yellow-500 text-sm" />
-                    </div>
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.4 }}
+              className="absolute inset-0 bg-[rgba(255,255,255,0.06)] backdrop-blur-md border border-[rgba(255,255,255,0.15)] rounded-2xl p-6 sm:p-8 flex flex-col shadow-xl"
+            >
+              <div className="mb-6">
+                <div className="w-10 h-10 rounded-full border border-yellow-500/80 flex items-center justify-center">
+                  <FaQuoteLeft className="text-yellow-500 text-sm" />
                 </div>
-                
-                <p className="text-white/90 text-[15px] sm:text-base leading-relaxed mb-8 flex-grow font-light">
-                  {testimonials[currentIndex].text}
-                </p>
-                
-                <div className="flex items-center gap-4 mt-auto">
-                  <img 
-                    src={testimonials[currentIndex].image} 
-                    alt={testimonials[currentIndex].name} 
-                    className="w-12 h-12 rounded-full object-cover border-2 border-[rgba(255,255,255,0.2)]"
-                  />
-                  <div>
-                    <h4 className="text-white font-bold text-lg">{testimonials[currentIndex].name}</h4>
-                    <span className="text-white/60 text-sm">{testimonials[currentIndex].location}</span>
-                  </div>
+              </div>
+
+              <p className="text-white/90 text-[15px] sm:text-base leading-relaxed mb-8 flex-grow font-light">
+                {testimonials[currentIndex].text}
+              </p>
+
+              <div className="flex items-center gap-4 mt-auto">
+                <img
+                  src={testimonials[currentIndex].image}
+                  alt={testimonials[currentIndex].name}
+                  className="w-12 h-12 rounded-full object-cover border-2 border-[rgba(255,255,255,0.2)]"
+                />
+                <div>
+                  <h4 className="text-white font-bold text-lg">{testimonials[currentIndex].name}</h4>
+                  <span className="text-white/60 text-sm">{testimonials[currentIndex].location}</span>
                 </div>
-              </motion.div>
+              </div>
+            </motion.div>
           </AnimatePresence>
         </div>
 
@@ -233,9 +274,8 @@ const TestimonialsSection = () => {
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                idx === currentIndex ? 'w-10 bg-yellow-500' : 'w-4 bg-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.4)]'
-              }`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-10 bg-yellow-500' : 'w-4 bg-[rgba(255,255,255,0.2)] hover:bg-[rgba(255,255,255,0.4)]'
+                }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}

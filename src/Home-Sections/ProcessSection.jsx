@@ -144,8 +144,8 @@ const ProcessSection = () => {
                   <div
                     key={idx}
                     className={`rounded-2xl border transition-all duration-500 overflow-hidden ${isActive
-                        ? 'bg-white shadow-xl shadow-gray-200/50 border-white relative z-20'
-                        : 'bg-gray-50/50 border-gray-100 opacity-70'
+                      ? 'bg-white shadow-xl shadow-gray-200/50 border-white relative z-20'
+                      : 'bg-gray-50/50 border-gray-100 opacity-70'
                       }`}
                   >
                     <div className="px-6 py-5">
