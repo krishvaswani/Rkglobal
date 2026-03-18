@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useMotionValueEvent, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent, useSpring, AnimatePresence } from 'framer-motion';
 
 const processSteps = [
   {
@@ -84,7 +84,7 @@ const ProcessSection = () => {
       style={{ height: `${processSteps.length * 1200}px` }}
     >
       {/* Sticky full-screen panel */}
-      <div className="sticky top-0 w-full h-[900px] overflow-hidden flex">
+      <div className="sticky top-0 w-full h-[100dvh] md:h-[900px] overflow-hidden flex">
 
         {/* LEFT COLUMN — full height, half width */}
         <div className="relative hidden md:flex w-1/2 h-full items-center overflow-hidden">
@@ -139,8 +139,84 @@ const ProcessSection = () => {
           </div>
         </div>
 
-        {/* RIGHT COLUMN — full height, half width */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center h-full px-10 lg:px-20 z-10">
+        {/* MOBILE VIEW — visible only on mobile */}
+        <div className="flex md:hidden flex-col w-full h-full relative overflow-hidden pt-[10dvh] items-center">
+          {/* Mobile Headers */}
+          <div className="z-10 text-center px-6 max-w-[350px]">
+            <h2 className="text-3xl font-extrabold text-[#0a2540] mb-4 uppercase tracking-wider">Our Process</h2>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              We simplify the journey to residency and citizenship by investment through a clear, structured process supported by our experienced advisors at every step.
+            </p>
+          </div>
+
+          {/* Mobile Arc & Numbers */}
+          <motion.div
+            className="absolute rounded-full border border-gray-400 pointer-events-none"
+            style={{
+              width: '700px',
+              height: '700px',
+              top: '-450px',
+              left: '50%',
+              x: '-50%',
+              rotate: useTransform(activeIndex, (val) => val * 33)
+            }}
+          >
+            {processSteps.map((step, idx) => {
+              const isActive = currentStep === idx;
+              return (
+                <div
+                  key={idx}
+                  className="absolute top-1/2 left-[50%]"
+                  style={{
+                    transform: `translate(-50%, -50%) rotate(${-idx * 33}deg) translateY(350px)`,
+                    transformOrigin: 'center center'
+                  }}
+                >
+                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-colors duration-300 ${isActive ? 'bg-[#0a2540] w-3 h-3' : 'bg-[#cbd5e1] w-2 h-2'}`} />
+                  <div className="absolute top-[8px] left-1/2 -translate-x-1/2 flex justify-center">
+                    <div
+                      className={`font-sans font-black transition-all duration-300 ${isActive ? 'text-[#0a2540] text-7xl mt-4 tracking-tighter' : 'text-[#c0c8d4] text-5xl mt-3 tracking-tight opacity-60'}`}
+                    >
+                      {step.num}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+
+          {/* Mobile Content Card */}
+          <div className="mt-auto w-full px-5 pb-10 z-20 flex flex-col items-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentStep}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-6 w-full max-w-sm border border-gray-100 min-h-[190px] flex flex-col justify-center"
+              >
+                <h3 className="text-[#0a2540] text-xl font-bold tracking-tight mb-3">{processSteps[currentStep].title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {processSteps[currentStep].description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Pagination Indicators */}
+            <div className="flex gap-2 mt-8 justify-center">
+              {processSteps.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentStep ? 'w-10 bg-[#cfb53b]' : 'w-4 bg-[#e5dfc5]'}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT COLUMN — flex on desktop only */}
+        <div className="hidden md:flex w-1/2 flex-col justify-center h-full px-10 lg:px-20 z-10">
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-4 uppercase tracking-tight">
             Our Process
           </h2>
