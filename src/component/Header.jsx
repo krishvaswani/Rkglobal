@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import logoUrl from '../assets/logo.svg';
 
@@ -6,23 +6,50 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const inProcessSection = useRef(false);
+
+  // Watch the Process section — hide header whenever it is on screen
+  useEffect(() => {
+    const processSection = document.querySelector('[data-section="process"]');
+    if (!processSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inProcessSection.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          setIsVisible(false);
+        }
+      },
+      // Trigger as soon as ANY part of the section enters the viewport
+      { threshold: 0, rootMargin: '0px' }
+    );
+
+    observer.observe(processSection);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Determine if scrolled past top
       if (currentScrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
 
-      // Hide header when scrolling down, show when scrolling up
+      // While inside the process section — always keep header hidden
+      if (inProcessSection.current) {
+        setIsVisible(false);
+        setLastScrollY(currentScrollY);
+        return;
+      }
+
+      // Normal hide-on-down / show-on-up behaviour
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false); // Scrolling down
+        setIsVisible(false);
       } else {
-        setIsVisible(true);  // Scrolling up
+        setIsVisible(true);
       }
 
       setLastScrollY(currentScrollY);
