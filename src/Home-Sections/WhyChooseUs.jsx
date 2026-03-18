@@ -1,42 +1,48 @@
 import React, { useState } from 'react';
 import { Plus, X } from 'lucide-react';
 import bgImage from '../assets/why-choose-us.png';
+import shieldIcon from '../assets/shield.svg';
+import globalIcon from '../assets/global.svg';
+import transparentIcon from '../assets/transparent.svg';
+import supportIcon from '../assets/customer-support.png';
+import lightningIcon from '../assets/lightning.png';
+import bulbIcon from '../assets/bulb.png';
 
 const accordionData = [
   {
     id: 1,
     title: 'Trusted Since 2018',
-    icon: '🛡️',
+    icon: shieldIcon,
     content: 'We have been providing reliable and secure investment migration services for years, earning the trust of thousands of clients globally.'
   },
   {
     id: 2,
     title: 'Global Expertise',
-    icon: '🌍',
+    icon: globalIcon,
     content: 'Our international team of experts possesses deep knowledge of global immigration laws and investment opportunities.'
   },
   {
     id: 3,
     title: 'Transparent Process',
-    icon: '🔍',
+    icon: transparentIcon,
     content: 'We ensure complete transparency throughout your journey, with no hidden fees and clear communication at every step.'
   },
   {
     id: 4,
     title: 'End-to-End Support',
-    icon: '🎧',
+    icon: supportIcon,
     content: 'From initial consultation to acquiring your passport or residency, our dedicated team is there to assist you.'
   },
   {
     id: 5,
     title: 'Fast & Efficient Processing',
-    icon: '⚡',
+    icon: lightningIcon,
     content: 'Our team specializes in residence and citizenship by investment programs across multiple countries, providing expert guidance for international mobility.'
   },
   {
     id: 6,
     title: 'Tailored Immigration Solutions',
-    icon: '💡',
+    icon: bulbIcon,
     content: 'We understand that every individual is unique. We provide customized solutions tailored to your specific goals and needs.'
   }
 ];
@@ -135,7 +141,7 @@ const AccordionCard = ({ item, isOpen, onToggle }) => {
       {/* Header Button */}
       <div className={`flex items-center justify-between p-4 md:p-5 ${isOpen ? 'pb-2 md:pb-2' : ''}`}>
         <div className="flex items-center gap-3">
-          <span className="text-xl">{item.icon}</span>
+          <img src={item.icon} alt={item.title} className="w-5 h-5 md:w-8 md:h-8 object-cover shrink-0" />
           <span className="font-bold text-gray-900 text-[15px] md:text-base tracking-tight whitespace-nowrap">
             {item.title}
           </span>

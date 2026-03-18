@@ -44,8 +44,8 @@ const TOTAL = processSteps.length;
  */
 function getArcPosition(index, total, radius) {
   // Keep between -90 and 90 so x is never negative, meaning it will never chop off the left side
-  const startAngle = -85;
-  const endAngle = 85;
+  const startAngle = -35;
+  const endAngle = 35;
   const angle = startAngle + (index / (total - 1)) * (endAngle - startAngle);
   const rad = (angle * Math.PI) / 180;
   return {
@@ -74,14 +74,14 @@ const ProcessSection = () => {
 
   // Use a dynamic CSS variable for the circle radius so it fits all screens
   // 45vh ensures the diameter (90vh) almost fills the screen height, spreading numbers wide
-  const circleRadiusCSS = 'min(450px, 45vh)';
+  const circleRadiusCSS = '480px';
 
   return (
     <section
       ref={containerRef}
       data-section="process"
       className="relative bg-white w-full"
-      style={{ height: `${processSteps.length * 150}vh` }}
+      style={{ height: `${processSteps.length * 1200}px` }}
     >
       {/* Sticky full-screen panel */}
       <div className="sticky top-0 w-full h-[900px] overflow-hidden flex">
@@ -95,7 +95,7 @@ const ProcessSection = () => {
             style={{
               width: `calc(2 * ${circleRadiusCSS})`,
               height: `calc(2 * ${circleRadiusCSS})`,
-              border: '1px solid #d1d5db',
+              border: '2px solid #cbd5e1',
               left: '0px',
               top: '50%',
               transform: 'translate(-50%, -50%)'
@@ -128,7 +128,8 @@ const ProcessSection = () => {
                     lineHeight: 1,
                     opacity: isActive ? 1 : 0.75,
                     zIndex: isActive ? 10 : 1,
-                    transition: 'color 0.4s ease, font-size 0.4s ease, opacity 0.4s ease'
+                    transition: 'color 0.4s ease, font-size 0.4s ease, opacity 0.4s ease',
+                    paddingLeft: '32px'
                   }}
                 >
                   {step.num}
