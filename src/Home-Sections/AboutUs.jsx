@@ -4,69 +4,74 @@ import rightTopImg from '../assets/righttop.png';
 import bottomImg from '../assets/bottom.png';
 
 const AboutUs = () => {
+  // Helper for the image grid
+  const ImageGrid = ({ className }) => (
+    <div className={`flex flex-col gap-3 ${className}`}>
+      {/* Top Row */}
+      <div className="flex gap-3 h-44 sm:h-56 md:h-[260px]">
+        {/* Passport image */}
+        <div className="w-[62%] h-full overflow-hidden rounded-3xl md:rounded-2xl shadow-sm">
+          <img
+            src={leftTopImg}
+            alt="Passport concept"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Building handshake image */}
+        <div className="w-[38%] h-full overflow-hidden rounded-3xl md:rounded-2xl shadow-sm relative">
+          <img
+            src={rightTopImg}
+            alt="Business handshake over building"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Bottom Row */}
+      <div className="w-full h-44 sm:h-56 md:h-[240px] overflow-hidden rounded-3xl md:rounded-2xl shadow-sm">
+        <img
+          src={bottomImg}
+          alt="Professional handshake in office"
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+    </div>
+  );
+
   return (
     <section className="w-full py-16 md:py-24 px-8 md:px-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-[4rem]">
 
-        {/* ── Left Content ── */}
+        {/* Desktop & Mobile Heading (on mobile it stays at very top of this column) */}
         <div className="w-full md:w-[60%] flex flex-col items-start gap-6">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-black uppercase tracking-tight">
+          
+          <h2 className="text-[32px] md:text-5xl font-extrabold text-black uppercase tracking-tight">
             About Us
           </h2>
 
-          <div className="flex flex-col gap-4 text-gray-500 text-base md:text-[22px] leading-relaxed">
+          {/* MOBILE ONLY: Images between Heading and Description */}
+          <ImageGrid className="md:hidden w-full my-2" />
+
+          <div className="flex flex-col gap-4 text-[#8C8C8C] md:text-gray-500 text-[14px] md:text-[22px] leading-[1.6] md:leading-relaxed">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
               do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
               sit amet, conse
             </p>
           </div>
 
-          <button className="mt-2 bg-[#0a2f8c] hover:bg-[#082269] active:scale-95 text-white font-semibold px-8 py-3.5 rounded-lg transition-all text-sm tracking-widest uppercase shadow-md">
+          <button className="bg-gradient-to-r from-[#002668] to-[#0A38A0] hover:opacity-90 active:scale-95 text-white font-bold md:font-semibold px-10 md:px-8 py-4 md:py-3.5 rounded-xl md:rounded-lg transition-all text-[15px] md:text-sm tracking-wide md:tracking-widest uppercase shadow-md">
             Know More
           </button>
         </div>
 
-        {/* ── Right Images ── */}
-        <div className="w-full md:w-[40%] flex flex-col gap-3 relative">
+        {/* DESKTOP ONLY: Images on the right */}
+        <ImageGrid className="hidden md:flex md:w-[40%] relative" />
 
-          {/* Top Row */}
-          <div className="flex gap-3 h-48 sm:h-56 md:h-[260px]">
-            {/* Passport image – wider */}
-            <div className="w-[62%] h-full overflow-hidden rounded-2xl shadow-sm">
-              <img
-                src={leftTopImg}
-                alt="Passport concept"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Building handshake image – narrower */}
-            <div className="w-[38%] h-full overflow-hidden rounded-2xl shadow-sm relative">
-              <img
-                src={rightTopImg}
-                alt="Business handshake over building"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
-          {/* Bottom Row – full width */}
-          <div className="w-full h-48 sm:h-56 md:h-[240px] overflow-hidden rounded-2xl shadow-sm">
-            <img
-              src={bottomImg}
-              alt="Professional handshake in office"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-
-        </div>
       </div>
     </section>
   );

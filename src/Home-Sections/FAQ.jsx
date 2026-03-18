@@ -51,8 +51,8 @@ const FAQ = () => {
 
           {/* Left Column: Heading and Images */}
           <div className="flex-1 flex flex-col">
-            <h2 className="text-4xl md:text-5xl lg:text-[50px] font-bold text-black uppercase tracking-tight leading-[1.1] mb-8 md:mb-8">
-              FREQUENTLY<br />ASKED QUESTIONS
+            <h2 className="text-[30px] leading-[141%] md:text-5xl lg:text-[50px] font-bold text-black uppercase tracking-tight md:leading-[1.1] mb-6 md:mb-8 text-center md:text-left">
+              FREQUENTLY<br className="hidden md:block" /> ASKED QUESTIONS
             </h2>
 
             <div className="flex flex-col gap-2 w-full max-w-[500px]">

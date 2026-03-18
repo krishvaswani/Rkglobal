@@ -80,16 +80,14 @@ const ResidencePrograms = () => {
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex flex-col items-center">
           
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-2 md:mb-16">
             <h2
-              className="font-bold text-gray-900 uppercase mb-4"
-              style={{ fontSize: '40px' }}
+              className="font-bold text-gray-900 uppercase mb-4 text-[30px] leading-[141%] md:text-[40px] md:leading-normal"
             >
               Residence By Investment Programmes
             </h2>
             <p
-              className="text-[#8c8c8c] max-w-6xl mx-auto font-bold"
-              style={{ fontSize: '18px', lineHeight: '145%' }}
+              className="text-[#8c8c8c] max-w-6xl mx-auto font-bold text-[14px] leading-[145%] md:text-[18px] md:leading-[145%]"
             >
               Secure long-term residency in top global destinations and enjoy the benefits of international mobility.
             </p>
@@ -115,7 +113,7 @@ const ResidencePrograms = () => {
                   onMouseEnter={() => setActiveCard(program.id)}
                   onClick={() => setActiveCard(program.id)}
                   className={`program-card-residence relative rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-500 ease-in-out shrink-0 snap-center
-                    ${isActive ? 'w-[85vw] sm:w-[320px] md:w-[380px] lg:w-[380px] h-[480px] md:h-[490px] shadow-2xl z-10' : 'w-[75vw] sm:w-[240px] md:w-[280px] lg:w-[320px] h-[440px] md:h-[480px] shadow-lg opacity-90'}
+                    ${isActive ? 'w-[75vw] sm:w-[320px] md:w-[380px] lg:w-[380px] h-[480px] md:h-[490px] shadow-2xl z-10' : 'w-[75vw] sm:w-[240px] md:w-[280px] lg:w-[320px] h-[440px] md:h-[480px] shadow-lg opacity-90'}
                   `}
                 >
                   {/* Background Image */}
@@ -162,7 +160,7 @@ const ResidencePrograms = () => {
                           borderRadius: '30px',
                           fontWeight: 900,
                           padding: '18px',
-                          background: 'linear-gradient(90deg, #092564 0%, #124BCA 100%)',
+                          background: 'linear-gradient(90deg, #002668 0%, #0A38A0 100%)',
                           color: 'white',
                           fontSize: '16px',
                           lineHeight: '158%',

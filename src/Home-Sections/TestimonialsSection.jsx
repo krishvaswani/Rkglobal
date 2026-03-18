@@ -136,7 +136,7 @@ const TestimonialsSection = () => {
 
   return (
     <section
-      className="relative w-full min-h-[950px] overflow-hidden flex flex-col items-center justify-between pb-12 pt-16"
+      className="relative w-full min-h-[650px] md:min-h-[950px] overflow-hidden flex flex-col items-center justify-between pb-12 pt-16"
       style={{
         backgroundImage: `url(${testimonialBanner})`,
         backgroundSize: 'cover',
@@ -149,7 +149,7 @@ const TestimonialsSection = () => {
         Background Concentric Lines & Orbiting Images
         Anchored cleanly at a single central point so the orbital math perfectly aligns with the visual borders.
       */}
-      <div className="absolute top-[75%] left-1/2 w-0 h-0 flex pointer-events-none z-0">
+      <div className="absolute top-[40%] md:top-[75%] left-1/2 w-0 h-0 flex pointer-events-none z-0 transform scale-[0.35] sm:scale-[0.5] md:scale-100 origin-top">
         {/* Inner Circle (800x404 -> 400px radius half-circle) */}
         <div className="absolute top-[-400px] left-[-400px] w-[800px] h-[404px] rounded-t-[400px] border-[1px] border-b-0 border-white/50" />
         {/* Middle Circle (1091x542 -> 545.5px radius half-circle) */}
@@ -182,12 +182,12 @@ const TestimonialsSection = () => {
       <div ref={carouselRef} className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center mt-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header Content moved directly above carousel */}
-        <div className="text-center w-full mb-10 md:mb-16">
+        <div className="text-center w-full mb-10 md:mb-8">
           <div className="flex items-center justify-center gap-2 text-yellow-500 font-bold mb-3 tracking-wide text-sm md:text-base">
             <FaQuoteLeft /> Testimonials
           </div>
           <h2
-            className="text-[50px] font-medium leading-[1.41] tracking-normal text-white uppercase text-center"
+            className="text-[30px] md:text-[50px] font-medium leading-[1.41] tracking-normal text-white uppercase text-center"
             style={{ fontFamily: "'Helvetica Now Display', sans-serif" }}
           >
             What are our clients saying
@@ -233,7 +233,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Mobile/Tablet View (1 card) */}
-        <div className="lg:hidden w-full max-w-md mx-auto relative min-h-[300px]">
+        <div className="lg:hidden w-full max-w-md mx-auto relative min-h-[250px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -243,13 +243,13 @@ const TestimonialsSection = () => {
               transition={{ duration: 0.4 }}
               className="absolute inset-0 bg-[rgba(255,255,255,0.06)] backdrop-blur-md border border-[rgba(255,255,255,0.15)] rounded-2xl p-6 sm:p-8 flex flex-col shadow-xl"
             >
-              <div className="mb-6">
+              <div className="mb-2">
                 <div className="w-10 h-10 rounded-full border border-yellow-500/80 flex items-center justify-center">
                   <FaQuoteLeft className="text-yellow-500 text-sm" />
                 </div>
               </div>
 
-              <p className="text-white/90 text-[15px] sm:text-base leading-relaxed mb-8 flex-grow font-light">
+              <p className="text-white/90 text-[15px] sm:text-base leading-relaxed mb-4 flex-grow font-light">
                 {testimonials[currentIndex].text}
               </p>
 

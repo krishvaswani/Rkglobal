@@ -42,7 +42,7 @@ const accordionData = [
 ];
 
 const WhyChooseUs = () => {
-  const [openId, setOpenId] = useState(5); // Default open is 'Fast & Efficient Processing'
+  const [openId, setOpenId] = useState(1); // Default open is 'Fast & Efficient Processing'
 
   const toggleAccordion = (id) => {
     setOpenId(openId === id ? null : id);
@@ -55,10 +55,10 @@ const WhyChooseUs = () => {
       
       {/* Background Header */}
       <div className="w-full text-center px-4 z-20 mb-10 md:mb-16">
-        <h2 className="text-4xl md:text-4xl lg:text-4xl font-bold text-black uppercase tracking-tight mb-4">
+        <h2 className="text-[30px] leading-[141%] md:text-4xl font-bold text-black uppercase tracking-tight mb-4">
           Why Choose Us
         </h2>
-        <p className="text-gray-500 text-lg md:text-lg  mx-auto font-medium">
+        <p className="text-gray-500 text-[14px] leading-[145%] md:text-lg mx-auto font-medium">
           Invest in a second passport and expand your global mobility with visa-free entry to over 180 countries.
         </p>
       </div>
