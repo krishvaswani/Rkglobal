@@ -37,7 +37,7 @@ const faqData = [
 ];
 
 const FAQ = () => {
-  const [openId, setOpenId] = useState(1);
+  const [openId, setOpenId] = useState();
 
   const toggleAccordion = (id) => {
     setOpenId(openId === id ? null : id);
@@ -46,24 +46,24 @@ const FAQ = () => {
   return (
     <section className="w-full py-16 md:py-24 bg-white font-sans">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        
+
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
-          
+
           {/* Left Column: Heading and Images */}
           <div className="flex-1 flex flex-col">
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-black uppercase tracking-tight leading-[1.1] mb-8 md:mb-12">
+            <h2 className="text-4xl md:text-5xl lg:text-[50px] font-bold text-black uppercase tracking-tight leading-[1.1] mb-8 md:mb-8">
               FREQUENTLY<br />ASKED QUESTIONS
             </h2>
-            
+
             <div className="flex flex-col gap-2 w-full max-w-[500px]">
-              <img 
-                src={part1} 
-                alt="Passport and Plane" 
+              <img
+                src={part1}
+                alt="Passport and Plane"
                 className="w-full h-auto rounded-xl object-cover"
               />
-              <img 
-                src={part2} 
-                alt="Passport on desk" 
+              <img
+                src={part2}
+                alt="Passport on desk"
                 className="w-full h-auto rounded-xl object-cover"
               />
             </div>
@@ -73,10 +73,10 @@ const FAQ = () => {
           <div className="flex-1 flex flex-col gap-4 mt-8 lg:mt-0">
             {faqData.map((item) => {
               const isOpen = openId === item.id;
-              
+
               return (
-                <div 
-                  key={item.id} 
+                <div
+                  key={item.id}
                   className="border border-gray-200 rounded-md overflow-hidden bg-white transition-all duration-300"
                 >
                   <button
@@ -94,9 +94,9 @@ const FAQ = () => {
                       )}
                     </div>
                   </button>
-                  
+
                   {/* Expanded Content */}
-                  <div 
+                  <div
                     className={`transition-all duration-300 ease-in-out overflow-hidden
                       ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
                     `}

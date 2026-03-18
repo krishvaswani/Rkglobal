@@ -123,7 +123,7 @@ const CitizenshipPrograms = () => {
                   <img
                     src={program.image}
                     alt={program.name}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out"
+                    className=" absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out"
                   />
 
                   {/* Gradient Overlay */}
@@ -134,7 +134,7 @@ const CitizenshipPrograms = () => {
                   `}></div>
 
                   {/* Content */}
-                  <div className={`absolute inset-0 flex flex-col justify-end p-4 md:p-4 transition-all duration-500 ${isActive ? 'items-start' : 'items-center pb-12'}`}>
+                  <div className={` absolute inset-0 flex flex-col justify-end p-4 md:p-4 transition-all duration-500 ${isActive ? 'items-start' : 'items-center pb-12'}`}>
                     <h3 className={`text-white font-bold tracking-wide transition-all duration-500 
                       ${isActive ? 'text-xl md:text-[1.7rem] mb-2 leading-tight' : 'text-xl md:text-xl text-center w-full'}
                     `}>
