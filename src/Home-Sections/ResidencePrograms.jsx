@@ -1,40 +1,59 @@
 import React, { useState, useRef, useEffect } from 'react';
-import uaeImg from '../assets/UAE.png';
-import portugalImg from '../assets/portugal.png';
-import greeceImg from '../assets/greece.png';
+import portugalImg from '../assets/portugal_residency.png';
+import greeceImg from '../assets/greece_residency.png';
+import uaeImg from '../assets/uae_residency.png';
+import canadaImg from '../assets/canada_residency.png';
+import usaImg from '../assets/usa_residency.png';
+import cyprusImg from '../assets/cyprus_residency.png';
 
 const programs = [
   {
     id: 1,
-    name: 'UAE',
-    image: uaeImg,
-    subtitle: 'Golden Visa - Long-term residence for investors',
-    price: '2,000,000 AED',
-    time: '2-4 Weeks'
+    name: 'Portugal',
+    image: portugalImg,
+    subtitle: 'Schengen Visa-Free Access',
+    price: 'Investment from €200,000',
+    time: '8–9 Months'
   },
   {
     id: 2,
-    name: 'PORTUGAL',
-    image: portugalImg,
-    subtitle: 'Explore the Schengen Area Visa-Free',
-    price: '200,000 EUR',
-    time: '8-9 Months'
+    name: 'Greece',
+    image: greeceImg,
+    subtitle: 'Schengen Visa-Free Access',
+    price: 'Investment from €250,000',
+    time: '2–3 Months'
   },
   {
     id: 3,
-    name: 'GREECE',
-    image: greeceImg,
-    subtitle: 'Golden Visa - Permanent residency in Europe',
-    price: '250,000 EUR',
-    time: '3-4 Months'
+    name: 'UAE',
+    image: uaeImg,
+    subtitle: 'Visa-Free Entry to Armenia, Georgia & Montenegro',
+    price: 'Investment from USD 204,500',
+    time: '1–4 Weeks'
   },
   {
     id: 4,
-    name: 'SPAIN',
-    image: greeceImg,
-    subtitle: 'Golden Visa - Live and work in Spain',
-    price: '500,000 EUR',
-    time: '2-3 Months'
+    name: 'Canada',
+    image: canadaImg,
+    subtitle: 'Live, Work & Study in Canada',
+    price: 'Investment from USD 150,000',
+    time: '18–24 Months'
+  },
+  {
+    id: 5,
+    name: 'United States',
+    image: usaImg,
+    subtitle: 'Live, Work & Study in the USA',
+    price: 'Investment from USD 800,000',
+    time: '18–24 Months'
+  },
+  {
+    id: 6,
+    name: 'Cyprus',
+    image: cyprusImg,
+    subtitle: 'Visa-Free Entry to Cyprus',
+    price: 'Investment from €300,000',
+    time: '2–3 Months'
   }
 ];
 

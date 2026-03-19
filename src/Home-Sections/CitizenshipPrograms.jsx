@@ -2,39 +2,58 @@ import React, { useState, useRef, useEffect } from 'react';
 import stkittsImg from '../assets/stkitts.png';
 import saoImg from '../assets/sao.png';
 import naruImg from '../assets/naru.png';
+import grenadaImg from '../assets/grenada.png';
+import antiguaImg from '../assets/antigua.png';
+import vanuatuImg from '../assets/vanuatu.png';
 
 const programs = [
   {
     id: 1,
-    name: 'ST. KITTS & NEVIS',
-    image: stkittsImg,
-    subtitle: 'Seamless Visa-Free Access to 157+ Countries',
-    price: 'USD 150,000',
-    time: '3-6 Months'
+    name: 'SÃO TOMÉ & PRÍNCIPE',
+    image: saoImg,
+    subtitle: 'Visa-Free Travel to 93+ Countries',
+    price: 'USD 90,000',
+    time: '1–2 Months'
   },
   {
     id: 2,
-    name: 'SÃO TOMÉ & PRÍNCIPE',
-    image: saoImg,
-    subtitle: 'Seamless Visa-Free Access to 93+ Countries',
-    price: 'USD 90,000',
-    time: '1-2 Months'
+    name: 'ST. KITTS & NEVIS',
+    image: stkittsImg,
+    subtitle: 'Visa-Free Travel to 162+ Countries',
+    price: 'USD 250,000',
+    time: '6 Months'
   },
   {
     id: 3,
     name: 'NAURU',
     image: naruImg,
-    subtitle: 'Seamless Visa-Free Access to 89+ Countries',
-    price: 'USD 100,000',
-    time: '2-4 Months'
+    subtitle: 'Visa-Free Travel to 107+ Countries',
+    price: 'USD 105,000',
+    time: '3–4 Months'
   },
   {
     id: 4,
+    name: 'GRENADA',
+    image: grenadaImg,
+    subtitle: 'Visa-Free Travel to 143+ Countries',
+    price: 'USD 235,000',
+    time: '8–11 Months'
+  },
+  {
+    id: 5,
+    name: 'ANTIGUA & BARBUDA',
+    image: antiguaImg,
+    subtitle: 'Visa-Free Travel to 151+ Countries',
+    price: 'USD 230,000',
+    time: '6–9 Months'
+  },
+  {
+    id: 6,
     name: 'VANUATU',
-     image: naruImg,
-    subtitle: 'Seamless Visa-Free Access to 130+ Countries',
+    image: vanuatuImg,
+    subtitle: 'Visa-Free Travel to 112+ Countries',
     price: 'USD 130,000',
-    time: '1-2 Months'
+    time: '3–4 Months'
   }
 ];
 
@@ -84,7 +103,7 @@ const CitizenshipPrograms = () => {
           <div className="text-center mb-2 md:mb-16">
             <h2
               className="font-bold text-gray-900 uppercase mb-4 text-[30px] leading-[141%] md:text-[40px] md:leading-normal"
-            >
+            >``
               Citizenship By Investment Programmes
             </h2>
             <p
