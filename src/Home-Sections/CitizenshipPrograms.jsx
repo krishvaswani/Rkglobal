@@ -92,9 +92,9 @@ const CitizenshipPrograms = () => {
   }, [activeCard]);
 
   return (
-    <div className="w-full bg-gray-50 p-[10px]">
+    <div className="w-full bg-gray-50">
       <section
-        className="w-full py-16 md:py-24 bg-white rounded-[28px] overflow-hidden shadow-sm"
+        className="w-full py-16 md:py-24 bg-white overflow-hidden shadow-sm"
         style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
       >
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex flex-col items-center">
@@ -103,7 +103,7 @@ const CitizenshipPrograms = () => {
           <div className="text-center mb-2 md:mb-16">
             <h2
               className="font-bold text-gray-900 uppercase mb-4 text-[30px] leading-[141%] md:text-[40px] md:leading-normal"
-            >``
+            >
               Citizenship By Investment Programmes
             </h2>
             <p

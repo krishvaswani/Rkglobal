@@ -5,9 +5,9 @@ import fdiImage from '../assets/500M.png';
 
 const StatsSection = () => {
   return (
-    <div className="w-full bg-gray-50 p-[10px]">
+    <div className="w-full bg-gray-50">
       <section 
-        className="w-full py-10 md:py-24 bg-white rounded-[28px] overflow-hidden shadow-sm"
+        className="w-full py-10 md:py-24 bg-white overflow-hidden shadow-sm"
         style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
       >
         <div className="max-w-screen-xl mx-auto w-full grid grid-cols-5 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[150px] sm:auto-rows-[180px] md:auto-rows-[220px] lg:grid-rows-[260px_260px] gap-3 sm:gap-4 md:gap-6 px-4 md:px-8">

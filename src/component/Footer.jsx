@@ -26,11 +26,7 @@ const Footer = () => {
             className="w-auto h-16 md:h-20 object-contain self-start" 
           />
           <p className="text-gray-700 text-sm md:text-base font-medium leading-relaxed max-w-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
+            We are your gateway to global opportunities. RK Global Immigration provides expert, end-to-end immigration solutions, guiding students, professionals, and families seamlessly from initial consultation to successful settlement abroad.
           </p>
         </div>
 
