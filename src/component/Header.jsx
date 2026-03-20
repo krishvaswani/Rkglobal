@@ -28,7 +28,8 @@ const Header = () => {
       let isInProcess = false;
       if (processSection) {
         const rect = processSection.getBoundingClientRect();
-        isInProcess = rect.top < window.innerHeight && rect.bottom > 0;
+        // Section is in full view (sticky state)
+        isInProcess = rect.top <= 0 && rect.bottom >= window.innerHeight;
       }
       
       inProcessSection.current = isInProcess;
