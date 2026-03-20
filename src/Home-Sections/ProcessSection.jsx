@@ -81,10 +81,10 @@ const ProcessSection = () => {
       ref={containerRef}
       data-section="process"
       className="relative bg-white w-full"
-      style={{ height: `calc(100dvh + ${(processSteps.length - 1) * 250}px)` }}
+      style={{ height: `calc(100dvh + ${(processSteps.length - 1) * 180}px)` }}
     >
       {/* Sticky full-screen panel */}
-      <div className="sticky top-0 w-full h-[100dvh] md:h-[900px] overflow-hidden flex">
+      <div className="sticky top-0 w-full h-[100dvh] overflow-hidden flex">
 
         {/* LEFT COLUMN — full height, half width */}
         <div className="relative hidden md:flex w-1/2 h-full items-center overflow-hidden">
