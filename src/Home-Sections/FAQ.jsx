@@ -6,33 +6,33 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 const faqData = [
   {
     id: 1,
-    question: 'How do I choose a good investment migration advisory firm?',
-    answer: 'The top priority while shortlisting the best Investment Migration Advisory Firm is ensuring they are properly licensed. Another key consideration is ensuring that they have a proven track record of successful applications and transparent fee structures.'
+    question: 'Why should I choose RK Global Immigration?',
+    answer: 'RK Global Immigration offers personalized, end-to-end immigration solutions tailored to your profile, goals, and budget. With years of industry experience and a strong track record, we focus on transparency, accurate documentation, and strategic guidance to maximize your chances of visa success. From consultation to post-landing support, our team stays with you at every step.'
   },
   {
     id: 2,
-    question: 'What immigration services does Passport Legacy offer?',
-    answer: 'We provide end-to-end services for citizenship and residency by investment programs, including initial consultation, document preparation, legal review, and post-citizenship support.'
+    question: 'Do you provide a free consultation?',
+    answer: 'Yes, we offer an initial consultation where our experts assess your profile, understand your goals, and suggest the most suitable immigration options. This helps you get clarity before starting the process and ensures you choose the right pathway.'
   },
   {
     id: 3,
-    question: 'Can an investment migration advisory firm help me renew or extend my residence?',
-    answer: 'Yes, specialized advisory firms can assist with the renewal processes, ensuring all current requirements and continuous residency obligations are met.'
+    question: 'Which countries do you specialize in?',
+    answer: 'We assist with immigration to countries like Canada, Australia, Germany, Portugal, Poland, and New Zealand. Each country has different visa pathways, and we guide you based on your eligibility, career goals, and long-term plans.'
   },
   {
     id: 4,
-    question: 'What is the role of an investment migration advisory firm in the investment immigration process?',
-    answer: 'Advisory firms act as your guide and representative. They help select the right program, navigate complex legal requirements, liaise with government authorities, and optimize your application for approval.'
+    question: 'What types of visas do you handle?',
+    answer: 'We provide complete assistance for study visas, work permits, PR (permanent residency), and business/investor visas. Our team ensures that your application is aligned with the latest immigration policies and requirements.'
   },
   {
     id: 5,
-    question: 'How to choose the right immigration programme?',
-    answer: 'Choosing the right program depends on your goals (e.g., visa-free travel, tax optimization, relocation), budget, timeline, and family structure. A consultation is highly recommended to tailor the choice.'
+    question: 'How do I know which visa is best for me?',
+    answer: 'Choosing the right visa depends on multiple factors like your education, work experience, age, financials, and future goals. Our experts conduct a detailed profile evaluation and recommend the most suitable and realistic options for your case.'
   },
   {
     id: 6,
-    question: 'What kind of investments are accepted for citizenship or residency programmes?',
-    answer: 'Common investment types include real estate purchase, government bonds or national funds contribution, business investment/job creation, and bank deposits.'
+    question: 'How long does the immigration process take?',
+    answer: 'Processing time varies based on the country, visa type, and your profile. Some applications may take a few months, while others can take longer depending on government processing timelines and documentation.'
   }
 ];
 
