@@ -186,7 +186,7 @@ const ProcessSection = () => {
           </motion.div>
 
           {/* Mobile Content Card */}
-          <div className="mt-auto w-full px-5 pb-10 z-20 flex flex-col items-center">
+          <div className="mt-[250px] w-full px-5 pb-10 z-20 flex flex-col items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStep}
