@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+
 import logoUrl from '../assets/logo.svg';
 import footerLogoUrl from '../assets/footer-logo.svg';
 
@@ -9,6 +10,9 @@ const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const inProcessSection = useRef(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,12 +65,14 @@ const Header = () => {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const headerBgClass = isScrolled || menuOpen ? 'bg-white/95 shadow-md backdrop-blur-lg' : 'bg-transparent';
-  const textColorClass = isScrolled || menuOpen ? 'text-gray-900' : 'text-white';
-  const currentLogo = isScrolled || menuOpen ? footerLogoUrl : logoUrl;
-  const logoFilter = isScrolled || menuOpen ? '' : 'brightness-0 invert';
-  const logoSizeClass = isScrolled || menuOpen ? 'w-[140px] sm:w-[170px] md:w-[200px]' : 'w-[180px] sm:w-[220px] md:w-[263px]';
-  const hamburgerColor = isScrolled || menuOpen ? '#111' : '#fff';
+  const shouldShowBg = isScrolled || menuOpen || !isHomePage;
+  const headerBgClass = shouldShowBg ? 'bg-white/95 shadow-md backdrop-blur-lg' : 'bg-transparent';
+  const textColorClass = shouldShowBg ? 'text-gray-900' : 'text-white';
+  const currentLogo = shouldShowBg ? footerLogoUrl : logoUrl;
+  const logoFilter = shouldShowBg ? '' : 'brightness-0 invert';
+  const logoSizeClass = shouldShowBg ? 'w-[140px] sm:w-[170px] md:w-[200px]' : 'w-[180px] sm:w-[220px] md:w-[263px]';
+  const hamburgerColor = shouldShowBg ? '#111' : '#fff';
+
 
   const navLinks = [
     { to: '/', label: 'HOME', end: true },

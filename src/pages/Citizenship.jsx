@@ -1,11 +1,9 @@
 import React from 'react';
+import ComingSoon from '../component/ComingSoon';
 
 const Citizenship = () => {
-  return (
-    <div className="w-full min-h-screen font-sans bg-gray-50 pt-24 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-[#0a2f8c]">Citizenship Programs</h1>
-    </div>
-  );
+  return <ComingSoon title="Citizenship Programs" />;
 };
 
 export default Citizenship;
+
