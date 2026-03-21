@@ -1,6 +1,5 @@
 import React from 'react';
-import heroBanner from '../assets/Hero-banner.png';
-import mobileHeroBanner from '../assets/mobile-view-hero.png';
+import heroVideo from '../assets/hero-video.mp4';
 
 const Hero = () => {
   return (
@@ -10,24 +9,27 @@ const Hero = () => {
         style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
       >
 
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          {/* Mobile banner — hidden on desktop */}
-          <img
-            src={mobileHeroBanner}
-            alt="Family with RK Global Immigration"
-            className="w-full h-full object-cover object-top md:hidden"
-          />
-          {/* Desktop banner — hidden on mobile */}
-          <img
-            src={heroBanner}
-            alt="Family with RK Global Immigration"
-            className="w-full h-full object-cover object-center scale-105 hidden md:block"
-          />
-          {/* Mobile: bottom-heavy gradient so faces show at top, text is readable at bottom */}
-          <div className="absolute inset-0 md:hidden bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
-          {/* Desktop: original uniform overlay */}
-          <div className="absolute inset-0 hidden md:block bg-black/35" />
+        {/* Background Video/Image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {/* Video Background */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover object-center scale-105"
+          >
+            <source src={heroVideo} type="video/mp4" />
+          </video>
+          
+          {/* Mobile Overlay: bottom-heavy gradient so text is readable at bottom */}
+          <div className="absolute inset-0 md:hidden bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+          
+          {/* Desktop Overlay: Left-side gradient for text visibility */}
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
+          
+          {/* Subtle Global Darkener for extra contrast */}
+          <div className="absolute inset-0 bg-black/10" />
         </div>
 
         {/* Content */}
