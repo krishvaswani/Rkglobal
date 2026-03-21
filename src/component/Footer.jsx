@@ -52,13 +52,13 @@ const Footer = () => {
             <h3 className="text-black font-bold text-lg mb-1">Contact Us</h3>
             <div className="flex flex-col gap-4">
               <span className="text-gray-500 text-sm md:text-base">
-                432 Park Ave, New York, NY 10022
+                Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.
               </span>
-              <a href="tel:8841234569" className="text-gray-500 hover:text-[#0a2769] transition-colors text-sm md:text-base cursor-pointer">
+              {/* <a href="tel:8841234569" className="text-gray-500 hover:text-[#0a2769] transition-colors text-sm md:text-base cursor-pointer">
                 (884) 123-4569
-              </a>
-              <a href="mailto:support@rkglobalimmigration.com" className="text-gray-500 hover:text-[#0a2769] transition-colors text-sm md:text-base cursor-pointer break-all">
-                support@rkglobalimmigration.com
+              </a> */}
+              <a href="mailto:info@rkglobalimmigration.com" className="text-gray-500 hover:text-[#0a2769] transition-colors text-sm md:text-base cursor-pointer break-all">
+                info@rkglobalimmigration.com
               </a>
             </div>
           </div>
