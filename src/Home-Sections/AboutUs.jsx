@@ -55,12 +55,7 @@ const AboutUs = () => {
 
           <div className="flex flex-col gap-4 text-[#8C8C8C] md:text-gray-500 text-[14px] md:text-[22px] leading-[1.6] md:leading-relaxed">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-              do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              sit amet, conse
+              RK Global Immigration delivers a comprehensive suite of tailored residency and citizenship by investment programs, creating exceptional value for discerning clients. Through robust offshore strategies—including golden visas residencies, citizenship-by-investment pathways, international real estate, wealth management, and asset protection via sophisticated entities—we empower global families, entrepreneurs, and investors to navigate the legal and financial intricacies of international life with integrity, precision, and unwavering regulatory compliance.
             </p>
           </div>
 
