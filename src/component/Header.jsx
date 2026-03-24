@@ -11,7 +11,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const inProcessSection = useRef(false);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isTransparentPage = location.pathname === '/' || location.pathname === '/citizenship';
 
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Header = () => {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const shouldShowBg = isScrolled || menuOpen || !isHomePage;
+  const shouldShowBg = isScrolled || menuOpen || !isTransparentPage;
   const headerBgClass = shouldShowBg ? 'bg-white/95 shadow-md backdrop-blur-lg' : 'bg-transparent';
   const textColorClass = shouldShowBg ? 'text-gray-900' : 'text-white';
   const currentLogo = shouldShowBg ? footerLogoUrl : logoUrl;

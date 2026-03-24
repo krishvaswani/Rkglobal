@@ -44,7 +44,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="w-full py-16 md:py-24 bg-white font-sans">
+    <section className="w-full py-16 md:py-20 bg-white font-sans">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
 
         <div className="flex flex-col lg:flex-row  lg:gap-20">
