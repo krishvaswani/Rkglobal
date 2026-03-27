@@ -37,7 +37,7 @@ const faqData = [
 ];
 
 const FAQ = () => {
-  const [openId, setOpenId] = useState();
+  const [openId, setOpenId] = useState(1);
 
   const toggleAccordion = (id) => {
     setOpenId(openId === id ? null : id);
@@ -45,71 +45,66 @@ const FAQ = () => {
 
   return (
     <section className="w-full py-16 md:py-20 bg-white font-sans">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-
-        <div className="flex flex-col lg:flex-row  lg:gap-20">
-
-          {/* Left Column: Heading and Images */}
-          <div className="flex-1 flex flex-col">
-            <h2 className="text-[30px] leading-[141%] md:text-5xl lg:text-[50px] font-bold text-black uppercase tracking-tight md:leading-[1.1] mb-6 md:mb-8 text-center md:text-left">
-              FREQUENTLY<br className="hidden md:block" /> ASKED QUESTIONS
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div className="flex flex-col lg:flex-row lg:gap-[88px] items-start">
+          <div className="w-full lg:max-w-[470px] flex flex-col">
+            <h2 className="text-[30px] md:text-[44px] lg:text-[58px] font-extrabold text-black uppercase tracking-[-0.04em] leading-[1.08] mb-8 text-center md:text-left">
+              Frequently
+              <br />
+              Asked
+              <br />
+              Questions
             </h2>
 
-            <div className="flex flex-col gap-2 w-full max-w-[500px]">
+            <div className="w-full max-w-[520px] mx-auto md:mx-0 flex flex-col gap-1.5">
               <img
                 src={part1}
                 alt="Passport and Plane"
-                className="w-full h-auto rounded-xl object-cover"
+                className="w-full h-[330px] md:h-[360px] object-cover rounded-[10px] block"
               />
               <img
                 src={part2}
                 alt="Passport on desk"
-                className="w-full h-auto rounded-xl object-cover"
+                className="w-full h-[120px] md:h-[135px] object-cover rounded-[10px] block"
               />
             </div>
           </div>
 
-          {/* Right Column: Accordion */}
-          <div className="flex-1 flex flex-col gap-4 mt-8 lg:mt-0">
+          <div className="flex-1 flex flex-col gap-4 mt-12 lg:mt-0 w-full">
             {faqData.map((item) => {
               const isOpen = openId === item.id;
+              const Icon = isOpen ? ChevronUp : ChevronDown;
 
               return (
                 <div
                   key={item.id}
-                  className="border border-gray-200 rounded-md overflow-hidden bg-white transition-all duration-300"
+                  className="border border-[#e7e7e7] bg-white overflow-hidden"
                 >
                   <button
                     onClick={() => toggleAccordion(item.id)}
-                    className="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer hover:bg-gray-50/50 transition-colors"
+                    className="w-full flex items-start justify-between gap-5 px-5 py-6 md:px-6 md:py-7 text-left cursor-pointer"
                   >
-                    <span className="font-bold text-gray-900 text-base md:text-lg pr-4">
+                    <span className="font-bold text-[18px] md:text-[20px] leading-[1.35] text-[#111] pr-4">
                       {item.question}
                     </span>
-                    <div className="text-gray-900 flex-shrink-0">
-                      {isOpen ? (
-                        <ChevronUp size={24} strokeWidth={2.5} />
-                      ) : (
-                        <ChevronDown size={24} strokeWidth={2.5} />
-                      )}
+                    <div className="flex-shrink-0 text-[#111] pt-0.5">
+                      <Icon size={26} strokeWidth={2.2} />
                     </div>
                   </button>
 
-                  {/* Expanded Content */}
-                  <div
-                    className={`transition-all duration-300 ease-in-out overflow-hidden
-                      ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
-                    `}
-                  >
-                    <div className="p-5 md:p-6 pt-0 text-gray-500 text-sm md:text-base leading-relaxed font-medium font-sans border-t border-transparent">
-                      {item.answer}
+                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    isOpen ? 'max-h-[320px] opacity-100' : 'max-h-0 opacity-0'
+                  }`}>
+                    <div className="border-t border-[#efefef] px-5 py-6 md:px-6 md:py-7 text-[#7a7a7a] text-[16px] md:text-[18px] leading-[2.1] font-semibold">
+                      <div className="max-w-[92%]">
+                        {item.answer}
+                      </div>
                     </div>
                   </div>
                 </div>
               );
             })}
           </div>
-
         </div>
       </div>
     </section>

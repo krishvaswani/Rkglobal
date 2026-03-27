@@ -41,7 +41,7 @@ const AboutUs = () => {
 
   return (
     <section className="w-full py-16 md:py-24 px-8 md:px-20 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-[4rem]">
+      <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-[4rem]">
 
         {/* Desktop & Mobile Heading (on mobile it stays at very top of this column) */}
         <div className="w-full md:w-[60%] flex flex-col items-start gap-6">

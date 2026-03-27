@@ -21,9 +21,7 @@ const fadeInUp = {
 const Home = () => {
   return (
     <div className="w-full min-h-screen font-sans bg-gray-50">
-      <motion.div {...fadeInUp}>
-        <Hero />
-      </motion.div>
+      <Hero />
       <motion.div {...fadeInUp}>
         <AboutUs />
       </motion.div>
@@ -56,4 +54,3 @@ const Home = () => {
 };
 
 export default Home;
-

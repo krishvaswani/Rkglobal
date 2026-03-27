@@ -16,7 +16,7 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto w-full px-4 md:px-8 py-12 md:py-16 flex flex-col lg:flex-row gap-12 lg:gap-4 justify-between">
+      <div className="max-w-[1400px] mx-auto w-full px-4 md:px-8 py-12 md:py-16 flex flex-col lg:flex-row gap-12 lg:gap-4 justify-between">
         
         {/* Left: Brand / Logo */}
         <div className="flex flex-col gap-6 lg:w-[30%]">
@@ -78,7 +78,7 @@ const Footer = () => {
 
       {/* Bottom Copyright & Socials */}
       <div className="border-t border-gray-200">
-        <div className="max-w-7xl mx-auto w-full px-4 md:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
+        <div className="max-w-[1400px] mx-auto w-full px-4 md:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
           
           {/* Socials */}
           <div className="flex items-center gap-4">

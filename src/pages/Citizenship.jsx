@@ -1,7 +1,6 @@
 import React from 'react';
-import Hero from '../Home-Sections/Hero';
+import { useParams } from 'react-router-dom';
 import CitizenshipNav from '../component/CitizenshipNav';
-import FAQ from '../Home-Sections/FAQ';
 import CountryInfo from '../Citizenship-Sections/CountryInfo';
 import ProgramStats from '../Citizenship-Sections/ProgramStats';
 import ProgramBenefits from '../Citizenship-Sections/ProgramBenefits';
@@ -10,67 +9,61 @@ import ProgramRequirements from '../Citizenship-Sections/ProgramRequirements';
 import RealEstateOptions from '../Citizenship-Sections/RealEstateOptions';
 import LegalBasis from '../Citizenship-Sections/LegalBasis';
 import ContactCTA from '../component/ContactCTA';
+import ProgramHero from '../Citizenship-Sections/ProgramHero';
+import ProgramFaq from '../Citizenship-Sections/ProgramFaq';
+import ComingSoon from '../component/ComingSoon';
+import { citizenshipProgramMap } from '../data/citizenshipPrograms';
 
 const sections = [
   { id: 'country-info', label: 'Country Info' },
-  { id: 'benefit', label: 'Benefit' },
+  { id: 'benefit', label: 'Benefits' },
   { id: 'requirements', label: 'Requirements' },
   { id: 'process', label: 'Process' },
-  { id: 'real-estate', label: 'Real Estate' },
+  { id: 'investment-options', label: 'Investment' },
   { id: 'faq', label: "FAQ's" },
 ];
 
 const Citizenship = () => {
+  const { slug } = useParams();
+  const program = citizenshipProgramMap[slug];
+
+  if (!program) {
+    return <ComingSoon title="Citizenship Programme Not Found" />;
+  }
+
   return (
     <div className="w-full min-h-screen bg-white font-sans overflow-x-hidden">
-      {/* Hero Section */}
-      <Hero page="citizenship" />
-      
-      {/* Scrollable Navigation Index */}
+      <ProgramHero program={program} />
       <CitizenshipNav sections={sections} />
 
-      {/* Main Content Sections */}
       <div className="flex flex-col w-full">
-        
-        {/* Country Info Section */}
-        <CountryInfo />
+        <CountryInfo program={program} />
 
-        {/* Benefits Section using Program Stats */}
         <section id="benefit" className="w-full py-16 md:py-20 bg-[#f5f7fa]">
-          <ProgramStats />
-          
-          {/* Detailed Benefits Grid Section */}
-          <ProgramBenefits />
+          <ProgramStats stats={program.stats} />
+          <ProgramBenefits program={program} />
         </section>
 
-        {/* Requirements Section using the new layout */}
         <div id="requirements">
-           <ProgramRequirements />
+          <ProgramRequirements program={program} />
         </div>
 
-        {/* Process Section using the graphical layout */}
         <div id="process">
-           <ProgramProcess />
+          <ProgramProcess program={program} />
         </div>
 
-        {/* Real Estate Section */}
-        <RealEstateOptions />
+        <RealEstateOptions program={program} />
 
-        {/* Legal Basis Section */}
-        <LegalBasis />
+        <LegalBasis program={program} />
 
-        {/* FAQ Section */}
         <div id="faq">
-          <FAQ />
+          <ProgramFaq program={program} />
         </div>
 
-        {/* Final CTA Section */}
         <ContactCTA />
-
       </div>
     </div>
   );
 };
 
 export default Citizenship;
-

@@ -5,7 +5,7 @@ const ContactCTA = () => {
   return (
     <section className="w-full py-16 md:py-20 px-4 md:px-8 bg-white flex justify-center font-sans">
       <div 
-        className="max-w-[1440px] w-full rounded-[2.5rem] bg-center overflow-hidden min-h-[350px] md:min-h-[450px] flex items-center justify-center p-8 md:p-16 relative bg-[#02050a]"
+        className="max-w-[1400px] w-full rounded-[2.5rem] bg-center overflow-hidden min-h-[350px] md:min-h-[450px] flex items-center justify-center p-8 md:p-16 relative bg-[#02050a]"
         style={{ backgroundImage: `url('${bgImage}')` }}
       >
         {/* Overlay to ensure readability if needed (though the asset looks dark enough) */}

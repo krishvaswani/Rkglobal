@@ -1,50 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React from 'react';
 import realEstateImg from '../assets/Real Estate Investment .jpg';
-
-function useInViewOnce(options) {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || inView) return;
-
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setInView(true);
-        obs.disconnect();
-      }
-    }, options);
-
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [inView, options]);
-
-  return { ref, inView };
-}
-
-function useCountUp({ active, from = 0, to, durationMs = 900 }) {
-  const [value, setValue] = useState(from);
-
-  useEffect(() => {
-    if (!active) return;
-    let rafId = 0;
-    const start = performance.now();
-
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / durationMs);
-      const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-      const next = Math.round(from + (to - from) * eased);
-      setValue(next);
-      if (t < 1) rafId = requestAnimationFrame(tick);
-    };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [active, durationMs, from, to]);
-
-  return value;
-}
 
 const StatCard = ({ value, label, emphasize }) => {
   return (
@@ -63,82 +18,37 @@ const StatCard = ({ value, label, emphasize }) => {
   );
 };
 
-const RealEstateOptions = () => {
-  const { ref: statsRef, inView } = useInViewOnce({ threshold: 0.35 });
-
-  const minInvestment = useCountUp({ active: inView, to: 220 });
-  const roiMax = useCountUp({ active: inView, to: 4 });
-  const holdingYears = useCountUp({ active: inView, to: 5 });
-
-  const stats = useMemo(
-    () => [
-      {
-        emphasize: false,
-        value: `${minInvestment}k`,
-        label: (
-          <>
-            Minimum Real Estate
-            <br />
-            Investment (in $USD)
-          </>
-        ),
-      },
-      {
-        emphasize: true,
-        value: `2-${roiMax}%`,
-        label: (
-          <>
-            ROI or Rental Income
-            <br />
-            Opportunity
-          </>
-        ),
-      },
-      {
-        emphasize: false,
-        value: `${holdingYears} Years`,
-        label: (
-          <>
-            Minimum Real Estate
-            <br />
-            Holding Period
-          </>
-        ),
-      },
-    ],
-    [holdingYears, minInvestment, roiMax]
-  );
-
+const RealEstateOptions = ({ program }) => {
   return (
-    <section id="real-estate" className="w-full py-16 md:py-20 bg-white font-sans px-4 md:px-8">
-      <div className="max-w-[1440px] mx-auto flex flex-col items-center">
-        
-        {/* Header Content */}
+    <section id="investment-options" className="w-full py-16 md:py-20 bg-white font-sans px-4 md:px-8">
+      <div className="max-w-[1400px] mx-auto flex flex-col items-center">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-[34px] lg:text-[38px] font-extrabold text-[#111] uppercase tracking-tight leading-tight mb-3">
-            REAL ESTATE INVESTMENT OPTIONS FOR GRENADA CITIZENSHIP PROGRAM
+            {program.investment.title}
           </h2>
           <p className="text-gray-500 text-sm md:text-base font-medium max-w-3xl mx-auto leading-relaxed px-4">
-            Discover everything you need to know about purchasing premium real estate in Grenada. Please see our government-approved listings that qualify you for the Grenada Citizenship By Investment Programme.
+            {program.investment.description}
           </p>
         </div>
 
-        {/* Hero Image - Reduced Dimensions */}
         <div className="w-full relative mb-10 md:mb-12">
-          <img 
-            src={realEstateImg} 
-            alt="Real Estate Investment" 
+          <img
+            src={realEstateImg}
+            alt={program.investment.title}
             className="w-full h-[280px] md:h-[380px] object-cover object-top rounded-[18px] md:rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
           />
         </div>
 
-        {/* 3-Column Stats Row (with counting effect) */}
-        <div ref={statsRef} className="w-full grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6 items-stretch">
-          {stats.map((s, idx) => (
-            <StatCard key={idx} value={s.value} label={s.label} emphasize={s.emphasize} />
+        <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6 items-stretch">
+          {program.investment.stats.map((stat, idx) => (
+            <StatCard
+              key={stat.label}
+              value={stat.value}
+              label={stat.label}
+              emphasize={idx === 1}
+            />
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useSpring, useTransform, useInView, animate } from 'framer-motion';
+import { Award, Clock, Globe, TrendingUp } from 'lucide-react';
 import statsLeftImage from '../assets/statsleft.png';
 import bagIcon from '../assets/bag.svg';
 import fdiImage from '../assets/500M.png';
@@ -61,58 +62,61 @@ const StatsSection = () => {
             </div>
           </div>
 
-          {/* Card 2: 10 Global Office */}
+          {/* Card 2: 10+ Years Experience */}
           <div className="rounded-[1.5rem] md:rounded-[2rem] bg-[#F2F5FF] p-4 sm:p-8 flex flex-col items-center justify-center text-center shadow-sm col-span-2 sm:col-span-1 lg:col-span-1 lg:row-span-1">
             <div className="w-10 h-10 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-[0_4px_10px_rgba(0,0,0,0.03)] mb-3 sm:mb-6">
-              <img src={bagIcon} alt="Bag" className="w-[20px] h-[20px] sm:w-[32px] sm:h-[32px]" />
+              <Award className="text-blue-600 w-6 h-6 sm:w-10 sm:h-10" />
             </div>
-            <h3 className="text-[2.5rem] sm:text-6xl md:text-[4rem] font-bold text-gray-900 tracking-tight mb-1">
+            <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-1">Experience</p>
+            <h3 className="text-[2.2rem] sm:text-5xl md:text-[3.5rem] font-bold text-gray-900 tracking-tight mb-1">
               <Counter value={10} suffix="+" />
             </h3>
-            <p className="text-gray-900 font-medium text-[13px] sm:text-lg md:text-2xl">Global Offices</p>
+            <p className="text-gray-900 font-bold text-[11px] sm:text-sm md:text-base leading-snug">Years in Investment Migration<br/>& RCBI Programmes</p>
           </div>
 
-          {/* Card 3: $500M FDI Raised (Wide) */}
-          <div className="relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden col-span-3 sm:col-span-1 lg:col-span-2 lg:row-span-1 shadow-sm group">
-            <img 
-              src={fdiImage} 
-              alt="Money bundles" 
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 object-center"
-            />
-            <div className="absolute inset-0 bg-black/20"></div>
-            
-            <div className="absolute inset-0 flex items-center p-2 sm:p-4 md:p-4">
-              <div className="backdrop-blur-xl bg-white/30 sm:bg-white/20 border border-white/40 rounded-[1.2rem] sm:rounded-[2rem] p-4 sm:p-6 w-full max-w-[8rem] sm:max-w-[15rem] flex flex-col justify-center sm:justify-end items-start sm:items-center h-full shadow-2xl">
-                <h3 className="text-[1rem] sm:text-4xl md:text-6xl leading-none font-bold text-white tracking-tight mb-1 sm:mb-2">
-                  <Counter value={500} prefix="$" suffix="M" />
-                </h3>
-                <p className="text-black/90 font-medium text-[13px] sm:text-lg">FDI Raised</p>
+          {/* Card 3: 24/7 Support */}
+          <div className="relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden col-span-3 sm:col-span-1 lg:col-span-2 lg:row-span-1 shadow-sm group bg-[#0c2b6b]">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0c2b6b] to-[#1a4599]"></div>
+            <div className="absolute inset-0 flex items-center p-2 sm:p-4 md:p-6">
+              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 w-full">
+                <div className="w-12 h-12 sm:w-20 sm:h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20">
+                  <Clock size={40} className="text-white animate-pulse" />
+                </div>
+                <div className="text-center sm:text-left">
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-1">24/7</h3>
+                  <p className="text-white/80 font-medium text-sm sm:text-xl">Dedicated Support</p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Card 4: 100+ Employees (Wide Gradient) */}
-          <div className="rounded-[1.5rem] md:rounded-[2rem] bg-gradient-to-tr from-[#8BAEFC] via-[#D1E0FF] to-[#F4F7FF] p-4 sm:p-8 flex flex-col sm:flex-row items-center justify-center sm:justify-around text-center sm:text-left gap-2 sm:gap-8 md:gap-14 col-span-3 sm:col-span-1 lg:col-span-2 lg:row-span-1 shadow-sm">
+          {/* Card 4: Global Client Base (Continents) */}
+          <div className="rounded-[1.5rem] md:rounded-[2rem] bg-gradient-to-tr from-[#8BAEFC] via-[#D1E0FF] to-[#F4F7FF] p-4 sm:p-8 flex flex-col sm:flex-row items-center justify-center sm:justify-around text-center sm:text-left gap-2 sm:gap-8 md:gap-14 col-span-3 sm:col-span-1 lg:col-span-2 lg:row-span-1 shadow-sm overflow-hidden relative">
+             <div className="absolute top-4 right-4 flex gap-1 opacity-40">
+                <span className="text-xl">🇺🇸</span><span className="text-xl">🇬🇧</span><span className="text-xl">🇦🇪</span><span className="text-xl">🇨🇦</span>
+             </div>
             <div className="w-10 h-10 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-[0_4px_10px_rgba(0,0,0,0.03)] flex-shrink-0">
-              <img src={bagIcon} alt="Bag" className="w-[20px] h-[20px] sm:w-[32px] sm:h-[32px]" />
+              <Globe className="text-blue-600 w-6 h-6 sm:w-10 sm:h-10" />
             </div>
             <div className="flex flex-col text-center sm:text-left">
-              <h3 className="text-[3rem] sm:text-6xl md:text-[5rem] leading-none font-bold text-gray-900 tracking-tight mb-1 sm:mb-2">
-                <Counter value={100} suffix="+" />
+              <h3 className="text-[2.5rem] sm:text-5xl md:text-[4rem] leading-none font-bold text-gray-900 tracking-tight mb-1 sm:mb-2">
+                Across <Counter value={4} />
               </h3>
-              <p className="text-gray-900 font-medium text-[13px] sm:text-lg md:text-xl">Team Members</p>
+              <p className="text-gray-900 font-bold text-[13px] sm:text-lg md:text-xl">Continents Global Client Base</p>
             </div>
           </div>
 
-          {/* Card 5: 3000+ Families advised */}
-          <div className="rounded-[1.5rem] md:rounded-[2rem] bg-gradient-to-br from-[#cfdfff] to-[#AFC8FC] p-4 sm:p-8 flex flex-col items-center justify-center text-center shadow-sm col-span-2 sm:col-span-1 lg:col-span-1 lg:row-span-1">
-            <div className="w-10 h-10 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-[0_4px_10px_rgba(0,0,0,0.03)] mb-3 sm:mb-6">
-              <img src={bagIcon} alt="Bag" className="w-[20px] h-[20px] sm:w-[32px] sm:h-[32px]" />
+          {/* Card 5: Success Driven Approach */}
+          <div className="rounded-[1.5rem] md:rounded-[2rem] bg-gradient-to-br from-[#cfdfff] to-[#AFC8FC] p-4 sm:p-6 flex flex-col items-center justify-center text-center shadow-sm col-span-2 sm:col-span-1 lg:col-span-1 lg:row-span-1 border border-blue-200/50">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-[0_4px_10px_rgba(0,0,0,0.03)] mb-4">
+              <TrendingUp className="text-blue-600 w-6 h-6 sm:w-8 sm:h-8" />
             </div>
-            <h3 className="text-[2rem] sm:text-5xl md:text-[4.5rem] leading-none font-bold text-black sm:text-white tracking-tight mb-1 sm:mb-2 sm:drop-shadow-sm">
-              <Counter value={3000} suffix="+" />
-            </h3>
-            <p className="text-gray-900 font-medium text-[13px] sm:text-lg md:text-xl leading-snug">Families advices</p>
+            <h4 className="text-[14px] sm:text-[16px] md:text-[18px] font-bold text-blue-900 leading-tight mb-2">
+              Success-Driven<br/>Approach
+            </h4>
+            <p className="text-gray-700 text-[11px] sm:text-[13px] md:text-sm font-medium leading-snug">
+              with Transparent<br/>Outcomes
+            </p>
           </div>
 
         </div>

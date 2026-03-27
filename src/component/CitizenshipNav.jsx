@@ -1,12 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const CitizenshipNav = ({ sections }) => {
+  const navRef = useRef(null);
   const [activeSection, setActiveSection] = useState(sections[0].id);
+
+  const getHeaderHeight = () => {
+    const headerHeight = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--site-header-height')
+    );
+
+    return Number.isNaN(headerHeight) ? 88 : headerHeight;
+  };
+
+  const getStickyTop = () => getHeaderHeight() + 8;
+
+  const getScrollOffset = () => {
+    const navHeight = navRef.current?.offsetHeight ?? 0;
+    return getStickyTop() + navHeight + 24;
+  };
 
   const handleScroll = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100; // Account for sticky header
+      const offset = getScrollOffset();
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -26,20 +42,30 @@ const CitizenshipNav = ({ sections }) => {
           }
         });
       },
-      { threshold: 0.5, rootMargin: '-100px 0px -50% 0px' }
+      {
+        threshold: 0.35,
+        rootMargin: `-${getScrollOffset()}px 0px -45% 0px`,
+      }
     );
 
     sections.forEach(({ id }) => {
       const element = document.getElementById(id);
-      if (element) observer.observe(element);
+      if (element) {
+        element.style.scrollMarginTop = `${getScrollOffset()}px`;
+        observer.observe(element);
+      }
     });
 
     return () => observer.disconnect();
   }, [sections]);
 
   return (
-    <div className="sticky top-[80px] z-40 w-full bg-white/80 backdrop-blur-md py-10 border-b border-gray-100 shadow-sm overflow-x-auto no-scrollbar">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-0 flex flex-row items-center gap-4 md:gap-8 justify-start md:justify-center min-w-max">
+    <div
+      ref={navRef}
+      className="sticky z-40 w-full bg-white/92 backdrop-blur-md py-6 md:py-8 border-b border-gray-100 shadow-sm overflow-x-auto no-scrollbar"
+      style={{ top: 'calc(var(--site-header-height, 88px) + 8px)' }}
+    >
+      <div className="max-w-[1400px] mx-auto px-6 md:px-0 flex flex-row items-center gap-4 md:gap-8 justify-start md:justify-center min-w-max">
         {sections.map(({ id, label }) => (
           <button
             key={id}

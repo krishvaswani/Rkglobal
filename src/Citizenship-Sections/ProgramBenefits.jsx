@@ -1,136 +1,135 @@
 import React from 'react';
+import {
+  BadgeDollarSign,
+  BriefcaseBusiness,
+  Clock3,
+  Gem,
+  Globe,
+  HandCoins,
+  HeartHandshake,
+  Home,
+  Landmark,
+  ShieldCheck,
+  Sprout,
+  Users,
+} from 'lucide-react';
 
-// Import Custom SVGs for Benefits
-import visaIcon from '../assets/Visa - Free Access.svg';
-import globalIcon from '../assets/global.svg';
-import bagIcon from '../assets/bag.svg';
-import timeIcon from '../assets/Time to Citizenship.svg';
-import transparentIcon from '../assets/transparent.svg';
-import shieldIcon from '../assets/shield.svg';
-
-const benefits = [
+const benefitIconMap = [
   {
-    title: 'Visa-Free Access',
-    description: 'Grenadian citizens can travel visa-free and visa-on-arrival to a total of 143 countries.',
-    icon: visaIcon,
+    match: ['visa', 'passport', 'commonwealth', 'network', 'countries', 'uk access'],
+    Icon: Globe,
+    color: '#C9A84C',
   },
   {
-    title: 'Dual Citizenship',
-    description: 'Grenada passport holders can hold dual citizenship.',
-    icon: globalIcon,
+    match: ['dual citizenship', 'hereditary', 'lifetime citizenship'],
+    Icon: Gem,
+    color: '#2563EB',
   },
   {
-    title: 'Low Tax Rate',
-    description: 'Grenada passport holders can hold dual citizenship.',
-    icon: bagIcon,
+    match: ['tax', 'income tax', 'low tax', 'zero foreign income tax'],
+    Icon: BadgeDollarSign,
+    color: '#C9A84C',
   },
   {
-    title: 'Application Time',
-    description: 'Grenada passport holders can hold dual citizenship.',
-    icon: timeIcon,
+    match: ['application time', 'processing', 'fast track', 'processing time'],
+    Icon: Clock3,
+    color: '#2563EB',
   },
   {
-    title: 'For Family',
-    description: 'Grenada passport holders can hold dual citizenship.',
-    icon: transparentIcon,
+    match: ['family', 'spouse', 'children', 'coverage', 'included'],
+    Icon: Users,
+    color: '#C9A84C',
   },
   {
-    title: 'US E-2 Treaty Visa',
-    description: 'A gateway to acquire a US E-2 Treaty Visa – The only Caribbean Citizenship program that offers it',
-    icon: shieldIcon,
-  }
+    match: ['residency', 'remote'],
+    Icon: Home,
+    color: '#2563EB',
+  },
+  {
+    match: ['e-2', 'treaty', 'compliance', 'legal'],
+    Icon: ShieldCheck,
+    color: '#C9A84C',
+  },
+  {
+    match: ['property', 'real estate', 'market'],
+    Icon: Landmark,
+    color: '#2563EB',
+  },
+  {
+    match: ['business'],
+    Icon: BriefcaseBusiness,
+    color: '#2563EB',
+  },
+  {
+    match: ['climate', 'impact', 'development'],
+    Icon: Sprout,
+    color: '#C9A84C',
+  },
+  {
+    match: ['affordable', 'entry', 'value'],
+    Icon: HandCoins,
+    color: '#C9A84C',
+  },
 ];
 
-const ProgramBenefits = () => {
+const getBenefitIcon = (benefit) => {
+  const haystack = `${benefit.title} ${benefit.description}`.toLowerCase();
+  const matched = benefitIconMap.find(({ match }) =>
+    match.some((keyword) => haystack.includes(keyword))
+  );
+
+  return matched || { Icon: HeartHandshake, color: '#2563EB' };
+};
+
+const ProgramBenefits = ({ program }) => {
+  const items = program.benefits.map((benefit, index) => ({
+    ...benefit,
+    ...getBenefitIcon(benefit),
+  }));
+
+  const renderCard = (item, flexValue) => {
+    const Icon = item.Icon;
+
+    return (
+      <div
+        className="bg-[#dbe8f7] rounded-[2.5rem] p-8 md:p-10 flex flex-col gap-6 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02]"
+        style={{ flex: flexValue }}
+      >
+        <div className="w-[75px] h-[75px] rounded-[1.5rem] bg-white flex items-center justify-center shadow-lg mb-2 p-4">
+          <Icon size={34} strokeWidth={2.2} color={item.color} />
+        </div>
+        <div className="flex flex-col gap-2">
+          <h4 className="text-[24px] font-extrabold text-[#111] leading-tight">{item.title}</h4>
+          <p className="text-gray-600 text-[15px] leading-relaxed font-medium">{item.description}</p>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="w-full py-16 px-4 md:px-8 bg-white font-sans mt-12 border-t border-gray-100">
-      <div className="max-w-[1440px] mx-auto">
-        
-        {/* Header */}
+      <div className="max-w-[1400px] mx-auto">
         <div className="mb-16 text-center">
           <h2 className="text-2xl md:text-[34px] lg:text-[38px] font-bold text-black uppercase tracking-tight leading-loose mb-4 w-full">
-            BENEFITS OF GRENADA CITIZENSHIP BY INVESTMENT PROGRAM
+            {`Benefits of ${program.name} Citizenship by Investment Program`}
           </h2>
           <p className="text-gray-500 text-base md:text-[18px] lg:text-[20px] font-medium w-full">
-            Invest in a second passport and expand your global mobility with visa-free entry to over 180 countries.
+            {program.benefitsIntro}
           </p>
         </div>
 
-        {/* Asymmetrical Flex Layout */}
         <div className="flex flex-col gap-6 w-full">
-          
-          {/* Top Row */}
           <div className="flex flex-col lg:flex-row gap-6 w-full items-stretch">
-            {/* Card 1: Large */}
-            <div className="bg-[#dbe8f7] rounded-[2.5rem] p-8 md:p-10 flex flex-col gap-6 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02]" style={{ flex: 1.6 }}>
-              <div className="w-[75px] h-[75px] rounded-[1.5rem] bg-white flex items-center justify-center shadow-lg mb-2 p-4">
-                <img src={benefits[0].icon} alt={benefits[0].title} className="w-full h-full object-contain" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <h4 className="text-[24px] font-extrabold text-[#111] leading-tight">{benefits[0].title}</h4>
-                <p className="text-gray-600 text-[15px] leading-relaxed font-medium">{benefits[0].description}</p>
-              </div>
-            </div>
-
-            {/* Card 2: Medium */}
-            <div className="bg-[#dbe8f7] rounded-[2.5rem] p-8 md:p-10 flex flex-col gap-6 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02]" style={{ flex: 1 }}>
-              <div className="w-[75px] h-[75px] rounded-[1.5rem] bg-white flex items-center justify-center shadow-lg mb-2 p-4">
-                <img src={benefits[1].icon} alt={benefits[1].title} className="w-full h-full object-contain" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <h4 className="text-[24px] font-extrabold text-[#111] leading-tight">{benefits[1].title}</h4>
-                <p className="text-gray-600 text-[15px] leading-relaxed font-medium">{benefits[1].description}</p>
-              </div>
-            </div>
-
-            {/* Card 3: Medium */}
-            <div className="bg-[#dbe8f7] rounded-[2.5rem] p-8 md:p-10 flex flex-col gap-6 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02]" style={{ flex: 1 }}>
-              <div className="w-[75px] h-[75px] rounded-[1.5rem] bg-white flex items-center justify-center shadow-lg mb-2 p-4">
-                <img src={benefits[2].icon} alt={benefits[2].title} className="w-full h-full object-contain" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <h4 className="text-[24px] font-extrabold text-[#111] leading-tight">{benefits[2].title}</h4>
-                <p className="text-gray-600 text-[15px] leading-relaxed font-medium">{benefits[2].description}</p>
-              </div>
-            </div>
+            {renderCard(items[0], 1.6)}
+            {renderCard(items[1], 1)}
+            {renderCard(items[2], 1)}
           </div>
 
-          {/* Bottom Row */}
           <div className="flex flex-col lg:flex-row gap-6 w-full items-stretch">
-            {/* Card 4: Medium */}
-            <div className="bg-[#dbe8f7] rounded-[2.5rem] p-8 md:p-10 flex flex-col gap-6 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02]" style={{ flex: 1 }}>
-              <div className="w-[75px] h-[75px] rounded-[1.5rem] bg-white flex items-center justify-center shadow-lg mb-2 p-4">
-                <img src={benefits[3].icon} alt={benefits[3].title} className="w-full h-full object-contain" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <h4 className="text-[24px] font-extrabold text-[#111] leading-tight">{benefits[3].title}</h4>
-                <p className="text-gray-600 text-[15px] leading-relaxed font-medium">{benefits[3].description}</p>
-              </div>
-            </div>
-
-            {/* Card 5: Medium */}
-            <div className="bg-[#dbe8f7] rounded-[2.5rem] p-8 md:p-10 flex flex-col gap-6 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02]" style={{ flex: 1 }}>
-              <div className="w-[75px] h-[75px] rounded-[1.5rem] bg-white flex items-center justify-center shadow-lg mb-2 p-4">
-                <img src={benefits[4].icon} alt={benefits[4].title} className="w-full h-full object-contain" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <h4 className="text-[24px] font-extrabold text-[#111] leading-tight">{benefits[4].title}</h4>
-                <p className="text-gray-600 text-[15px] leading-relaxed font-medium">{benefits[4].description}</p>
-              </div>
-            </div>
-
-            {/* Card 6: Large */}
-            <div className="bg-[#dbe8f7] rounded-[2.5rem] p-8 md:p-10 flex flex-col gap-6 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02]" style={{ flex: 1.6 }}>
-              <div className="w-[75px] h-[75px] rounded-[1.5rem] bg-white flex items-center justify-center shadow-lg mb-2 p-4">
-                <img src={benefits[5].icon} alt={benefits[5].title} className="w-full h-full object-contain" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <h4 className="text-[24px] font-extrabold text-[#111] leading-tight">{benefits[5].title}</h4>
-                <p className="text-gray-600 text-[15px] leading-relaxed font-medium">{benefits[5].description}</p>
-              </div>
-            </div>
+            {renderCard(items[3], 1)}
+            {renderCard(items[4], 1)}
+            {renderCard(items[5], 1.6)}
           </div>
-          
         </div>
       </div>
     </div>

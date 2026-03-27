@@ -15,7 +15,7 @@ const assetMap = {
 const Hero = ({ page = 'home' }) => {
   const content = heroData[page];
   const isCitizenshipPage = page === 'citizenship';
-  const heroContentMaxWidthClass = isCitizenshipPage ? 'max-w-[1440px]' : 'max-w-7xl';
+  const heroContentMaxWidthClass = 'max-w-[1400px]';
 
   if (!content) return null;
 
@@ -32,7 +32,7 @@ const Hero = ({ page = 'home' }) => {
   return (
     <div className="w-full bg-gray-50 p-2 md:p-[10px]">
       <section
-        className={`relative w-full h-[95svh] md:h-auto md:min-h-[820px] flex flex-col justify-end md:flex-row ${isCitizenshipPage ? 'md:items-end md:justify-start' : 'md:items-center md:justify-start'} py-0 md:py-8 px-0 md:px-20 rounded-[28px] overflow-hidden shadow-2xl`}
+        className={`relative w-full h-[95svh] md:h-auto md:min-h-[900px] flex flex-col justify-end md:flex-row ${isCitizenshipPage ? 'md:items-end md:justify-start' : 'md:items-center md:justify-start'} py-0 md:py-8 px-0 md:px-20 rounded-[28px] overflow-hidden shadow-2xl`}
         style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
       >
         {/* Background Video/Image */}
@@ -90,7 +90,7 @@ const Hero = ({ page = 'home' }) => {
               </h1>
 
               <p
-                className={`text-white font-bold drop-shadow-md tracking-normal max-w-2xl opacity-95 ${
+                className={`text-white font-bold  tracking-normal max-w-2xl opacity-95 ${
                   isCitizenshipPage
                     ? 'text-[12px] leading-[145%] md:text-[15px] md:leading-[155%]'
                     : 'text-[14px] leading-[150%] md:text-[18px] md:leading-relaxed'

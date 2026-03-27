@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './component/Header';
 import Footer from './component/Footer';
 import Home from './pages/Home';
@@ -7,6 +7,7 @@ import Residence from './pages/Residence';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import ComingSoon from './component/ComingSoon';
+import { defaultCitizenshipSlug } from './data/citizenshipPrograms';
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/citizenship" element={<Citizenship />} />
+        <Route path="/citizenship" element={<Navigate to={`/citizenship/${defaultCitizenshipSlug}`} replace />} />
+        <Route path="/citizenship/:slug" element={<Citizenship />} />
         <Route path="/residence" element={<Residence />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

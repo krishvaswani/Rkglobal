@@ -1,0 +1,60 @@
+import React from 'react';
+import citizenshipBg from '../assets/citizenship.png';
+import flagAsset from '../assets/flag.png';
+
+const ProgramHero = ({ program }) => {
+  return (
+    <div className="w-full bg-gray-50 p-2 md:p-[10px]">
+      <section
+        className="relative w-full h-[95svh] md:h-auto md:min-h-[900px] flex flex-col justify-end md:flex-row md:items-end md:justify-start py-0 md:py-8 px-0 md:px-20 rounded-[28px] overflow-hidden shadow-2xl"
+        style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
+      >
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img
+            src={citizenshipBg}
+            alt={`${program.name} citizenship by investment`}
+            className="w-full h-full object-cover object-center"
+          />
+
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-l from-black/60 via-black/20 to-transparent" />
+          <div className="absolute inset-0 md:hidden bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-blue-600/20 mix-blend-soft-light" />
+          <div className="absolute inset-0 bg-black/5" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-0 pb-12 md:pb-0">
+          <div className="flex flex-col text-left md:max-w-[70%] gap-4 md:gap-3">
+            <div className="flex flex-col gap-3 md:gap-4">
+              <h1 className="font-bold uppercase tracking-normal text-white drop-shadow-lg whitespace-pre-line text-[24px] leading-[115%] md:text-[42px] md:leading-[110%]">
+                {program.heroTitle}
+              </h1>
+
+              <p className="text-white font-bold drop-shadow-md tracking-normal max-w-2xl opacity-95 text-[12px] leading-[145%] md:text-[15px] md:leading-[155%]">
+                {program.heroDescription}
+              </p>
+            </div>
+
+            <div className="flex flex-row items-stretch w-full md:w-auto gap-2 md:gap-3">
+              <button className="flex-1 md:flex-none md:w-[220px] h-[48px] md:h-[58px] text-[14px] md:text-[18px] rounded-[10px] bg-[#C9A84C] hover:bg-[#b5933c] hover:-translate-y-1 hover:shadow-2xl active:scale-95 text-white transition-all duration-300 ease-out shadow-xl flex items-center justify-center font-sans font-normal uppercase tracking-wider">
+                Apply Now
+              </button>
+              <button className="flex-1 md:flex-none md:min-w-[220px] md:w-auto px-6 h-[48px] md:h-[58px] text-[14px] md:text-[18px] rounded-[10px] bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-2xl active:scale-95 text-gray-900 transition-all duration-300 ease-out shadow-xl flex items-center justify-center font-sans font-normal uppercase tracking-wider">
+                Book a Free Consultation
+              </button>
+            </div>
+
+            <div className="mt-1 md:mt-3">
+              <img
+                src={flagAsset}
+                alt={`${program.name} flag`}
+                className="h-auto object-contain drop-shadow-xl w-[100px] md:w-[140px]"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default ProgramHero;

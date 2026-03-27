@@ -179,7 +179,7 @@ const TestimonialsSection = () => {
       <div className="flex-grow z-0"></div>
 
       {/* Header & Carousel Container pinned at the bottom */}
-      <div ref={carouselRef} className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center mt-auto px-4 sm:px-6 lg:px-8">
+      <div ref={carouselRef} className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col items-center mt-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header Content moved directly above carousel */}
         <div className="text-center w-full mb-10 md:mb-8">

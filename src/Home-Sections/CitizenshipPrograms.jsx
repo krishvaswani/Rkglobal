@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import stkittsImg from '../assets/stkitts.png';
 import saoImg from '../assets/sao.png';
 import naruImg from '../assets/naru.png';
@@ -13,7 +14,8 @@ const programs = [
     image: saoImg,
     subtitle: 'Visa-Free Travel to 93+ Countries',
     price: 'USD 90,000',
-    time: '1–2 Months'
+    time: '2–4 Months',
+    slug: 'sao-tome-and-principe'
   },
   {
     id: 2,
@@ -21,7 +23,8 @@ const programs = [
     image: stkittsImg,
     subtitle: 'Visa-Free Travel to 162+ Countries',
     price: 'USD 250,000',
-    time: '6 Months'
+    time: '4–6 Months',
+    slug: 'st-kitts-and-nevis'
   },
   {
     id: 3,
@@ -29,7 +32,8 @@ const programs = [
     image: naruImg,
     subtitle: 'Visa-Free Travel to 107+ Countries',
     price: 'USD 105,000',
-    time: '3–4 Months'
+    time: '2–3 Months',
+    slug: 'nauru'
   },
   {
     id: 4,
@@ -37,7 +41,8 @@ const programs = [
     image: grenadaImg,
     subtitle: 'Visa-Free Travel to 143+ Countries',
     price: 'USD 235,000',
-    time: '8–11 Months'
+    time: '4–6 Months',
+    slug: 'grenada'
   },
   {
     id: 5,
@@ -45,7 +50,8 @@ const programs = [
     image: antiguaImg,
     subtitle: 'Visa-Free Travel to 151+ Countries',
     price: 'USD 230,000',
-    time: '6–9 Months'
+    time: '4–6 Months',
+    slug: 'antigua-and-barbuda'
   },
   {
     id: 6,
@@ -53,7 +59,8 @@ const programs = [
     image: vanuatuImg,
     subtitle: 'Visa-Free Travel to 112+ Countries',
     price: 'USD 130,000',
-    time: '3–4 Months'
+    time: '30–60 Days',
+    slug: 'vanuatu'
   }
 ];
 
@@ -175,21 +182,21 @@ const CitizenshipPrograms = () => {
                         </span>
                       </div>
 
-                      <button
+                      <Link
+                        to={`/citizenship/${program.slug}`}
                         style={{
                           borderRadius: '30px',
                           fontWeight: 900,
                           padding: '18px',
-                          bordeRadius: '40px',
-                      background: 'linear-gradient(90deg, #002668 0%, #0A38A0 100%)',
-                      color: 'white',
-                      fontSize: '16px',
-                      lineHeight: '158%',
+                          background: 'linear-gradient(90deg, #002668 0%, #0A38A0 100%)',
+                          color: 'white',
+                          fontSize: '16px',
+                          lineHeight: '158%',
                         }}
-                      className="w-full bg-white hover:bg-gray-100 text-gray-900 py-3 transition-all duration-300 shadow-xl mt-auto active:scale-95"
+                        className="w-full text-center hover:opacity-95 text-gray-900 py-3 transition-all duration-300 shadow-xl mt-auto active:scale-95"
                       >
-                      Know More
-                    </button>
+                        Know More
+                      </Link>
                   </div>
                 </div>
                 </div>
