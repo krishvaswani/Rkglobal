@@ -5,7 +5,7 @@ const LegalBasis = () => {
   return (
     <section className="w-full py-16 md:py-20 px-4 md:px-8 bg-white flex justify-center font-sans">
       <div 
-        className="max-w-7xl w-full rounded-[2.5rem] bg-cover bg-center overflow-hidden min-h-[280px] md:min-h-[360px] flex items-center p-6 md:p-12 lg:p-14 relative"
+        className="max-w-[1440px] w-full rounded-[2.5rem] bg-cover bg-center overflow-hidden min-h-[280px] md:min-h-[360px] flex items-center p-6 md:p-12 lg:p-14 relative"
         style={{ backgroundImage: `url('${legalBg}')` }}
       >
         {/* User-specified Gradient Overlay */}

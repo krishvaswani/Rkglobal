@@ -4,7 +4,7 @@ import citizenAboutImg from '../assets/citizen-about.png';
 const CountryInfo = () => {
   return (
     <section id="country-info" className="w-full py-16 md:py-20 px-4 md:px-8 bg-white font-sans">
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
+      <div className="max-w-[1440px] mx-auto flex flex-col items-center">
         
         {/* Header */}
         <div className="text-center mb-10 md:mb-12">

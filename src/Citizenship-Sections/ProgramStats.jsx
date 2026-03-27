@@ -34,7 +34,7 @@ const stats = [
 const ProgramStats = () => {
   return (
     <section className="w-full pb-12 md:pb-20 px-4 md:px-8 bg-transparent flex justify-center font-sans">
-      <div className="max-w-[1350px] mx-auto w-full flex flex-wrap justify-center gap-[20px] md:gap-[30px]">
+      <div className="max-w-[1440px] mx-auto w-full flex flex-wrap justify-center gap-[20px] md:gap-[30px]">
         
         {stats.map((stat, idx) => {
           return (

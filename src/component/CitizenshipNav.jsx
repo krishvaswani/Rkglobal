@@ -39,7 +39,7 @@ const CitizenshipNav = ({ sections }) => {
 
   return (
     <div className="sticky top-[80px] z-40 w-full bg-white/80 backdrop-blur-md py-10 border-b border-gray-100 shadow-sm overflow-x-auto no-scrollbar">
-      <div className="max-w-7xl mx-auto px-6 md:px-0 flex flex-row items-center gap-4 md:gap-8 justify-start md:justify-center min-w-max">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-0 flex flex-row items-center gap-4 md:gap-8 justify-start md:justify-center min-w-max">
         {sections.map(({ id, label }) => (
           <button
             key={id}
