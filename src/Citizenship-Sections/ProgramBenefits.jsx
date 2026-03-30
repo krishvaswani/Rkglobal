@@ -87,48 +87,64 @@ const ProgramBenefits = ({ program }) => {
     ...getBenefitIcon(benefit),
   }));
 
-  const renderCard = (item, flexValue) => {
+  const renderCard = (item, className = '') => {
     const Icon = item.Icon;
 
     return (
       <div
-        className="bg-[#dbe8f7] rounded-[2.5rem] p-8 md:p-10 flex flex-col gap-6 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02]"
-        style={{ flex: flexValue }}
+        className={`bg-[#dbe8f7] rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-8 flex flex-col gap-3 md:gap-5 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02] min-h-[150px] md:min-h-[210px] lg:min-h-[180px] ${className}`}
       >
-        <div className="w-[75px] h-[75px] rounded-[1.5rem] bg-white flex items-center justify-center shadow-lg mb-2 p-4">
-          <Icon size={34} strokeWidth={2.2} color={item.color} />
+        <div className="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-[1rem] md:rounded-[1.25rem] bg-white flex items-center justify-center shadow-lg mb-1 md:mb-2 p-3">
+          <Icon size={24} strokeWidth={2.2} color={item.color} />
         </div>
         <div className="flex flex-col gap-2">
-          <h4 className="text-[24px] font-extrabold text-[#111] leading-tight">{item.title}</h4>
-          <p className="text-gray-600 text-[15px] leading-relaxed font-medium">{item.description}</p>
+          <h4 className="text-[16px] md:text-[18px] font-extrabold text-[#111] leading-tight">{item.title}</h4>
+          <p className="text-gray-600 text-[11px] md:text-[13px] leading-[1.4] md:leading-[1.55] font-medium">{item.description}</p>
         </div>
       </div>
     );
   };
 
   return (
-    <div className="w-full py-16 px-4 md:px-8 bg-white font-sans mt-12 border-t border-gray-100">
+    <div className="w-full py-10 md:py-16 px-4 md:px-8 bg-white font-sans mt-8 md:mt-12 border-t border-gray-100">
       <div className="max-w-[1400px] mx-auto">
-        <div className="mb-16 text-center">
-          <h2 className="text-2xl md:text-[34px] lg:text-[38px] font-bold text-black uppercase tracking-tight leading-loose mb-4 w-full">
+        <div className="mb-8 md:mb-16 text-center">
+          <h2 className="text-[24px] md:text-[34px] lg:text-[38px] font-bold text-black uppercase tracking-tight leading-[1.2] mb-3 md:mb-4 w-full">
             {`Benefits of ${program.name} Citizenship by Investment Program`}
           </h2>
-          <p className="text-gray-500 text-base md:text-[18px] lg:text-[20px] font-medium w-full">
+          <p className="text-gray-500 text-[13px] md:text-[18px] lg:text-[20px] leading-[1.75] font-medium w-full">
             {program.benefitsIntro}
           </p>
         </div>
 
-        <div className="flex flex-col gap-6 w-full">
-          <div className="flex flex-col lg:flex-row gap-6 w-full items-stretch">
-            {renderCard(items[0], 1.6)}
-            {renderCard(items[1], 1)}
-            {renderCard(items[2], 1)}
+        <div className="flex flex-col gap-4 md:gap-5 w-full lg:hidden">
+          <div className="grid grid-cols-12 gap-3 items-stretch">
+            <div className="col-span-7">{renderCard(items[0], 'h-full')}</div>
+            <div className="col-span-5">{renderCard(items[1], 'h-full')}</div>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-6 w-full items-stretch">
-            {renderCard(items[3], 1)}
-            {renderCard(items[4], 1)}
-            {renderCard(items[5], 1.6)}
+          <div className="grid grid-cols-12 gap-3 items-stretch">
+            <div className="col-span-5">{renderCard(items[2], 'h-full')}</div>
+            <div className="col-span-7">{renderCard(items[3], 'h-full')}</div>
+          </div>
+
+          <div className="grid grid-cols-12 gap-3 items-stretch">
+            <div className="col-span-7">{renderCard(items[4], 'h-full')}</div>
+            <div className="col-span-5">{renderCard(items[5], 'h-full')}</div>
+          </div>
+        </div>
+
+        <div className="hidden lg:flex lg:flex-col gap-5 w-full">
+          <div className="grid lg:grid-cols-12 gap-5 items-stretch">
+            <div className="lg:col-span-5">{renderCard(items[0], 'h-full')}</div>
+            <div className="lg:col-span-3">{renderCard(items[1], 'h-full')}</div>
+            <div className="lg:col-span-4">{renderCard(items[2], 'h-full')}</div>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-5 items-stretch">
+            <div className="lg:col-span-3">{renderCard(items[3], 'h-full')}</div>
+            <div className="lg:col-span-3">{renderCard(items[4], 'h-full')}</div>
+            <div className="lg:col-span-6">{renderCard(items[5], 'h-full')}</div>
           </div>
         </div>
       </div>

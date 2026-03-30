@@ -4,7 +4,7 @@ import heroData from '../data/hero-sections.json';
 // Import assets
 import homeVideo from '../assets/hero-video.mp4';
 import citizenshipBg from '../assets/citizenship.png';
-import flagAsset from '../assets/flag.png';
+import flagAsset from '../assets/ GRENADA.png';
 
 const assetMap = {
   homeVideo,

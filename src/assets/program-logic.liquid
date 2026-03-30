@@ -1,0 +1,287 @@
+{% comment %}
+  Program Logic Section
+  File: sections/program-logic.liquid
+{% endcomment %}
+
+<style>
+  .program-logic {
+    background: {{ section.settings.background_color }};
+    padding: {{ section.settings.section_padding_top }}px {{ section.settings.section_padding_sides }}px {{ section.settings.section_padding_bottom }}px;
+    font-family: inherit;
+  }
+
+  .program-logic__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border-radius: 999px;
+    padding: 6px 16px 6px 10px;
+    margin-bottom: 20px;
+  }
+
+  .program-logic__badge-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: {{ section.settings.accent_color }};
+    flex-shrink: 0;
+  }
+
+  .program-logic__badge-text {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .program-logic__heading {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 40px;
+    max-width: 680px;
+  }
+
+  .program-logic__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.blocks.size | at_most: 4 }}, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 1024px) {
+    .program-logic__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .program-logic__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .program-logic__card {
+    background: {{ section.settings.card_color }};
+    border-radius: 20px;
+    padding: 28px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .program-logic__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.45);
+    font-size: 13px;
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    letter-spacing: 0.02em;
+  }
+
+  .program-logic__card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: {{ section.settings.accent_color }};
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .program-logic__card-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: {{ section.settings.body_color }};
+    margin: 0;
+  }
+</style>
+
+<div class="program-logic">
+
+  {%- if section.settings.badge != blank -%}
+    <div class="program-logic__badge">
+      <span class="program-logic__badge-dot"></span>
+      <span class="program-logic__badge-text">{{ section.settings.badge }}</span>
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.heading != blank -%}
+    <h2 class="program-logic__heading">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="program-logic__grid">
+      {%- for block in section.blocks -%}
+        <div class="program-logic__card" {{ block.shopify_attributes }}>
+          <div class="program-logic__number">
+            {{ forloop.index | prepend: '0' | slice: -2, 2 }}
+          </div>
+          {%- if block.settings.title != blank -%}
+            <h3 class="program-logic__card-title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <p class="program-logic__card-text">{{ block.settings.text }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Program Logic",
+  "tag": "section",
+  "class": "program-logic-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge label",
+      "default": "Program Logic"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "A partner ladder built around annual billing, visibility and salon growth support"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#f5f0e8"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#e8a882"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (badge dot & card titles)",
+      "default": "#c45c0a"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading & number color",
+      "default": "#1c1209"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Card body text color",
+      "default": "#3d2b1a"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding top (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding bottom (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "section_padding_sides",
+      "label": "Padding sides (px)",
+      "min": 16,
+      "max": 120,
+      "step": 4,
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title",
+          "default": "Billing-led progression"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Card description",
+          "default": "Each tier unlocks new business support based on annual commitment and performance."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Program Logic",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Billing-led progression",
+            "text": "Each tier unlocks new business support based on annual commitment and performance."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Training as retention",
+            "text": "Technical sessions are positioned as capability-building tools that improve service confidence and repeat usage."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Visibility as reward",
+            "text": "Branding, social media and influencer support make higher tiers visibly more desirable."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Franchise pathway",
+            "text": "Serious salons can grow into an affiliated format with location, reputation and billing capability filters."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

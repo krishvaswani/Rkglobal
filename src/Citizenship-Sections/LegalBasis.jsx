@@ -3,9 +3,9 @@ import legalBg from '../assets/legal basis.png';
 
 const LegalBasis = ({ program }) => {
   return (
-    <section className="w-full py-16 md:py-20 px-4 md:px-8 bg-white flex justify-center font-sans">
+    <section className="w-full py-10 md:py-20 px-4 md:px-8 bg-white flex justify-center font-sans">
       <div
-        className="max-w-[1400px] w-full rounded-[2.5rem] bg-cover bg-center overflow-hidden min-h-[280px] md:min-h-[360px] flex items-center p-6 md:p-12 lg:p-14 relative"
+        className="max-w-[1400px] w-full rounded-[1.5rem] md:rounded-[2.5rem] bg-cover bg-center overflow-hidden min-h-[240px] md:min-h-[360px] flex items-center p-4 md:p-12 lg:p-14 relative"
         style={{ backgroundImage: `url('${legalBg}')` }}
       >
         <div
@@ -14,10 +14,10 @@ const LegalBasis = ({ program }) => {
         ></div>
 
         <div className="relative z-10 max-w-2xl w-full">
-          <h2 className="text-3xl md:text-[44px] font-extrabold text-white uppercase tracking-tight mb-6">
+          <h2 className="text-[24px] md:text-[44px] font-extrabold text-white uppercase tracking-tight mb-3 md:mb-6">
             LEGAL BASIS
           </h2>
-          <p className="text-white text-base md:text-[18px] leading-relaxed font-medium opacity-90">
+          <p className="text-white text-[12px] md:text-[18px] leading-[1.75] font-medium opacity-90">
             {program.legalBasis}
           </p>
         </div>

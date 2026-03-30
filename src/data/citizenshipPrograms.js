@@ -1,8 +1,18 @@
+import antiguaFlag from '../assets/antigua-and-barbuda-country-flag-waving-cloth-perfect-looping-full-screen-animation-4k-resolution-free-video.jpg';
+import grenadaFlag from '../assets/ GRENADA.png';
+import nauruFlag from '../assets/nauru-waving-flag-nauru-national-flag-background-texture-vector.jpg';
+import saoFlag from '../assets/sao-tome-and-principe-national-flag-coutry-identity-vector.jpg';
+import stKittsFlag from '../assets/Flag-Saint-Kitts-and-Nevis.webp';
+import stLuciaFlag from '../assets/ST. LUCIA.webp';
+import turkeyFlag from '../assets/turkey .jpg';
+import vanuatuFlag from '../assets/ VANUATU.jpg';
+
 const citizenshipPrograms = [
   {
     slug: 'grenada',
     name: 'Grenada',
     menuLabel: 'Grenada',
+    flag: grenadaFlag,
     heroTitle: 'GRENADA CITIZENSHIP AND PASSPORT\nBY INVESTMENT PROGRAM',
     heroDescription:
       'The only Caribbean citizenship with a direct US E-2 treaty visa pathway. Grenada offers visa-free travel to 140+ countries, a straightforward four-to-six-month process, and a minimum investment of USD 235,000.',
@@ -132,6 +142,7 @@ const citizenshipPrograms = [
     slug: 'antigua-and-barbuda',
     name: 'Antigua and Barbuda',
     menuLabel: 'Antigua and Barbuda',
+    flag: antiguaFlag,
     heroTitle: 'ANTIGUA AND BARBUDA CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       'The only Caribbean CBI offering visa-free access to South Africa, the UK, and the Schengen Area. Antigua and Barbuda combines Commonwealth membership, a minimum investment of USD 230,000, and access to 150+ countries.',
@@ -262,6 +273,7 @@ const citizenshipPrograms = [
     slug: 'st-kitts-and-nevis',
     name: 'St. Kitts and Nevis',
     menuLabel: 'St. Kitts and Nevis',
+    flag: stKittsFlag,
     heroTitle: 'ST. KITTS AND NEVIS CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       "The world's oldest CBI programme, established in 1984, with 157+ visa-free destinations. It combines four decades of credibility, a minimum investment of USD 250,000, and an accelerated 45-day processing option for qualifying applicants.",
@@ -391,6 +403,7 @@ const citizenshipPrograms = [
     slug: 'st-lucia',
     name: 'St. Lucia',
     menuLabel: 'St. Lucia',
+    flag: stLuciaFlag,
     heroTitle: 'ST. LUCIA CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       'The most affordable Caribbean Commonwealth CBI, from just USD 100,000. St. Lucia combines Commonwealth membership, an eight-to-ten-month processing timeline, and one of the most accessible entry points in the region.',
@@ -521,6 +534,7 @@ const citizenshipPrograms = [
     slug: 'turkey',
     name: 'Turkey',
     menuLabel: 'Turkey',
+    flag: turkeyFlag,
     heroTitle: 'TURKEY CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       'A strategically positioned passport at the crossroads of Europe, Asia, and the Middle East. Turkey offers citizenship within three to six months and a unique E-2 treaty pathway to US business residency.',
@@ -651,6 +665,7 @@ const citizenshipPrograms = [
     slug: 'vanuatu',
     name: 'Vanuatu',
     menuLabel: 'Vanuatu',
+    flag: vanuatuFlag,
     heroTitle: 'VANUATU CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       "The world's fastest CBI programme, delivering citizenship in as little as 30 days. Vanuatu is the choice for investors prioritising speed, simplicity, and a zero income tax environment.",
@@ -781,6 +796,7 @@ const citizenshipPrograms = [
     slug: 'nauru',
     name: 'Nauru',
     menuLabel: 'Nauru',
+    flag: nauruFlag,
     heroTitle: 'NAURU CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       'The only affordable CBI programme offering visa-free access to the United Kingdom. Launched in November 2024, Nauru combines a competitive entry point with one of the most inclusive eligibility frameworks in the market.',
@@ -911,6 +927,7 @@ const citizenshipPrograms = [
     slug: 'sao-tome-and-principe',
     name: 'Sao Tome and Principe',
     menuLabel: 'Sao Tome and Principe',
+    flag: saoFlag,
     heroTitle: 'SAO TOME AND PRINCIPE CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       "The world's most affordable CBI programme, from USD 90,000. Sao Tome and Principe offers investors a sovereign second passport from a stable African nation with growing relevance across the CPLP community.",

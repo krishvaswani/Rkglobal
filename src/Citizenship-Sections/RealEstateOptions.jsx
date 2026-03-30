@@ -20,26 +20,26 @@ const StatCard = ({ value, label, emphasize }) => {
 
 const RealEstateOptions = ({ program }) => {
   return (
-    <section id="investment-options" className="w-full py-16 md:py-20 bg-white font-sans px-4 md:px-8">
+    <section id="investment-options" className="w-full py-10 md:py-20 bg-white font-sans px-4 md:px-8">
       <div className="max-w-[1400px] mx-auto flex flex-col items-center">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-[34px] lg:text-[38px] font-extrabold text-[#111] uppercase tracking-tight leading-tight mb-3">
+        <div className="text-center mb-6 md:mb-12">
+          <h2 className="text-[24px] md:text-[34px] lg:text-[38px] font-extrabold text-[#111] uppercase tracking-tight leading-[1.15] mb-3">
             {program.investment.title}
           </h2>
-          <p className="text-gray-500 text-sm md:text-base font-medium max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-gray-500 text-[12px] md:text-base font-medium max-w-3xl mx-auto leading-[1.75] px-0 md:px-4">
             {program.investment.description}
           </p>
         </div>
 
-        <div className="w-full relative mb-10 md:mb-12">
+        <div className="w-full relative mb-6 md:mb-12">
           <img
             src={realEstateImg}
             alt={program.investment.title}
-            className="w-full h-[280px] md:h-[380px] object-cover object-top rounded-[18px] md:rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
+            className="w-full h-[210px] md:h-[380px] object-cover object-top rounded-[16px] md:rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
           />
         </div>
 
-        <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6 items-stretch">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 items-stretch">
           {program.investment.stats.map((stat, idx) => (
             <StatCard
               key={stat.label}
