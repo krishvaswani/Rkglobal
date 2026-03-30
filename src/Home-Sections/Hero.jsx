@@ -32,7 +32,7 @@ const Hero = ({ page = 'home' }) => {
   return (
     <div className="w-full bg-gray-50 p-2 md:p-[10px]">
       <section
-        className={`relative w-full h-[95svh] md:h-auto md:min-h-[900px] flex flex-col justify-end md:flex-row ${isCitizenshipPage ? 'md:items-end md:justify-start' : 'md:items-center md:justify-start'} py-0 md:py-8 px-0 md:px-20 rounded-[28px] overflow-hidden shadow-2xl`}
+        className={`relative w-full h-[95svh] md:h-auto md:min-h-[850px] flex flex-col justify-end md:flex-row ${isCitizenshipPage ? 'md:items-end md:justify-start' : 'md:items-center md:justify-start'} py-0 md:py-8 px-0 md:px-20 rounded-[28px] overflow-hidden shadow-2xl`}
         style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
       >
         {/* Background Video/Image */}
