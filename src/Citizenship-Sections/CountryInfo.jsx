@@ -22,12 +22,12 @@ const CountryInfo = ({ program }) => {
               {about.subtitle}
             </h3>
 
-            <p className="text-gray-600 text-[13px] md:text-base leading-[1.75] text-justify">
+            <p className="text-gray-600 text-[13px] md:text-base leading-[1.75] ">
               {about.description}
             </p>
 
             <div className="bg-[#f7f7f7] rounded-[1.1rem] p-4 md:p-6 flex flex-col gap-3 md:gap-4 mt-1 md:mt-2 border border-gray-100 flex-1 justify-center">
-              <p className="text-gray-600 text-[13px] md:text-base leading-[1.75] text-justify">
+              <p className="text-gray-600 text-[13px] md:text-base leading-[1.75]">
                 {about.secondaryDescription}
               </p>
 

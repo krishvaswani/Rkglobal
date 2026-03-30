@@ -23,12 +23,12 @@ const ProgramFaq = ({ program }) => {
               <img
                 src={part1}
                 alt={`${program.name} passport support`}
-                className="w-full h-[240px] md:h-[360px] object-cover rounded-[10px] block"
+                className="w-full h-[300px] md:h-[360px] object-cover rounded-[10px] block"
               />
               <img
                 src={part2}
                 alt={`${program.name} document support`}
-                className="w-full h-[90px] md:h-[135px] object-cover rounded-[10px] block"
+                className="w-full h-[120px] md:h-[135px] object-cover rounded-[10px] block"
               />
             </div>
           </div>

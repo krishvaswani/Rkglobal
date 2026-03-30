@@ -5,7 +5,7 @@ const ProgramHero = ({ program }) => {
   return (
     <div className="w-full bg-gray-50 p-2 md:p-[10px]">
       <section
-        className="relative isolate w-full min-h-[560px] md:min-h-[820px] flex flex-col justify-end md:flex-row md:items-end md:justify-start py-0 md:py-8 px-0 md:px-20 rounded-[24px] md:rounded-[28px] overflow-hidden shadow-2xl"
+        className="relative isolate w-full h-[95svh] md:h-auto md:min-h-[900px] flex flex-col justify-end md:flex-row md:items-end md:justify-start py-0 md:py-8 px-0 md:px-20 rounded-[24px] md:rounded-[28px] overflow-hidden shadow-2xl "
         style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
       >
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -22,7 +22,7 @@ const ProgramHero = ({ program }) => {
         </div>
 
         <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-0 pb-5 md:pb-0">
-          <div className="flex flex-col text-left md:max-w-[70%] gap-3 md:gap-3 max-w-[680px]">
+          <div className="flex flex-col text-left md:max-w-[70%] gap-3 md:gap-3 max-w-[680px] mb-6">
             <div className="flex flex-col gap-2.5 md:gap-4">
               <h1 className="font-bold uppercase tracking-normal text-white drop-shadow-lg whitespace-pre-line text-[22px] leading-[112%] md:text-[42px] md:leading-[110%]">
                 {program.heroTitle}
@@ -33,7 +33,7 @@ const ProgramHero = ({ program }) => {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch w-full md:w-auto gap-2 md:gap-3">
+            <div className="flex flex-row sm:flex-row items-stretch w-full md:w-auto gap-2 md:gap-3">
               <button className="w-full sm:flex-1 md:flex-none md:w-[220px] min-h-[44px] md:h-[58px] text-[11px] md:text-[18px] rounded-[10px] bg-[#C9A84C] hover:bg-[#b5933c] hover:-translate-y-1 hover:shadow-2xl active:scale-95 text-white transition-all duration-300 ease-out shadow-xl flex items-center justify-center font-sans font-semibold md:font-normal uppercase tracking-[0.12em] md:tracking-wider px-4 text-center">
                 Apply Now
               </button>

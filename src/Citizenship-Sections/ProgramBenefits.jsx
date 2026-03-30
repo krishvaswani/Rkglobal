@@ -92,14 +92,14 @@ const ProgramBenefits = ({ program }) => {
 
     return (
       <div
-        className={`bg-[#dbe8f7] rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-8 flex flex-col gap-3 md:gap-5 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02] min-h-[150px] md:min-h-[210px] lg:min-h-[180px] ${className}`}
+        className={`bg-[#dbe8f7] rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 flex flex-col gap-3 md:gap-5 shadow-sm justify-start transition-transform duration-300 hover:scale-[1.02] min-h-[150px] md:min-h-[210px] lg:min-h-[180px] ${className}`}
       >
         <div className="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-[1rem] md:rounded-[1.25rem] bg-white flex items-center justify-center shadow-lg mb-1 md:mb-2 p-3">
           <Icon size={24} strokeWidth={2.2} color={item.color} />
         </div>
         <div className="flex flex-col gap-2">
-          <h4 className="text-[16px] md:text-[18px] font-extrabold text-[#111] leading-tight">{item.title}</h4>
-          <p className="text-gray-600 text-[11px] md:text-[13px] leading-[1.4] md:leading-[1.55] font-medium">{item.description}</p>
+          <h4 className="text-[18px] md:text-[18px] font-extrabold text-[#111] leading-tight">{item.title}</h4>
+          <p className="text-gray-600 text-[13px] md:text-[13px] leading-[1.4] md:leading-[1.55] font-medium">{item.description}</p>
         </div>
       </div>
     );
@@ -118,19 +118,19 @@ const ProgramBenefits = ({ program }) => {
         </div>
 
         <div className="flex flex-col gap-4 md:gap-5 w-full lg:hidden">
-          <div className="grid grid-cols-12 gap-3 items-stretch">
-            <div className="col-span-7">{renderCard(items[0], 'h-full')}</div>
-            <div className="col-span-5">{renderCard(items[1], 'h-full')}</div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-stretch">
+            <div className="md:col-span-7">{renderCard(items[0], 'h-full')}</div>
+            <div className="md:col-span-5">{renderCard(items[1], 'h-full')}</div>
           </div>
 
-          <div className="grid grid-cols-12 gap-3 items-stretch">
-            <div className="col-span-5">{renderCard(items[2], 'h-full')}</div>
-            <div className="col-span-7">{renderCard(items[3], 'h-full')}</div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-stretch">
+            <div className="md:col-span-5">{renderCard(items[2], 'h-full')}</div>
+            <div className="md:col-span-7">{renderCard(items[3], 'h-full')}</div>
           </div>
 
-          <div className="grid grid-cols-12 gap-3 items-stretch">
-            <div className="col-span-7">{renderCard(items[4], 'h-full')}</div>
-            <div className="col-span-5">{renderCard(items[5], 'h-full')}</div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-stretch">
+            <div className="md:col-span-7">{renderCard(items[4], 'h-full')}</div>
+            <div className="md:col-span-5">{renderCard(items[5], 'h-full')}</div>
           </div>
         </div>
 

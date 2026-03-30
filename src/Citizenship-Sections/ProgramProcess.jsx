@@ -1,6 +1,7 @@
 import React from 'react';
 import { Handshake } from 'lucide-react';
-import rightImage from '../assets/citizen-by-investmenty.jpg';
+import rightImage from '../assets/rightimgprocess.png';
+// import rightImage from '../assets/citizen-by-investmenty.jpg';
 import leftImage from '../assets/left-small.png';
 
 const ProgramProcess = ({ program }) => {
@@ -22,24 +23,24 @@ const ProgramProcess = ({ program }) => {
 
       <div className="max-w-[1400px] mx-auto px-4 md:px-8">
         <div className="w-full bg-[#E9F1FC] p-3 md:p-8 rounded-[18px] md:rounded-none">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.6fr] gap-4 md:gap-6 items-end">
-            <div className="w-full">
+          <div className="grid grid-cols-1 gap-4 md:gap-6 items-end">
+            {/* <div className="w-full">
               <img
                 src={leftImage}
                 alt={`${program.name} consultation`}
                 className="w-full max-w-full md:max-w-[410px] h-[190px] md:h-[380px] object-cover rounded-[14px] md:rounded-[16px] mx-auto lg:mx-0"
               />
-            </div>
+            </div> */}
             <div className="w-full">
               <img
                 src={rightImage}
                 alt={`${program.name} process`}
-                className="w-full h-[190px] md:h-[380px] object-cover rounded-[14px] md:rounded-[16px]"
+                className="w-full h-[190px] md:h-[560px] object-cover object-right md:object-center rounded-[14px] md:rounded-[16px]"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 mt-3 md:mt-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 mt-3 md:mt-6">
             {steps.map((step, idx) => (
               <div
                 key={idx}

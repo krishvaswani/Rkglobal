@@ -7,9 +7,9 @@ import citizenshipPrograms, { defaultCitizenshipSlug } from '../data/citizenship
 
 const Header = () => {
   const headerRef = useRef(null);
+  const lastScrollYRef = useRef(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [citizenshipMenuOpen, setCitizenshipMenuOpen] = useState(false);
   const location = useLocation();
@@ -20,27 +20,24 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const lastY = lastScrollYRef.current;
 
-      if (currentScrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(currentScrollY > 50);
 
-      // Normal hide-on-down / show-on-up behaviour
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      // Hide on scroll-down, show on scroll-up
+      if (currentScrollY > lastY && currentScrollY > 100) {
         setIsVisible(false);
-      } else {
+      } else if (currentScrollY < lastY || currentScrollY <= 100) {
         setIsVisible(true);
       }
 
-      setLastScrollY(currentScrollY);
+      lastScrollYRef.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Trigger once on mount to set initial state
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   useEffect(() => {
     const updateHeaderHeight = () => {
@@ -103,7 +100,7 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${headerBgClass} ${isVisible || menuOpen ? 'translate-y-0' : '-translate-y-full'}`}
+      className={`p-[10px] fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${headerBgClass} ${isVisible || menuOpen ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div className="max-w-[1400px] mx-auto w-full p-[10px]">
         <div className="flex items-center justify-between  py-2 pointer-events-auto">

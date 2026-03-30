@@ -21,7 +21,7 @@ const StatCard = ({ value, label, emphasize }) => {
 const RealEstateOptions = ({ program }) => {
   return (
     <section id="investment-options" className="w-full py-10 md:py-20 bg-white font-sans px-4 md:px-8">
-      <div className="max-w-[1400px] mx-auto flex flex-col items-center">
+      <div className="max-w-[1300px] mx-auto flex flex-col items-center">
         <div className="text-center mb-6 md:mb-12">
           <h2 className="text-[24px] md:text-[34px] lg:text-[38px] font-extrabold text-[#111] uppercase tracking-tight leading-[1.15] mb-3">
             {program.investment.title}

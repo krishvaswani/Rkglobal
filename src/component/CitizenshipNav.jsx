@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { flushSync } from 'react-dom';
 
 const CitizenshipNav = ({ sections }) => {
   const navRef = useRef(null);
   const [activeSection, setActiveSection] = useState(sections[0].id);
+  const [isSticky, setIsSticky] = useState(false);
 
   const getHeaderHeight = () => {
     const headerHeight = parseFloat(
@@ -20,6 +22,12 @@ const CitizenshipNav = ({ sections }) => {
   };
 
   const handleScroll = (id) => {
+    // Activate sticky mode on first filter click — flush synchronously
+    // so the DOM reflects position:sticky before the scroll starts
+    if (!isSticky) {
+      flushSync(() => setIsSticky(true));
+    }
+
     const element = document.getElementById(id);
     if (element) {
       const offset = getScrollOffset();
@@ -62,25 +70,25 @@ const CitizenshipNav = ({ sections }) => {
   return (
     <div
       ref={navRef}
-      className="sticky z-40 w-full bg-white/92 backdrop-blur-md py-3 md:py-8 border-b border-gray-100 shadow-sm overflow-x-auto no-scrollbar"
-      style={{ top: 'calc(var(--site-header-height, 88px) + 8px)' }}
+      className={`${isSticky ? 'sticky' : 'relative'} z-40 w-full bg-white/92 backdrop-blur-md py-3 md:py-8 border-b border-gray-100 shadow-sm overflow-x-auto no-scrollbar`}
+      style={isSticky ? { top: 'calc(var(--site-header-height, 88px) + 8px)' } : {}}
     >
       <div className="max-w-[1400px] mx-auto px-4 md:px-0 flex flex-row items-center gap-3 md:gap-8 justify-start md:justify-center min-w-max">
         {sections.map(({ id, label }) => (
           <button
             key={id}
             onClick={() => handleScroll(id)}
-            className={`flex items-center justify-center min-w-[124px] md:min-w-[177px] h-[48px] md:h-[80px] px-5 md:px-8 rounded-full text-[12px] md:text-[18px] font-bold transition-all duration-300 whitespace-nowrap border ${
-              activeSection === id
+            className={`flex items-center justify-center min-w-[124px] md:min-w-[177px] h-[48px] md:h-[80px] px-5 md:px-8 rounded-full text-[12px] md:text-[18px] font-bold transition-all duration-300 whitespace-nowrap border ${activeSection === id
                 ? 'bg-[#002668] text-white border-[#002668] shadow-lg scale-105'
                 : 'bg-white text-gray-800 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
-            }`}
+              }`}
           >
             {label}
           </button>
         ))}
       </div>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}} />
@@ -89,3 +97,4 @@ const CitizenshipNav = ({ sections }) => {
 };
 
 export default CitizenshipNav;
+
