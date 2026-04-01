@@ -99,10 +99,9 @@ const Header = () => {
   const headerBgClass = shouldShowBg ? 'bg-white/95 shadow-md backdrop-blur-lg' : 'bg-transparent';
   const textColorClass = shouldShowBg ? 'text-gray-900' : 'text-white';
   const currentLogo = shouldShowBg ? footerLogoUrl : logoUrl;
-  // iOS/mobile browsers can appear blurry when applying `brightness/invert` filters to SVGs.
-  // Applying the filter only from `sm` upwards avoids the blur on small screens.
-  const logoFilter = shouldShowBg ? '' : 'sm:brightness-0 sm:invert';
-  const logoSizeClass = shouldShowBg ? 'w-[140px] sm:w-[170px] md:w-[200px]' : 'w-[180px] sm:w-[220px] md:w-[263px]';
+  const logoSizeClass = shouldShowBg
+    ? 'w-[120px] sm:w-[145px] md:w-[165px]'
+    : 'w-[132px] sm:w-[165px] md:w-[190px]';
   const hamburgerColor = shouldShowBg ? '#111' : '#fff';
   const citizenshipBasePath = `/citizenship/${defaultCitizenshipSlug}`;
   const residenceBasePath = `/residence/${defaultResidenceSlug}`;
@@ -179,7 +178,7 @@ const Header = () => {
             <img
               src={currentLogo}
               alt="RK Global Immigration Logo"
-              className={`${logoSizeClass} h-auto object-contain transition-all duration-300 transform-gpu ${logoFilter}`}
+              className={`${logoSizeClass} h-auto object-contain transition-all duration-300`}
             />
           </NavLink>
 
