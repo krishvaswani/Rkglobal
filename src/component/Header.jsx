@@ -183,7 +183,7 @@ const Header = () => {
             <img
               src={currentLogo}
               alt="RK Global Immigration Logo"
-              className={`${logoSizeClass} h-auto object-contain transition-all duration-300`}
+              className={`${logoSizeClass} z-[9999] h-auto object-contain transition-all duration-300`}
             />
           </NavLink>
 
