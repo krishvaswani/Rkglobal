@@ -103,6 +103,10 @@ const Header = () => {
     ? 'w-[120px] sm:w-[145px] md:w-[165px]'
     : 'w-[132px] sm:w-[165px] md:w-[190px]';
   const hamburgerColor = shouldShowBg ? '#111' : '#fff';
+  // Avoid transform-based header hiding on mobile Safari; it can cause the logo to rasterize/blur.
+  const headerTop = isVisible || menuOpen
+    ? '0px'
+    : 'calc(-1 * (var(--site-header-height, 88px) + 8px))';
   const citizenshipBasePath = `/citizenship/${defaultCitizenshipSlug}`;
   const residenceBasePath = `/residence/${defaultResidenceSlug}`;
   const navLinks = [
@@ -168,7 +172,8 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className={`p-[10px] fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${headerBgClass} ${isVisible || menuOpen ? 'translate-y-0' : '-translate-y-full'}`}
+      style={{ top: headerTop }}
+      className={`p-[10px] fixed left-0 w-full z-50 transition-[top,background-color,box-shadow,backdrop-filter] duration-300 ease-in-out ${headerBgClass}`}
     >
       <div className="max-w-[1400px] mx-auto w-full p-[10px]">
         <div className="flex items-center justify-between  py-2 pointer-events-auto">
