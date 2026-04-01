@@ -183,7 +183,7 @@ const Header = () => {
       style={{ top: headerTop }}
       className={`p-[10px] fixed left-0 w-full z-50 transition-[top,background-color,box-shadow,backdrop-filter] duration-300 ease-in-out ${headerBgClass}`}
     >
-      <div className="max-w-[1400px] mx-auto w-full p-[10px]">
+      <div className="max-w-[1350px] mx-auto w-full p-[10px]">
         <div className="flex items-center justify-between  py-2 pointer-events-auto">
 
           {/* Logo */}
@@ -196,7 +196,7 @@ const Header = () => {
           </NavLink>
 
           {/* Desktop Navigation */}
-          <nav className={`hidden lg:flex items-center gap-14 text-[0.8rem] font-bold tracking-[0.2em] ${textColorClass}`}>
+          <nav className={`hidden lg:flex items-center gap-8 text-[0.8rem] font-bold tracking-[0.2em] ${textColorClass}`}>
             {navLinks.map((item) => {
               if (item.type === 'citizenship') {
                 return (
