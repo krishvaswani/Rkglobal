@@ -119,7 +119,7 @@ const Hero = ({ page = 'home' }) => {
                 className={`flex-1 rounded-[10px] bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-2xl active:scale-95 text-gray-900 transition-all duration-300 ease-out shadow-xl flex items-center justify-center font-sans font-normal uppercase tracking-wider ${
                   isCitizenshipPage
                     ? 'md:flex-none md:min-w-[220px] md:w-auto px-6 h-[48px] md:h-[58px] text-[14px] md:text-[18px]'
-                    : 'md:flex-none md:min-w-[200px] md:w-auto px-8 h-[58px] md:h-[68px] text-sm md:text-[18px]'
+                    : 'md:flex-none md:min-w-[200px] md:w-auto px-8 h-[58px] md:h-[60px] text-sm md:text-[18px]'
                 }`}
               >
                 {secondaryButton}
