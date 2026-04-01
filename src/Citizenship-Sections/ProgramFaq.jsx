@@ -5,18 +5,19 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const ProgramFaq = ({ program }) => {
   const [openId, setOpenId] = useState(1);
+  const faqHeading =
+    program.faqHeading ||
+    (program.categoryLabel === 'Residency by Investment'
+      ? `${program.name} ${program.categoryLabel} FAQ'S`
+      : `${program.name} Passport &\nCitizenship By\nInvestment FAQ'S`);
 
   return (
     <section className="w-full py-10 md:py-20 bg-white font-sans">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8">
         <div className="flex flex-col lg:flex-row lg:gap-[88px] items-start">
           <div className="w-full lg:max-w-[470px] flex flex-col">
-            <h2 className="text-[24px] md:text-[44px] lg:text-[44px] font-extrabold text-black uppercase tracking-[-0.04em] leading-[1.08] mb-5 md:mb-8 text-left">
-              {program.name} Passport &
-              <br />
-              Citizenship By
-              <br />
-              Investment FAQ&apos;S
+            <h2 className="text-[24px] md:text-[44px] lg:text-[44px] font-extrabold text-black uppercase tracking-[-0.04em] leading-[1.08] mb-5 md:mb-8 text-left whitespace-pre-line">
+              {faqHeading}
             </h2>
 
             <div className="w-full max-w-[520px] mx-auto md:mx-0 flex flex-col gap-1.5">

@@ -14,7 +14,7 @@ const ProgramProcess = ({ program }) => {
     <section className="w-full bg-white py-8 md:py-10">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 text-center mb-6 md:mb-10">
         <h2 className="text-[24px] md:text-[40px] font-extrabold text-[#111] uppercase tracking-tight leading-[1.15] mb-3 mx-auto">
-          {`Step-by-Step Process for ${program.name} Citizenship by Investment`}
+          {`Step-by-Step Process for ${program.name} ${program.categoryLabel || 'Citizenship by Investment'}`}
         </h2>
         <p className="text-gray-500 text-[13px] md:text-[18px] leading-[1.75] font-medium max-w-3xl mx-auto">
           {program.processIntro}

@@ -1,20 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
 
 import logoUrl from '../assets/logo.svg';
 import footerLogoUrl from '../assets/footer-logo.svg';
 import citizenshipPrograms, { defaultCitizenshipSlug } from '../data/citizenshipPrograms';
+import residencePrograms, { defaultResidenceSlug } from '../data/residencePrograms';
 
 const Header = () => {
   const headerRef = useRef(null);
   const lastScrollYRef = useRef(0);
+  const citizenshipCloseTimerRef = useRef(null);
+  const residenceCloseTimerRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [citizenshipMenuOpen, setCitizenshipMenuOpen] = useState(false);
+  const [residenceMenuOpen, setResidenceMenuOpen] = useState(false);
   const location = useLocation();
   const isCitizenshipRoute = location.pathname.startsWith('/citizenship');
-  const isTransparentPage = location.pathname === '/' || isCitizenshipRoute;
+  const isResidenceRoute = location.pathname.startsWith('/residence');
+  const isTransparentPage = location.pathname === '/' || isCitizenshipRoute || isResidenceRoute;
 
 
   useEffect(() => {
@@ -76,8 +82,18 @@ const Header = () => {
   }, [menuOpen]);
 
   useEffect(() => {
+    clearCloseTimer(citizenshipCloseTimerRef);
+    clearCloseTimer(residenceCloseTimerRef);
     setCitizenshipMenuOpen(false);
+    setResidenceMenuOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    return () => {
+      clearCloseTimer(citizenshipCloseTimerRef);
+      clearCloseTimer(residenceCloseTimerRef);
+    };
+  }, []);
 
   const shouldShowBg = isScrolled || menuOpen || !isTransparentPage;
   const headerBgClass = shouldShowBg ? 'bg-white/95 shadow-md backdrop-blur-lg' : 'bg-transparent';
@@ -89,13 +105,66 @@ const Header = () => {
   const logoSizeClass = shouldShowBg ? 'w-[140px] sm:w-[170px] md:w-[200px]' : 'w-[180px] sm:w-[220px] md:w-[263px]';
   const hamburgerColor = shouldShowBg ? '#111' : '#fff';
   const citizenshipBasePath = `/citizenship/${defaultCitizenshipSlug}`;
+  const residenceBasePath = `/residence/${defaultResidenceSlug}`;
   const navLinks = [
     { to: '/', label: 'HOME', end: true },
     { type: 'citizenship' },
-    { to: '/residence', label: 'RESIDENCE' },
+    { type: 'residence' },
     { to: '/about', label: 'ABOUT' },
     { to: '/contact', label: 'CONTACT US' },
   ];
+
+  const renderMegaMenuLink = (program, basePath) => (
+    <NavLink
+      key={program.slug}
+      to={`${basePath}/${program.slug}`}
+      className={({ isActive }) =>
+        `flex items-center gap-3 rounded-2xl border px-3 py-3 text-xs tracking-[0.08em] transition-all ${
+          isActive
+            ? 'border-[#002668] bg-[#002668] text-white shadow-lg'
+            : 'border-gray-200 bg-white text-gray-800 hover:border-gray-300 hover:bg-gray-50'
+        }`
+      }
+    >
+      <img
+        src={program.flag}
+        alt={`${program.name} flag`}
+        className="h-10 w-14 rounded object-cover border border-gray-200 bg-gray-100 shrink-0 md:h-11 md:w-16"
+      />
+      <span className="leading-tight">{program.menuLabel}</span>
+    </NavLink>
+  );
+
+  const clearCloseTimer = (timerRef) => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  };
+
+  const openCitizenshipMenu = () => {
+    clearCloseTimer(citizenshipCloseTimerRef);
+    setCitizenshipMenuOpen(true);
+  };
+
+  const openResidenceMenu = () => {
+    clearCloseTimer(residenceCloseTimerRef);
+    setResidenceMenuOpen(true);
+  };
+
+  const closeCitizenshipMenuWithDelay = () => {
+    clearCloseTimer(citizenshipCloseTimerRef);
+    citizenshipCloseTimerRef.current = setTimeout(() => {
+      setCitizenshipMenuOpen(false);
+    }, 180);
+  };
+
+  const closeResidenceMenuWithDelay = () => {
+    clearCloseTimer(residenceCloseTimerRef);
+    residenceCloseTimerRef.current = setTimeout(() => {
+      setResidenceMenuOpen(false);
+    }, 180);
+  };
 
   return (
     <header
@@ -122,34 +191,71 @@ const Header = () => {
                   <div
                     key="citizenship"
                     className="relative"
-                    onMouseEnter={() => setCitizenshipMenuOpen(true)}
-                    onMouseLeave={() => setCitizenshipMenuOpen(false)}
+                    onMouseEnter={openCitizenshipMenu}
+                    onMouseLeave={closeCitizenshipMenuWithDelay}
                   >
                     <NavLink
                       to={citizenshipBasePath}
                       className={`transition-all hover:opacity-70 ${isCitizenshipRoute ? 'border-b-2 border-current pb-1' : 'opacity-90'}`}
                     >
-                      CITIZENSHIP
+                      <span className="inline-flex items-center gap-1.5">
+                        CITIZENSHIP
+                        <ChevronDown
+                          size={16}
+                          className={`transition-transform duration-200 ${citizenshipMenuOpen ? 'rotate-180' : 'rotate-0'}`}
+                        />
+                      </span>
                     </NavLink>
 
-                    <div className={`absolute left-1/2 top-full z-50 w-[320px] -translate-x-1/2 pt-5 transition-all duration-200 ${
+                    <div
+                      onMouseEnter={openCitizenshipMenu}
+                      onMouseLeave={closeCitizenshipMenuWithDelay}
+                      className={`fixed left-1/2 top-[calc(var(--site-header-height,88px)+8px)] z-50 w-screen -translate-x-1/2 px-4 md:px-6 transition-all duration-200 ${
                       citizenshipMenuOpen ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 -translate-y-2'
-                    }`}>
-                      <div className="rounded-3xl border border-gray-100 bg-white p-4 text-gray-900 shadow-2xl">
-                        <div className="grid gap-2">
-                          {citizenshipPrograms.map((program) => (
-                            <NavLink
-                              key={program.slug}
-                              to={`/citizenship/${program.slug}`}
-                              className={({ isActive }) =>
-                                `rounded-2xl px-4 py-3 text-xs tracking-[0.12em] transition-colors ${
-                                  isActive ? 'bg-[#002668] text-white' : 'text-gray-800 hover:bg-gray-50'
-                                }`
-                              }
-                            >
-                              {program.menuLabel}
-                            </NavLink>
-                          ))}
+                    }`}
+                    >
+                      <div className="mx-auto max-w-[1400px] rounded-3xl border border-gray-100 bg-white p-5 text-gray-900 shadow-2xl">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                          {citizenshipPrograms.map((program) => renderMegaMenuLink(program, '/citizenship'))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              if (item.type === 'residence') {
+                return (
+                  <div
+                    key="residence"
+                    className="relative"
+                    onMouseEnter={openResidenceMenu}
+                    onMouseLeave={closeResidenceMenuWithDelay}
+                  >
+                    <NavLink
+                      to={residenceBasePath}
+                      className={`transition-all hover:opacity-70 ${isResidenceRoute ? 'border-b-2 border-current pb-1' : 'opacity-90'}`}
+                    >
+                      <span className="inline-flex items-center gap-1.5">
+                        RESIDENCE
+                        <ChevronDown
+                          size={16}
+                          className={`transition-transform duration-200 ${residenceMenuOpen ? 'rotate-180' : 'rotate-0'}`}
+                        />
+                      </span>
+                    </NavLink>
+
+                    <div
+                      onMouseEnter={openResidenceMenu}
+                      onMouseLeave={closeResidenceMenuWithDelay}
+                      className={`fixed left-1/2 top-[calc(var(--site-header-height,88px)+8px)] z-50 w-screen -translate-x-1/2 px-4 md:px-6 transition-all duration-200 ${
+                      residenceMenuOpen ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 -translate-y-2'
+                    }`}
+                    >
+                      <div className="mx-auto max-w-[1400px] rounded-3xl border border-gray-100 bg-white p-5 text-gray-900 shadow-2xl">
+                        <div className="grid grid-cols-4 gap-3">
+                          {residencePrograms.map((program) =>
+                            renderMegaMenuLink(program, '/residence')
+                          )}
                         </div>
                       </div>
                     </div>
@@ -220,7 +326,13 @@ const Header = () => {
                       isCitizenshipRoute ? 'text-[#C9A84C]' : 'text-gray-900'
                     }`}
                   >
-                    CITIZENSHIP
+                    <span className="flex items-center justify-between">
+                      <span>CITIZENSHIP</span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${citizenshipMenuOpen ? 'rotate-180' : 'rotate-0'}`}
+                      />
+                    </span>
                   </button>
 
                   <div className={`w-full overflow-hidden transition-all duration-300 ${citizenshipMenuOpen ? 'max-h-[700px]' : 'max-h-0'}`}>
@@ -228,6 +340,43 @@ const Header = () => {
                       <NavLink
                         key={program.slug}
                         to={`/citizenship/${program.slug}`}
+                        onClick={() => setMenuOpen(false)}
+                        className={({ isActive }) =>
+                          `block w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${
+                            isActive ? 'text-[#C9A84C]' : 'text-gray-700 hover:text-[#C9A84C]'
+                          }`
+                        }
+                      >
+                        {program.menuLabel}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            if (item.type === 'residence') {
+              return (
+                <div key="residence-mobile" className="w-full">
+                  <button
+                    onClick={() => setResidenceMenuOpen((prev) => !prev)}
+                    className={`w-full py-4 border-b border-gray-100 text-sm font-bold tracking-[0.2em] text-left transition-all hover:text-[#C9A84C] ${
+                      isResidenceRoute ? 'text-[#C9A84C]' : 'text-gray-900'
+                    }`}
+                  >
+                    <span className="flex items-center justify-between">
+                      <span>RESIDENCE</span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${residenceMenuOpen ? 'rotate-180' : 'rotate-0'}`}
+                      />
+                    </span>
+                  </button>
+
+                  <div className={`w-full overflow-hidden transition-all duration-300 ${residenceMenuOpen ? 'max-h-[900px]' : 'max-h-0'}`}>
+                    {residencePrograms.map((program) => (
+                      <NavLink
+                        key={program.slug}
+                        to={`/residence/${program.slug}`}
                         onClick={() => setMenuOpen(false)}
                         className={({ isActive }) =>
                           `block w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${

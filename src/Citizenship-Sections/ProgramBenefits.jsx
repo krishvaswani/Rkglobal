@@ -110,7 +110,7 @@ const ProgramBenefits = ({ program }) => {
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-8 md:mb-16 text-center">
           <h2 className="text-[24px] md:text-[34px] lg:text-[38px] font-bold text-black uppercase tracking-tight leading-[1.2] mb-3 md:mb-4 w-full">
-            {`Benefits of ${program.name} Citizenship by Investment Program`}
+            {`Benefits of ${program.name} ${program.categoryLabel || 'Citizenship by Investment'} Program`}
           </h2>
           <p className="text-gray-500 text-[13px] md:text-[18px] lg:text-[20px] leading-[1.75] font-medium w-full">
             {program.benefitsIntro}

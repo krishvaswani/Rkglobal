@@ -2,6 +2,9 @@ import React from 'react';
 import citizenshipBg from '../assets/citizenship.png';
 
 const ProgramHero = ({ program }) => {
+  const heroImage = program.heroImage || citizenshipBg;
+  const category = program.categoryLabel || 'citizenship by investment';
+
   return (
     <div className="w-full bg-gray-50 p-2 md:p-[10px]">
       <section
@@ -10,8 +13,8 @@ const ProgramHero = ({ program }) => {
       >
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src={citizenshipBg}
-            alt={`${program.name} citizenship by investment`}
+            src={heroImage}
+            alt={`${program.name} ${category}`}
             className="w-full h-full object-cover object-center"
           />
 
