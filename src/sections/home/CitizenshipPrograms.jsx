@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import stkittsImg from '../assets/stkitts.png';
-import saoImg from '../assets/sao.png';
-import naruImg from '../assets/naru.png';
-import grenadaImg from '../assets/grenada.png';
-import antiguaImg from '../assets/antigua.png';
-import vanuatuImg from '../assets/vanuatu.png';
+import stkittsImg from '../../assets/images/stkitts.png';
+import saoImg from '../../assets/images/sao.png';
+import naruImg from '../../assets/images/naru.png';
+import grenadaImg from '../../assets/images/grenada.png';
+import antiguaImg from '../../assets/images/antigua.png';
+import vanuatuImg from '../../assets/images/vanuatu.png';
 
 const programs = [
   {

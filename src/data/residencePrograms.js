@@ -1,22 +1,22 @@
-import canadaFlag from '../assets/canada.webp';
-import canadaResidencyImage from '../assets/canada_residency.png';
-import cyprusResidencyImage from '../assets/cyprus_residency.png';
-import greeceResidencyImage from '../assets/greece_residency.png';
-import portugalResidencyImage from '../assets/portugal_residency.png';
-import uaeResidencyImage from '../assets/uae_residency.png';
-import usaResidencyImage from '../assets/usa_residency.png';
-import cyprusFlag from '../assets/cypurs.jpg';
-import greeceFlag from '../assets/flag-of-greece.webp';
-import hungaryFlag from '../assets/hungary.png';
-import latviaFlag from '../assets/latvia.webp';
-import maltaFlag from '../assets/Malta.webp';
-import panamaFlag from '../assets/panama.webp';
-import portugalFlag from '../assets/portugal-flag.webp';
-import switzerlandFlag from '../assets/switzerland.webp';
-import thailandFlag from '../assets/thailand.webp';
-import uaeFlag from '../assets/UAE.webp';
-import unitedKingdomFlag from '../assets/united kindom.webp';
-import usaFlag from '../assets/Usa.jpg';
+import canadaFlag from '../assets/flags/canada-flag.webp';
+import canadaResidencyImage from '../assets/images/canada_residency.png';
+import cyprusResidencyImage from '../assets/images/cyprus_residency.png';
+import greeceResidencyImage from '../assets/images/greece_residency.png';
+import portugalResidencyImage from '../assets/images/portugal_residency.png';
+import uaeResidencyImage from '../assets/images/uae_residency.png';
+import usaResidencyImage from '../assets/images/usa_residency.png';
+import cyprusFlag from '../assets/flags/cyprus-flag.jpg';
+import greeceFlag from '../assets/flags/greece-flag.webp';
+import hungaryFlag from '../assets/flags/hungary-flag.png';
+import latviaFlag from '../assets/flags/latvia-flag.webp';
+import maltaFlag from '../assets/flags/malta-flag.webp';
+import panamaFlag from '../assets/flags/panama-flag.webp';
+import portugalFlag from '../assets/flags/portugal-flag.webp';
+import switzerlandFlag from '../assets/flags/switzerland-flag.webp';
+import thailandFlag from '../assets/flags/thailand-flag.webp';
+import uaeFlag from '../assets/flags/uae-flag.webp';
+import unitedKingdomFlag from '../assets/flags/united-kingdom-flag.webp';
+import usaFlag from '../assets/flags/usa-flag.jpg';
 
 const makeFaqs = (questions, defaultAnswer) =>
   questions.map((question) => ({

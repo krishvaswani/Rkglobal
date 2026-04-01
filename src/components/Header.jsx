@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 
-import logoUrl from '../assets/logo.png';
-import footerLogoUrl from '../assets/footer-logo.svg';
+import logoUrl from '../assets/brand/logo.png';
+import footerLogoUrl from '../assets/brand/footer-logo.svg';
 import citizenshipPrograms, { defaultCitizenshipSlug } from '../data/citizenshipPrograms';
 import residencePrograms, { defaultResidenceSlug } from '../data/residencePrograms';
 

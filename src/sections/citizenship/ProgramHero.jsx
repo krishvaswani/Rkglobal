@@ -1,5 +1,5 @@
 import React from 'react';
-import citizenshipBg from '../assets/citizenship.png';
+import citizenshipBg from '../../assets/images/citizenship.png';
 
 const ProgramHero = ({ program }) => {
   const heroImage = program.heroImage || citizenshipBg;

@@ -1,8 +1,8 @@
 import React from 'react';
-import donationIcon from '../assets/Minimum Investment by Donation.svg';
-import realEstateIcon from '../assets/Minimum Investment in Real Estate.svg';
-import timeIcon from '../assets/Time to Citizenship.svg';
-import visaIcon from '../assets/Visa - Free Access.svg';
+import donationIcon from '../../assets/icons/min-investment-donation.svg';
+import realEstateIcon from '../../assets/icons/min-investment-real-estate.svg';
+import timeIcon from '../../assets/icons/time-to-citizenship.svg';
+import visaIcon from '../../assets/icons/visa-free-access.svg';
 
 const statIcons = [donationIcon, realEstateIcon, timeIcon, visaIcon];
 

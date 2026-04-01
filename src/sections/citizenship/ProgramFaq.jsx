@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import part1 from '../assets/part1.png';
-import part2 from '../assets/part2.png';
+import part1 from '../../assets/images/part1.png';
+import part2 from '../../assets/images/part2.png';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const ProgramFaq = ({ program }) => {

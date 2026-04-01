@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Plus, X } from 'lucide-react';
-import bgImage from '../assets/why-choose-us.png';
-import shieldIcon from '../assets/shield.svg';
-import globalIcon from '../assets/global.svg';
-import transparentIcon from '../assets/transparent.svg';
-import supportIcon from '../assets/customer-support.png';
-import lightningIcon from '../assets/lightning.png';
-import bulbIcon from '../assets/bulb.png';
+import bgImage from '../../assets/images/why-choose-us.png';
+import shieldIcon from '../../assets/icons/shield.svg';
+import globalIcon from '../../assets/icons/global.svg';
+import transparentIcon from '../../assets/icons/transparent.svg';
+import supportIcon from '../../assets/images/customer-support.png';
+import lightningIcon from '../../assets/images/lightning.png';
+import bulbIcon from '../../assets/images/bulb.png';
 
 const accordionData = [
   {

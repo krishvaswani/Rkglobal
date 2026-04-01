@@ -1,5 +1,5 @@
 import React from 'react';
-import bgImage from '../assets/got any question.png';
+import bgImage from '../assets/images/got-any-question.png';
 
 const ContactCTA = () => {
   return (

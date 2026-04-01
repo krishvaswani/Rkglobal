@@ -1,5 +1,5 @@
 import React from 'react';
-import legalBg from '../assets/legal basis.png';
+import legalBg from '../../assets/images/legal-basis.png';
 
 const LegalBasis = ({ program }) => {
   return (

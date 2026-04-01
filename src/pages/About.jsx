@@ -1,5 +1,5 @@
 import React from 'react';
-import ComingSoon from '../component/ComingSoon';
+import ComingSoon from '../components/ComingSoon';
 
 const About = () => {
   return <ComingSoon title="About Us" />;

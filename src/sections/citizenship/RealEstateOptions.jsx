@@ -1,5 +1,5 @@
 import React from 'react';
-import realEstateImg from '../assets/Real Estate Investment .jpg';
+import realEstateImg from '../../assets/images/real-estate-investment.jpg';
 
 const StatCard = ({ value, label, emphasize }) => {
   return (

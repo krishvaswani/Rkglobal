@@ -1,6 +1,6 @@
 import React from 'react';
-import unlockBanner from '../assets/Unlock-banner.png';
-import unlockMobileBanner from '../assets/unlock-global-mobile.png';
+import unlockBanner from '../../assets/images/unlock-banner.png';
+import unlockMobileBanner from '../../assets/images/unlock-global-mobile.png';
 
 const UnlockGlobalMobility = () => {
   return (

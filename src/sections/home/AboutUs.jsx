@@ -1,7 +1,7 @@
 import React from 'react';
-import leftTopImg from '../assets/lefttop.png';
-import rightTopImg from '../assets/righttop.png';
-import bottomImg from '../assets/bottom.png';
+import leftTopImg from '../../assets/images/lefttop.png';
+import rightTopImg from '../../assets/images/righttop.png';
+import bottomImg from '../../assets/images/bottom.png';
 
 const AboutUs = () => {
   // Helper for the image grid

@@ -1,11 +1,11 @@
-import antiguaFlag from '../assets/antigua-and-barbuda-country-flag-waving-cloth-perfect-looping-full-screen-animation-4k-resolution-free-video.jpg';
-import grenadaFlag from '../assets/ GRENADA.png';
-import nauruFlag from '../assets/nauru-waving-flag-nauru-national-flag-background-texture-vector.jpg';
-import saoFlag from '../assets/sao-tome-and-principe-national-flag-coutry-identity-vector.jpg';
-import stKittsFlag from '../assets/Flag-Saint-Kitts-and-Nevis.webp';
-import stLuciaFlag from '../assets/ST. LUCIA.webp';
-import turkeyFlag from '../assets/turkey .jpg';
-import vanuatuFlag from '../assets/ VANUATU.jpg';
+import antiguaFlag from '../assets/flags/antigua-flag.jpg';
+import grenadaFlag from '../assets/flags/grenada-flag.png';
+import nauruFlag from '../assets/flags/nauru-flag.jpg';
+import saoFlag from '../assets/flags/sao-tome-flag.jpg';
+import stKittsFlag from '../assets/flags/st-kitts-flag.webp';
+import stLuciaFlag from '../assets/flags/st-lucia-flag.webp';
+import turkeyFlag from '../assets/flags/turkey-flag.jpg';
+import vanuatuFlag from '../assets/flags/vanuatu-flag.jpg';
 
 const citizenshipPrograms = [
   {

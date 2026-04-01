@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import footerLogoUrl from '../assets/footer-logo.svg';
-import footerImg from '../assets/footerimg.png';
+import footerLogoUrl from '../assets/brand/footer-logo.svg';
+import footerImg from '../assets/images/footerimg.png';
 import { FaTwitter, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa';
 
 const Footer = () => {

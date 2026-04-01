@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
-import requirementsBg from '../assets/500M.png';
+import requirementsBg from '../../assets/images/500M.png';
 
 const ProgramRequirements = ({ program }) => {
   return (

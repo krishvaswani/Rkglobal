@@ -1,8 +1,8 @@
 import React from 'react';
 import { Handshake } from 'lucide-react';
-import rightImage from '../assets/rightimgprocess.png';
-// import rightImage from '../assets/citizen-by-investmenty.jpg';
-import leftImage from '../assets/left-small.png';
+import rightImage from '../../assets/images/rightimgprocess.png';
+// import rightImage from '../../assets/images/citizen-by-investmenty.jpg';
+import leftImage from '../../assets/images/left-small.png';
 
 const ProgramProcess = ({ program }) => {
   const steps = program.processSteps.map((title, index) => ({

@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import portugalImg from '../assets/portugal_residency.png';
-import greeceImg from '../assets/greece_residency.png';
-import uaeImg from '../assets/uae_residency.png';
-import canadaImg from '../assets/canada_residency.png';
-import usaImg from '../assets/usa_residency.png';
-import cyprusImg from '../assets/cyprus_residency.png';
+import portugalImg from '../../assets/images/portugal_residency.png';
+import greeceImg from '../../assets/images/greece_residency.png';
+import uaeImg from '../../assets/images/uae_residency.png';
+import canadaImg from '../../assets/images/canada_residency.png';
+import usaImg from '../../assets/images/usa_residency.png';
+import cyprusImg from '../../assets/images/cyprus_residency.png';
 
 const programs = [
   {

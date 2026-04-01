@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useSpring, useTransform, useInView, animate } from 'framer-motion';
 import { Award, Clock, Globe, TrendingUp } from 'lucide-react';
-import statsLeftImage from '../assets/statsleft.png';
-import bagIcon from '../assets/bag.svg';
-import fdiImage from '../assets/500M.png';
+import statsLeftImage from '../../assets/images/statsleft.png';
+import bagIcon from '../../assets/icons/bag.svg';
+import fdiImage from '../../assets/images/500M.png';
 
 const Counter = ({ value, prefix = "", suffix = "" }) => {
   const ref = useRef(null);

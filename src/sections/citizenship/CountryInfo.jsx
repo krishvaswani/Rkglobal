@@ -1,5 +1,5 @@
 import React from 'react';
-import citizenAboutImg from '../assets/citizen-about.png';
+import citizenAboutImg from '../../assets/images/citizen-about.png';
 
 const CountryInfo = ({ program }) => {
   const { about } = program;

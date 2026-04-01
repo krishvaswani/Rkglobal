@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaQuoteLeft } from 'react-icons/fa';
-import testimonialBanner from '../assets/testimonial-background.png';
+import testimonialBanner from '../../assets/images/testimonial-background.png';
 
 const testimonials = [
   {

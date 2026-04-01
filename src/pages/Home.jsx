@@ -1,15 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Hero from '../Home-Sections/Hero';
-import AboutUs from '../Home-Sections/AboutUs';
-import CitizenshipPrograms from '../Home-Sections/CitizenshipPrograms';
-import ResidencePrograms from '../Home-Sections/ResidencePrograms';
-import StatsSection from '../Home-Sections/StatsSection';
-import WhyChooseUs from '../Home-Sections/WhyChooseUs';
-import ProcessSection from '../Home-Sections/ProcessSection';
-import TestimonialsSection from '../Home-Sections/TestimonialsSection';
-import FAQ from '../Home-Sections/FAQ';
-import UnlockGlobalMobility from '../Home-Sections/UnlockGlobalMobility';
+import Hero from '../sections/home/Hero';
+import AboutUs from '../sections/home/AboutUs';
+import CitizenshipPrograms from '../sections/home/CitizenshipPrograms';
+import ResidencePrograms from '../sections/home/ResidencePrograms';
+import StatsSection from '../sections/home/StatsSection';
+import WhyChooseUs from '../sections/home/WhyChooseUs';
+import ProcessSection from '../sections/home/ProcessSection';
+import TestimonialsSection from '../sections/home/TestimonialsSection';
+import FAQ from '../sections/home/FAQ';
+import UnlockGlobalMobility from '../sections/home/UnlockGlobalMobility';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },

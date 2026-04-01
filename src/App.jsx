@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Header from './component/Header';
-import Footer from './component/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Citizenship from './pages/Citizenship';
 import Residence from './pages/Residence';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import ComingSoon from './component/ComingSoon';
+import ComingSoon from './components/ComingSoon';
 import { defaultCitizenshipSlug } from './data/citizenshipPrograms';
 import { defaultResidenceSlug } from './data/residencePrograms';
 

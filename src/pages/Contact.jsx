@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Clock3, Mail, MapPin, Phone, Send } from 'lucide-react';
-import bannerImage from '../assets/Unlock-banner.png';
-import contactImage from '../assets/bottom.png';
+import bannerImage from '../assets/images/unlock-banner.png';
+import contactImage from '../assets/images/bottom.png';
 
 const contactCards = [
   {

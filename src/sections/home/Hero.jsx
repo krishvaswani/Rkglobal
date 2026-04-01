@@ -1,10 +1,10 @@
 import React from 'react';
-import heroData from '../data/hero-sections.json';
+import heroData from '../../data/hero-sections.json';
 
 // Import assets
-import homeVideo from '../assets/hero-video.mp4';
-import citizenshipBg from '../assets/citizenship.png';
-import flagAsset from '../assets/ GRENADA.png';
+import homeVideo from '../../assets/video/hero-video.mp4';
+import citizenshipBg from '../../assets/images/citizenship.png';
+import flagAsset from '../../assets/flags/grenada-flag.png';
 
 const assetMap = {
   homeVideo,

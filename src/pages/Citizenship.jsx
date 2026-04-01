@@ -1,17 +1,17 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import CitizenshipNav from '../component/CitizenshipNav';
-import CountryInfo from '../Citizenship-Sections/CountryInfo';
-import ProgramStats from '../Citizenship-Sections/ProgramStats';
-import ProgramBenefits from '../Citizenship-Sections/ProgramBenefits';
-import ProgramProcess from '../Citizenship-Sections/ProgramProcess';
-import ProgramRequirements from '../Citizenship-Sections/ProgramRequirements';
-import RealEstateOptions from '../Citizenship-Sections/RealEstateOptions';
-import LegalBasis from '../Citizenship-Sections/LegalBasis';
-import ContactCTA from '../component/ContactCTA';
-import ProgramHero from '../Citizenship-Sections/ProgramHero';
-import ProgramFaq from '../Citizenship-Sections/ProgramFaq';
-import ComingSoon from '../component/ComingSoon';
+import CitizenshipNav from '../components/CitizenshipNav';
+import CountryInfo from '../sections/citizenship/CountryInfo';
+import ProgramStats from '../sections/citizenship/ProgramStats';
+import ProgramBenefits from '../sections/citizenship/ProgramBenefits';
+import ProgramProcess from '../sections/citizenship/ProgramProcess';
+import ProgramRequirements from '../sections/citizenship/ProgramRequirements';
+import RealEstateOptions from '../sections/citizenship/RealEstateOptions';
+import LegalBasis from '../sections/citizenship/LegalBasis';
+import ContactCTA from '../components/ContactCTA';
+import ProgramHero from '../sections/citizenship/ProgramHero';
+import ProgramFaq from '../sections/citizenship/ProgramFaq';
+import ComingSoon from '../components/ComingSoon';
 import { citizenshipProgramMap } from '../data/citizenshipPrograms';
 
 const sections = [
