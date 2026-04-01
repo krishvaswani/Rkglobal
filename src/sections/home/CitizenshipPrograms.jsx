@@ -101,7 +101,7 @@ const CitizenshipPrograms = () => {
   return (
     <div className="w-full bg-gray-50">
       <section
-        className="w-full py-16 md:py-24 bg-white overflow-hidden shadow-sm"
+        className="w-full py-10 md:py-20 bg-white overflow-hidden shadow-sm"
         style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
       >
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex flex-col items-center">

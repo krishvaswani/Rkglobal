@@ -51,6 +51,7 @@ const Contact = () => {
   return (
     <main className="w-full bg-[#f4f6f8] pt-[calc(var(--site-header-height,88px)+14px)] pb-10 md:pb-16 px-3 md:px-6">
       <div className="max-w-[1400px] mx-auto">
+        <div className="flex flex-col gap-4 md:gap-7">
 
         {/* ── Hero Banner ───────────────────────────── */}
         <section
@@ -69,7 +70,7 @@ const Contact = () => {
         </section>
 
         {/* ── Main Grid: Form + Info ──────────────── */}
-        <section className="mt-4 md:mt-7 grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
 
           {/* Left Column — Contact Form */}
           <div className="lg:col-span-6 bg-white rounded-[18px] md:rounded-[24px] p-5 md:p-8 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)]">
@@ -180,7 +181,7 @@ const Contact = () => {
         </section>
 
         {/* ── FAQ Section ─────────────────────────── */}
-        <section className="mt-4 md:mt-7 bg-white rounded-[18px] md:rounded-[24px] p-4 md:p-8 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)]">
+        <section className="bg-white rounded-[18px] md:rounded-[24px] p-4 md:p-8 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)]">
           <div className="text-center mb-5 md:mb-8">
             <div className="flex items-center justify-center gap-2 mb-2">
               <span className="inline-block w-6 h-[3px] rounded-full bg-[#C9A84C]" />
@@ -243,6 +244,7 @@ const Contact = () => {
           </div>
         </section>
 
+        </div>
       </div>
     </main>
   );

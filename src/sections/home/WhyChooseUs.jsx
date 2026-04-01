@@ -56,7 +56,7 @@ const WhyChooseUs = () => {
 
   return (
     <section 
-      className="w-full py-10 md:py-16 bg-[#fafafc] overflow-hidden flex flex-col items-center font-sans"
+      className="w-full py-10 md:py-20 bg-[#fafafc] overflow-hidden flex flex-col items-center font-sans"
     >
       
       {/* Background Header */}

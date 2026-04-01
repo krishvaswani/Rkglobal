@@ -39,7 +39,7 @@ const Residence = () => {
       <div className="flex flex-col w-full">
         <CountryInfo program={program} />
 
-        <section id="benefit" className="w-full py-16 md:py-20 bg-[#f5f7fa]">
+        <section id="benefit" className="w-full py-10 md:py-20 bg-[#f5f7fa]">
           <ProgramStats stats={program.stats} />
           <ProgramBenefits program={program} />
         </section>

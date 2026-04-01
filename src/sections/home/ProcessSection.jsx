@@ -1,5 +1,14 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useMotionValueEvent, useSpring, AnimatePresence } from 'framer-motion';
+import React, { useMemo, useRef, useState } from 'react';
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from 'framer-motion';
 
 const processSteps = [
   {
@@ -57,6 +66,8 @@ function getArcPosition(index, total, radius) {
 
 const ProcessSection = () => {
   const containerRef = useRef(null);
+  const lastStepRef = useRef(-1);
+  const prefersReducedMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -64,24 +75,119 @@ const ProcessSection = () => {
   });
 
   const rawActiveIndex = useTransform(scrollYProgress, [0, 1], [0, processSteps.length - 1]);
-  const activeIndex = useSpring(rawActiveIndex, { stiffness: 300, damping: 90 });
+  const activeIndex = useSpring(rawActiveIndex, { stiffness: 260, damping: 60, mass: 0.8 });
 
   const [currentStep, setCurrentStep] = useState(0);
 
   useMotionValueEvent(activeIndex, 'change', (latest) => {
-    setCurrentStep(Math.round(latest));
+    const next = Math.max(0, Math.min(processSteps.length - 1, Math.round(latest)));
+    if (next !== lastStepRef.current) {
+      lastStepRef.current = next;
+      setCurrentStep(next);
+    }
   });
 
   // Use a dynamic CSS variable for the circle radius so it fits all screens
   // 45vh ensures the diameter (90vh) almost fills the screen height, spreading numbers wide
-  const circleRadiusCSS = '480px';
+  const circleRadiusCSS = 'clamp(320px, 38vw, 520px)';
+
+  const scrollToStep = (index) => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const sectionTop = window.scrollY + rect.top;
+    const maxScrollable = Math.max(0, el.offsetHeight - window.innerHeight);
+    const t = processSteps.length === 1 ? 0 : index / (processSteps.length - 1);
+    const target = sectionTop + maxScrollable * t;
+
+    window.scrollTo({ top: target, behavior: 'smooth' });
+  };
+
+  const desktopCardVariants = useMemo(() => {
+    if (prefersReducedMotion) {
+      return {
+        active: { opacity: 1, scale: 1, y: 0 },
+        inactive: { opacity: 0.6, scale: 0.98, y: 0 },
+      };
+    }
+    return {
+      active: (dir) => ({
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        x: dir >= 0 ? 10 : -10,
+        rotateY: dir >= 0 ? -6 : 6,
+        transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+      }),
+      inactive: (dir) => ({
+        opacity: 0.55,
+        scale: 0.985,
+        y: 0,
+        x: 0,
+        rotateY: 0,
+        transition: { duration: 0.35, ease: [0.2, 0.8, 0.2, 1] },
+      }),
+    };
+  }, [prefersReducedMotion]);
+
+  const TiltCard = ({ children, enabled = true, className = '' }) => {
+    const rotateX = useMotionValue(0);
+    const rotateY = useMotionValue(0);
+    const mx = useMotionValue(0);
+    const my = useMotionValue(0);
+
+    const springX = useSpring(rotateX, { stiffness: 220, damping: 22, mass: 0.6 });
+    const springY = useSpring(rotateY, { stiffness: 220, damping: 22, mass: 0.6 });
+    const springMX = useSpring(mx, { stiffness: 220, damping: 22, mass: 0.6 });
+    const springMY = useSpring(my, { stiffness: 220, damping: 22, mass: 0.6 });
+
+    const handleMove = (e) => {
+      if (!enabled) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width; // 0..1
+      const py = (e.clientY - rect.top) / rect.height; // 0..1
+      const rx = (0.5 - py) * 7; // tilt up/down
+      const ry = (px - 0.5) * 10; // tilt left/right
+      rotateX.set(rx);
+      rotateY.set(ry);
+      mx.set((px - 0.5) * 8);
+      my.set((py - 0.5) * 8);
+    };
+
+    const handleLeave = () => {
+      rotateX.set(0);
+      rotateY.set(0);
+      mx.set(0);
+      my.set(0);
+    };
+
+    return (
+      <motion.div
+        onMouseMove={handleMove}
+        onMouseLeave={handleLeave}
+        style={{
+          transformStyle: 'preserve-3d',
+          rotateX: springX,
+          rotateY: springY,
+          x: springMX,
+          y: springMY,
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  };
 
   return (
     <section
       ref={containerRef}
       data-section="process"
       className="relative bg-white w-full"
-      style={{ height: `${100 + (processSteps.length - 1) * 15}vh` }}
+      // Keep the panel sticky until the final step is reached.
+      // Give each step ~1 viewport height of scroll.
+      style={{ height: `${Math.max(1, processSteps.length) * 100}vh` }}
     >
       {/* Sticky full-screen panel */}
       <div className="sticky top-0 w-full h-screen overflow-hidden flex">
@@ -216,7 +322,10 @@ const ProcessSection = () => {
         </div>
 
         {/* RIGHT COLUMN — flex on desktop only */}
-        <div className="hidden md:flex w-1/2 flex-col justify-center h-full px-10 lg:px-20 z-10">
+        <div
+          className="hidden md:flex w-1/2 flex-col justify-center h-full px-8 lg:px-16 xl:px-20 z-10"
+          style={{ perspective: '1200px' }}
+        >
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-4 uppercase tracking-tight">
             Our Process
           </h2>
@@ -227,39 +336,62 @@ const ProcessSection = () => {
           <div className="flex flex-col gap-3 w-full max-w-lg">
             {processSteps.map((step, idx) => {
               const isActive = currentStep === idx;
+              const dir = idx % 2 === 0 ? 1 : -1;
 
               return (
-                <div
+                <motion.button
                   key={idx}
-                  className={`rounded-2xl border transition-all duration-500 overflow-hidden ${isActive
+                  type="button"
+                  onClick={() => scrollToStep(idx)}
+                  className={`text-left rounded-2xl border overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0a2540]/30 focus-visible:ring-offset-2 transition-colors ${
+                    isActive
                     ? 'bg-white shadow-xl shadow-gray-200/50 border-white'
-                    : 'bg-gray-50/50 border-gray-100 opacity-60'
-                    }`}
+                    : 'bg-gray-50/50 border-gray-100'
+                  }`}
+                  custom={dir}
+                  variants={desktopCardVariants}
+                  animate={isActive ? 'active' : 'inactive'}
+                  initial={false}
                 >
-                  <div className="px-6 py-5">
-                    <h3
-                      className={`text-xl font-bold transition-colors duration-300 ${isActive ? 'text-[#092244]' : 'text-gray-600'
-                        }`}
-                    >
-                      {step.title}
-                    </h3>
+                  <TiltCard
+                    enabled={isActive && !prefersReducedMotion}
+                    className="px-6 py-5"
+                  >
+                    <div style={{ transform: 'translateZ(1px)' }}>
+                      <div className="flex items-center justify-between gap-4">
+                        <h3
+                          className={`text-xl font-bold transition-colors duration-300 ${
+                            isActive ? 'text-[#092244]' : 'text-gray-600'
+                          }`}
+                        >
+                          {step.title}
+                        </h3>
+                        <span
+                          className={`font-sans text-sm font-extrabold tracking-widest ${
+                            isActive ? 'text-[#0a2540]' : 'text-gray-400'
+                          }`}
+                        >
+                          {step.num}
+                        </span>
+                      </div>
 
-                    <motion.div
-                      initial={false}
-                      animate={{
-                        height: isActive ? 'auto' : 0,
-                        opacity: isActive ? 1 : 0,
-                        marginTop: isActive ? 12 : 0
-                      }}
-                      className="overflow-hidden"
-                      transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
-                    >
-                      <p className="text-gray-600 leading-relaxed pr-4 text-sm md:text-base">
-                        {step.description}
-                      </p>
-                    </motion.div>
-                  </div>
-                </div>
+                      <motion.div
+                        initial={false}
+                        animate={{
+                          height: isActive ? 'auto' : 0,
+                          opacity: isActive ? 1 : 0,
+                          marginTop: isActive ? 12 : 0,
+                        }}
+                        className="overflow-hidden"
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        <p className="text-gray-600 leading-relaxed pr-4 text-sm md:text-base">
+                          {step.description}
+                        </p>
+                      </motion.div>
+                    </div>
+                  </TiltCard>
+                </motion.button>
               );
             })}
           </div>
