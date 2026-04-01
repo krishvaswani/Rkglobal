@@ -29,6 +29,7 @@ const residencePrograms = [
     slug: 'canada',
     name: 'Canada',
     menuLabel: 'Canada',
+    suspended: true,
     flag: canadaFlag,
     heroImage: canadaResidencyImage,
     categoryLabel: 'Residency by Investment',

@@ -122,7 +122,7 @@ const Header = () => {
       key={program.slug}
       to={`${basePath}/${program.slug}`}
       className={({ isActive }) =>
-        `flex items-center gap-3 rounded-2xl border px-3 py-3 text-xs tracking-[0.08em] transition-all ${
+        `relative flex items-center gap-3 rounded-2xl border px-3 py-3 text-xs tracking-[0.08em] transition-all ${
           isActive
             ? 'border-[#002668] bg-[#002668] text-white shadow-lg'
             : 'border-gray-200 bg-white text-gray-800 hover:border-gray-300 hover:bg-gray-50'
@@ -132,9 +132,17 @@ const Header = () => {
       <img
         src={program.flag}
         alt={`${program.name} flag`}
-        className="h-10 w-14 rounded object-cover border border-gray-200 bg-gray-100 shrink-0 md:h-11 md:w-16"
+        className="h-14 w-20 rounded-lg object-cover border border-gray-200 bg-gray-100 shrink-0 md:h-16 md:w-24"
       />
-      <span className="leading-tight">{program.menuLabel}</span>
+      <div className="flex flex-col gap-1">
+        <span className="leading-tight">{program.menuLabel}</span>
+        {program.suspended && (
+          <span className="inline-flex items-center gap-1 w-fit px-2 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-[9px] font-bold text-white uppercase tracking-[0.06em] shadow-sm shadow-red-500/30 animate-pulse">
+            <span className="w-1.5 h-1.5 rounded-full bg-white/90 shrink-0" />
+            Temporarily Suspended
+          </span>
+        )}
+      </div>
     </NavLink>
   );
 
@@ -383,12 +391,18 @@ const Header = () => {
                         to={`/residence/${program.slug}`}
                         onClick={() => setMenuOpen(false)}
                         className={({ isActive }) =>
-                          `block w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${
+                          `flex items-center gap-2 w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${
                             isActive ? 'text-[#C9A84C]' : 'text-gray-700 hover:text-[#C9A84C]'
                           }`
                         }
                       >
                         {program.menuLabel}
+                        {program.suspended && (
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-[8px] font-bold text-white uppercase tracking-[0.04em] shadow-sm shadow-red-500/30">
+                            <span className="w-1 h-1 rounded-full bg-white/90 shrink-0" />
+                            Suspended
+                          </span>
+                        )}
                       </NavLink>
                     ))}
                   </div>
