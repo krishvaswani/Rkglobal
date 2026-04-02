@@ -1,10 +1,17 @@
 import canadaFlag from '../assets/flags/canada-flag.webp';
-import canadaResidencyImage from '../assets/images/canada_residency.png';
-import cyprusResidencyImage from '../assets/images/cyprus_residency.png';
-import greeceResidencyImage from '../assets/images/greece_residency.png';
-import portugalResidencyImage from '../assets/images/portugal_residency.png';
-import uaeResidencyImage from '../assets/images/uae_residency.png';
-import usaResidencyImage from '../assets/images/usa_residency.png';
+import canadaCountryImg from '../assets/country/canada-2.png';
+import cyprusCountryImg from '../assets/country/_CYPRUS.png';
+import greeceCountryImg from '../assets/country/greece.png';
+import hungaryCountryImg from '../assets/country/hungry-.png';
+import latviaCountryImg from '../assets/country/_LATVIA-.png';
+import maltaCountryImg from '../assets/country/malta.png';
+import panamaCountryImg from '../assets/country/_PANAMA.png';
+import portugalCountryImg from '../assets/country/_PORTUGAL.png';
+import switzerlandCountryImg from '../assets/country/switzerland-.png';
+import thailandCountryImg from '../assets/country/thiland.png';
+import uaeCountryImg from '../assets/country/_UAE.png';
+import ukCountryImg from '../assets/country/uk-.png';
+import usaCountryImg from '../assets/country/_USA.png';
 import cyprusFlag from '../assets/flags/cyprus-flag.jpg';
 import greeceFlag from '../assets/flags/greece-flag.webp';
 import hungaryFlag from '../assets/flags/hungary-flag.png';
@@ -31,7 +38,7 @@ const residencePrograms = [
     menuLabel: 'Canada',
     suspended: true,
     flag: canadaFlag,
-    heroImage: canadaResidencyImage,
+    heroImage: canadaCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'CANADA RESIDENCY BY INVESTMENT PROGRAM',
     heroDescription:
@@ -143,7 +150,7 @@ const residencePrograms = [
     name: 'Cyprus',
     menuLabel: 'Cyprus',
     flag: cyprusFlag,
-    heroImage: cyprusResidencyImage,
+    heroImage: cyprusCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'CYPRUS RESIDENCY BY INVESTMENT PROGRAM',
     heroDescription:
@@ -230,7 +237,7 @@ const residencePrograms = [
     name: 'Greece',
     menuLabel: 'Greece',
     flag: greeceFlag,
-    heroImage: greeceResidencyImage,
+    heroImage: greeceCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'GREECE GOLDEN VISA PROGRAM',
     heroDescription:
@@ -316,7 +323,7 @@ const residencePrograms = [
     name: 'Hungary',
     menuLabel: 'Hungary',
     flag: hungaryFlag,
-    heroImage: greeceResidencyImage,
+    heroImage: hungaryCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'HUNGARY GUEST INVESTOR VISA PROGRAM',
     heroDescription:
@@ -402,7 +409,7 @@ const residencePrograms = [
     name: 'Latvia',
     menuLabel: 'Latvia',
     flag: latviaFlag,
-    heroImage: greeceResidencyImage,
+    heroImage: latviaCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'LATVIA RESIDENCY BY INVESTMENT PROGRAM',
     heroDescription:
@@ -488,7 +495,7 @@ const residencePrograms = [
     name: 'Malta',
     menuLabel: 'Malta',
     flag: maltaFlag,
-    heroImage: portugalResidencyImage,
+    heroImage: maltaCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'MALTA PERMANENT RESIDENCY PROGRAM',
     heroDescription:
@@ -575,7 +582,7 @@ const residencePrograms = [
     name: 'Panama',
     menuLabel: 'Panama',
     flag: panamaFlag,
-    heroImage: portugalResidencyImage,
+    heroImage: panamaCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'PANAMA RESIDENCY BY INVESTMENT PROGRAM',
     heroDescription:
@@ -661,7 +668,7 @@ const residencePrograms = [
     name: 'Portugal',
     menuLabel: 'Portugal',
     flag: portugalFlag,
-    heroImage: portugalResidencyImage,
+    heroImage: portugalCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'PORTUGAL GOLDEN VISA PROGRAM',
     heroDescription:
@@ -748,7 +755,7 @@ const residencePrograms = [
     name: 'Switzerland',
     menuLabel: 'Switzerland',
     flag: switzerlandFlag,
-    heroImage: portugalResidencyImage,
+    heroImage: switzerlandCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'SWITZERLAND RESIDENCY BY INVESTMENT PROGRAM',
     heroDescription:
@@ -834,7 +841,7 @@ const residencePrograms = [
     name: 'Thailand',
     menuLabel: 'Thailand',
     flag: thailandFlag,
-    heroImage: uaeResidencyImage,
+    heroImage: thailandCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'THAILAND LONG-TERM RESIDENT VISA PROGRAM',
     heroDescription:
@@ -921,7 +928,7 @@ const residencePrograms = [
     name: 'UAE',
     menuLabel: 'UAE Golden Visa',
     flag: uaeFlag,
-    heroImage: uaeResidencyImage,
+    heroImage: uaeCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'UAE GOLDEN VISA PROGRAM',
     heroDescription:
@@ -1008,7 +1015,7 @@ const residencePrograms = [
     name: 'United Kingdom',
     menuLabel: 'United Kingdom',
     flag: unitedKingdomFlag,
-    heroImage: usaResidencyImage,
+    heroImage: ukCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'UNITED KINGDOM INNOVATOR FOUNDER VISA PROGRAM',
     heroDescription:
@@ -1095,7 +1102,7 @@ const residencePrograms = [
     name: 'USA',
     menuLabel: 'USA EB-5',
     flag: usaFlag,
-    heroImage: usaResidencyImage,
+    heroImage: usaCountryImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'USA EB-5 INVESTOR VISA PROGRAM',
     heroDescription:

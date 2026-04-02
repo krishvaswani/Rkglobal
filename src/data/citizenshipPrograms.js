@@ -6,6 +6,9 @@ import stKittsFlag from '../assets/flags/st-kitts-flag.webp';
 import stLuciaFlag from '../assets/flags/st-lucia-flag.webp';
 import turkeyFlag from '../assets/flags/turkey-flag.jpg';
 import vanuatuFlag from '../assets/flags/vanuatu-flag.jpg';
+import grenadaCountryImg from '../assets/country/_GRENADA.png';
+import turkeyCountryImg from '../assets/country/_TURKEY.png';
+import saoCountryImg from '../assets/country/_SAO-TOME-AND-PRINCIPE.png-1.png';
 
 const citizenshipPrograms = [
   {
@@ -13,6 +16,7 @@ const citizenshipPrograms = [
     name: 'Grenada',
     menuLabel: 'Grenada',
     flag: grenadaFlag,
+    heroImage: grenadaCountryImg,
     heroTitle: 'GRENADA CITIZENSHIP AND PASSPORT\nBY INVESTMENT PROGRAM',
     heroDescription:
       'The only Caribbean citizenship with a direct US E-2 treaty visa pathway. Grenada offers visa-free travel to 140+ countries, a straightforward four-to-six-month process, and a minimum investment of USD 235,000.',
@@ -535,6 +539,7 @@ const citizenshipPrograms = [
     name: 'Turkey',
     menuLabel: 'Turkey',
     flag: turkeyFlag,
+    heroImage: turkeyCountryImg,
     heroTitle: 'TURKEY CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       'A strategically positioned passport at the crossroads of Europe, Asia, and the Middle East. Turkey offers citizenship within three to six months and a unique E-2 treaty pathway to US business residency.',
@@ -928,6 +933,7 @@ const citizenshipPrograms = [
     name: 'Sao Tome and Principe',
     menuLabel: 'Sao Tome and Principe',
     flag: saoFlag,
+    heroImage: saoCountryImg,
     heroTitle: 'SAO TOME AND PRINCIPE CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       "The world's most affordable CBI programme, from USD 90,000. Sao Tome and Principe offers investors a sovereign second passport from a stable African nation with growing relevance across the CPLP community.",

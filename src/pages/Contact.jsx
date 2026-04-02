@@ -6,22 +6,22 @@ import contactImage from '../assets/images/bottom.png';
 const contactCards = [
   {
     title: 'Email',
-    value: 'support@rkglobalimmigration.com',
+    value: 'info@rkglobalimmigration.com',
     Icon: Mail,
   },
   {
     title: 'Call',
-    value: '+971 4 555 1234',
+    value: '+00 000000000',
     Icon: Phone,
   },
   {
     title: 'Address',
-    value: 'Business Bay, Dubai, UAE',
+    value: 'Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.',
     Icon: MapPin,
   },
   {
     title: 'Working Hours',
-    value: 'Mon-Fri: 9:00 AM - 6:00 PM',
+    value: 'Mon-Fri: 10:00 AM - 6:00 PM',
     Icon: Clock3,
   },
 ];
