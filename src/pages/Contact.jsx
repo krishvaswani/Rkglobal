@@ -198,7 +198,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="flex flex-col gap-3 max-w-[900px] mx-auto">
+          <div className="flex flex-col gap-3 max-w-[1400px] mx-auto">
             {contactFaqs.map((item, index) => {
               const isOpen = openFaq === index;
               const Icon = isOpen ? ChevronUp : ChevronDown;
