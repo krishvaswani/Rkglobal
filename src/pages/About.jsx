@@ -192,7 +192,7 @@ const About = () => {
       </div>
 
       {/* ── Constrained Content (max 1400px) ───── */}
-      <div className="max-w-[1400px] mx-auto px-3 md:px-6 mt-5 md:mt-8 flex flex-col gap-4 md:gap-7">
+      <div className="max-w-[1400px] mx-auto px-3 md:px-6 mt-5 md:mt-8 flex flex-col gap-5 md:gap-8">
         {/* ── About Narrative ───────────────────── */}
         <motion.section
           {...fadeInUp}

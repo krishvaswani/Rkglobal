@@ -36,7 +36,7 @@ const Citizenship = () => {
       <ProgramHero program={program} />
       <CitizenshipNav sections={sections} />
 
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full gap-5 md:gap-8">
         <CountryInfo program={program} />
 
         <section id="benefit" className="w-full py-10 md:py-20 bg-[#f5f7fa]">

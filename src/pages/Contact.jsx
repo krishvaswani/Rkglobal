@@ -51,7 +51,7 @@ const Contact = () => {
   return (
     <main className="w-full bg-[#f4f6f8] pt-[calc(var(--site-header-height,88px)+14px)] pb-10 md:pb-16 px-3 md:px-6">
       <div className="max-w-[1400px] mx-auto">
-        <div className="flex flex-col gap-4 md:gap-7">
+        <div className="flex flex-col gap-5 md:gap-8">
 
         {/* ── Hero Banner ───────────────────────────── */}
         <section

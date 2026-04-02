@@ -21,34 +21,36 @@ const fadeInUp = {
 const Home = () => {
   return (
     <div className="w-full min-h-screen font-sans bg-gray-50">
-      <Hero />
-      <motion.div {...fadeInUp}>
-        <AboutUs />
-      </motion.div>
-      <motion.div {...fadeInUp}>
-        <CitizenshipPrograms />
-      </motion.div>
-      <motion.div {...fadeInUp}>
-        <ResidencePrograms />
-      </motion.div>
-      <motion.div {...fadeInUp}>
-        <StatsSection />
-      </motion.div>
-      <motion.div {...fadeInUp}>
-        <WhyChooseUs />
-      </motion.div>
-      <motion.div {...fadeInUp}>
-        <ProcessSection />
-      </motion.div>
-      <motion.div {...fadeInUp}>
-        <TestimonialsSection />
-      </motion.div>
-      <motion.div {...fadeInUp}>
-        <UnlockGlobalMobility />
-      </motion.div>
-      <motion.div {...fadeInUp}>
-        <FAQ />
-      </motion.div>
+      <div className="flex flex-col gap-5 md:gap-8">
+        <Hero />
+        <motion.div {...fadeInUp}>
+          <AboutUs />
+        </motion.div>
+        <motion.div {...fadeInUp}>
+          <CitizenshipPrograms />
+        </motion.div>
+        <motion.div {...fadeInUp}>
+          <ResidencePrograms />
+        </motion.div>
+        <motion.div {...fadeInUp}>
+          <StatsSection />
+        </motion.div>
+        <motion.div {...fadeInUp}>
+          <WhyChooseUs />
+        </motion.div>
+        <motion.div {...fadeInUp}>
+          <ProcessSection />
+        </motion.div>
+        <motion.div {...fadeInUp}>
+          <TestimonialsSection />
+        </motion.div>
+        <motion.div {...fadeInUp}>
+          <UnlockGlobalMobility />
+        </motion.div>
+        <motion.div {...fadeInUp}>
+          <FAQ />
+        </motion.div>
+      </div>
     </div>
   );
 };
