@@ -104,7 +104,7 @@ const About = () => {
         },
       ],
       reachTitle: 'Our Global Reach',
-      reachSubtitle: 'A marquee of all the country flags where we provide our services',
+      reachSubtitle: '',
       cta: {
         heading: 'Secure Your Global Future with Confidence',
         subtext:
@@ -116,15 +116,16 @@ const About = () => {
   );
 
   const allFlags = useMemo(() => {
-    const sources = [...citizenshipPrograms, ...residencePrograms]
-      .map((program) => program?.flag)
-      .filter(Boolean);
+    const programs = [...citizenshipPrograms, ...residencePrograms].filter(
+      (program) => program?.flag && program?.name
+    );
     const unique = [];
     const seen = new Set();
-    for (const src of sources) {
-      if (seen.has(src)) continue;
-      seen.add(src);
-      unique.push(src);
+    for (const program of programs) {
+      const key = `${program.flag}-${program.name}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      unique.push({ src: program.flag, name: program.name });
     }
     return unique;
   }, []);
@@ -287,7 +288,7 @@ const About = () => {
         </motion.section>
 
         {/* ── Core Values ───────────────────────── */}
-        <motion.section {...fadeInUp} className="bg-white rounded-[18px] md:rounded-[24px] p-5 md:p-8 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)]">
+        <motion.section {...fadeInUp} className="p-2 md:p-0">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
             <div className="flex flex-col gap-2">
               <SectionLabel>{content.coreValuesIntro.title}</SectionLabel>
@@ -304,15 +305,15 @@ const About = () => {
             {content.coreValues.map(({ title, description, Icon }) => (
               <div
                 key={title}
-                className="rounded-[18px] bg-gradient-to-br from-[#0a2769]/6 via-white to-[#C9A84C]/10 border border-[#edf1f6] p-5 md:p-6 shadow-[0_6px_24px_rgba(10,39,105,0.06)]"
+                className="group rounded-[18px] bg-[#f8fafc] border border-[#edf1f6] p-5 md:p-6 shadow-[0_6px_24px_rgba(10,39,105,0.06)] transition-all duration-300 hover:bg-[#0a2769] hover:border-[#0a2769] hover:shadow-[0_14px_32px_rgba(10,39,105,0.30)]"
               >
-                <div className="w-11 h-11 rounded-[14px] bg-white shadow-[0_8px_18px_rgba(10,39,105,0.08)] border border-[#eef2f7] flex items-center justify-center text-[#0a2769]">
+                <div className="w-11 h-11 rounded-[14px] bg-white shadow-[0_8px_18px_rgba(10,39,105,0.08)] border border-[#eef2f7] flex items-center justify-center text-[#0a2769] transition-colors duration-300 group-hover:bg-white/10 group-hover:border-white/25 group-hover:text-white">
                   <Icon size={22} />
                 </div>
-                <h3 className="mt-3 text-[#0a2769] font-extrabold tracking-tight text-[16px] md:text-[18px] leading-tight">
+                <h3 className="mt-3 text-[#0a2769] font-extrabold tracking-tight text-[16px] md:text-[18px] leading-tight transition-colors duration-300 group-hover:text-white">
                   {title}
                 </h3>
-                <p className="mt-2 text-[#6a7a88] text-[12px] md:text-[13px] leading-[1.7]">
+                <p className="mt-2 text-[#6a7a88] text-[12px] md:text-[13px] leading-[1.7] transition-colors duration-300 group-hover:text-white/80">
                   {description}
                 </p>
               </div>
@@ -321,7 +322,7 @@ const About = () => {
         </motion.section>
 
         {/* ── Global Reach ──────────────────────── */}
-        <motion.section {...fadeInUp} className="bg-white rounded-[18px] md:rounded-[24px] p-5 md:p-8 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)] overflow-hidden">
+        <motion.section {...fadeInUp} className="p-2 md:p-0 overflow-hidden">
           <SectionLabel>Global Reach</SectionLabel>
           <h2 className="text-[#0a2769] text-[26px] md:text-[44px] leading-[1.06] font-extrabold tracking-tight mt-2">
             {content.reachTitle}
@@ -331,7 +332,7 @@ const About = () => {
           </p>
 
           <div
-            className="mt-5 md:mt-7 rounded-[18px] border border-[#edf1f6] bg-gradient-to-b from-[#f8fafc] to-white overflow-hidden"
+            className="mt-5 md:mt-7 overflow-hidden"
             style={{
               WebkitMaskImage:
                 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
@@ -339,12 +340,17 @@ const About = () => {
             }}
           >
             <div className="flex w-max gap-3 md:gap-5 py-5 md:py-6 px-4 md:px-6 animate-[rk-marquee_30s_linear_infinite]">
-              {marqueeItems.map((src, idx) => (
+              {marqueeItems.map((flag, idx) => (
                 <div
-                  key={`${src}-${idx}`}
-                  className="h-[44px] w-[68px] md:h-[56px] md:w-[88px] rounded-[12px] bg-white shadow-[0_10px_24px_rgba(10,39,105,0.06)] border border-[#eef2f7] overflow-hidden flex items-center justify-center"
+                  key={`${flag.src}-${flag.name}-${idx}`}
+                  className="flex flex-col items-center gap-1.5"
                 >
-                  <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  <div className="h-[44px] w-[68px] md:h-[56px] md:w-[88px] rounded-[12px] bg-white shadow-[0_10px_24px_rgba(10,39,105,0.06)] border border-[#eef2f7] overflow-hidden flex items-center justify-center">
+                    <img src={flag.src} alt={`${flag.name} flag`} className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <span className="text-[9px] md:text-[10px] font-semibold tracking-[0.06em] uppercase text-[#4a5a78] whitespace-nowrap">
+                    {flag.name}
+                  </span>
                 </div>
               ))}
             </div>
