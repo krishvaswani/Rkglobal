@@ -60,7 +60,7 @@ const Citizenship = () => {
           <ProgramFaq program={program} />
         </div>
 
-        <ContactCTA />
+        <ContactCTA image={program.contactImage} />
       </div>
     </div>
   );

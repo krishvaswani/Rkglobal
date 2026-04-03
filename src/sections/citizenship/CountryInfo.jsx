@@ -3,6 +3,7 @@ import citizenAboutImg from '../../assets/images/citizen-about.png';
 
 const CountryInfo = ({ program }) => {
   const { about } = program;
+  const infoImage = program?.contactImage || citizenAboutImg;
 
   return (
     <section id="country-info" className="w-full py-10 md:py-20 px-4 md:px-8 bg-white font-sans">
@@ -45,7 +46,7 @@ const CountryInfo = ({ program }) => {
           <div className="flex-1 w-full flex justify-center mt-0 lg:mt-0 order-1 lg:order-2">
             <div className="bg-white p-2.5 pb-7 md:p-4 md:pb-10 rounded-[1.2rem] md:rounded-[1.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-gray-100 relative w-full h-full lg:max-w-xl flex flex-col items-stretch">
               <img
-                src={citizenAboutImg}
+                src={infoImage}
                 alt={about.title}
                 className="w-full h-full min-h-[240px] md:min-h-[360px] object-cover rounded-[1rem] md:rounded-[1.2rem] flex-1"
               />
