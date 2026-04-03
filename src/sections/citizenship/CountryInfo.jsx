@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import citizenAboutImg from '../../assets/images/citizen-about.png';
 
 const CountryInfo = ({ program }) => {
@@ -51,9 +52,9 @@ const CountryInfo = ({ program }) => {
                 className="w-full h-full min-h-[240px] md:min-h-[360px] object-cover rounded-[1rem] md:rounded-[1.2rem] flex-1"
               />
 
-              <button className="absolute bottom-3.5 md:bottom-5 left-1/2 transform -translate-x-1/2 bg-[#002668] hover:bg-[#001c4d] text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full shadow-[0_10px_30px_rgba(0,38,104,0.3)] transition-all duration-300 hover:-translate-y-1 active:scale-95 text-[11px] md:text-[14px] tracking-wide w-[78%] max-w-[280px]">
+              <Link to="/contact" className="absolute bottom-3.5 md:bottom-5 left-1/2 transform -translate-x-1/2 bg-[#002668] hover:bg-[#001c4d] text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full shadow-[0_10px_30px_rgba(0,38,104,0.3)] transition-all duration-300 hover:-translate-y-1 active:scale-95 text-[11px] md:text-[14px] tracking-wide w-[78%] max-w-[280px] text-center">
                 GET IN TOUCH WITH US
-              </button>
+              </Link>
             </div>
           </div>
         </div>

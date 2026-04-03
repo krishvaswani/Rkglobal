@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import heroData from '../../data/hero-sections.json';
 
 // Import assets
@@ -32,8 +33,8 @@ const Hero = ({ page = 'home' }) => {
   return (
     <div className="w-full bg-gray-50 p-2 md:p-[10px]">
       <section
-        className={`relative w-full h-[95svh] md:h-auto md:min-h-[820px] flex flex-col justify-end md:flex-row ${isCitizenshipPage ? 'md:items-end md:justify-start' : 'md:items-center md:justify-start'} py-0 md:py-8 px-0 md:px-20 rounded-[28px] overflow-hidden shadow-2xl`}
-        style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
+        className={`relative w-full min-h-[calc(100svh-var(--site-header-height,88px)-16px)] md:min-h-[clamp(680px,78svh,820px)] flex flex-col justify-end md:flex-row ${isCitizenshipPage ? 'md:items-end md:justify-start' : 'md:items-center md:justify-start'} py-0 md:py-8 px-0 md:px-20 rounded-[28px] overflow-hidden shadow-2xl`}
+        style={{ fontFamily: "'Outfit', 'Inter', system-ui, sans-serif" }}
       >
         {/* Background Video/Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -106,7 +107,8 @@ const Hero = ({ page = 'home' }) => {
                 isCitizenshipPage ? 'gap-2 md:gap-3' : 'gap-3 md:gap-5'
               }`}
             >
-              <button
+              <Link
+                to="/contact"
                 className={`flex-1 rounded-[10px] bg-[#C9A84C] hover:bg-[#b5933c] hover:-translate-y-1 hover:shadow-2xl active:scale-95 text-white transition-all duration-300 ease-out shadow-xl flex items-center justify-center font-sans font-normal uppercase tracking-wider ${
                   isCitizenshipPage
                     ? 'md:flex-none md:w-[220px] h-[48px] md:h-[58px] text-[14px] md:text-[18px]'
@@ -114,8 +116,9 @@ const Hero = ({ page = 'home' }) => {
                 }`}
               >
                 {primaryButton}
-              </button>
-              <button
+              </Link>
+              <Link
+                to="/citizenship"
                 className={`flex-1 rounded-[10px] bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-2xl active:scale-95 text-gray-900 transition-all duration-300 ease-out shadow-xl flex items-center justify-center font-sans font-normal uppercase tracking-wider ${
                   isCitizenshipPage
                     ? 'md:flex-none md:min-w-[220px] md:w-auto px-6 h-[48px] md:h-[58px] text-[14px] md:text-[18px]'
@@ -123,7 +126,7 @@ const Hero = ({ page = 'home' }) => {
                 }`}
               >
                 {secondaryButton}
-              </button>
+              </Link>
             </div>
 
             {/* Flag if provided */}

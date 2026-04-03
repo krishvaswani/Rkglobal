@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import bgImage from '../assets/images/got-any-question.png';
 
 const ContactCTA = ({ image }) => {
@@ -22,12 +23,12 @@ const ContactCTA = ({ image }) => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <button className="bg-[#cca347] hover:bg-[#b08b39] text-white px-6 md:px-10 py-3.5 md:py-4 rounded-xl font-bold uppercase tracking-[0.08em] md:tracking-wider transition-colors duration-300 min-w-[220px] text-[12px] md:text-base">
+            <Link to="/contact" className="bg-[#cca347] hover:bg-[#b08b39] text-white px-6 md:px-10 py-3.5 md:py-4 rounded-xl font-bold uppercase tracking-[0.08em] md:tracking-wider transition-colors duration-300 min-w-[220px] text-[12px] md:text-base text-center">
               Get In Touch
-            </button>
-            <button className="bg-white hover:bg-gray-100 text-[#111] px-6 md:px-10 py-3.5 md:py-4 rounded-xl font-bold uppercase tracking-[0.08em] md:tracking-wider transition-colors duration-300 min-w-[220px] text-[12px] md:text-base">
+            </Link>
+            <Link to="/about" className="bg-white hover:bg-gray-100 text-[#111] px-6 md:px-10 py-3.5 md:py-4 rounded-xl font-bold uppercase tracking-[0.08em] md:tracking-wider transition-colors duration-300 min-w-[220px] text-[12px] md:text-base text-center">
               Know More About Us
-            </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -3,6 +3,16 @@ import { NavLink } from 'react-router-dom';
 import footerLogoUrl from '../assets/brand/footer-logo.svg';
 import footerImg from '../assets/images/footerimg.png';
 import { FaTwitter, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa';
+import { defaultCitizenshipSlug } from '../data/citizenshipPrograms';
+import { defaultResidenceSlug } from '../data/residencePrograms';
+
+const quickLinks = [
+  { to: '/', label: 'Home' },
+  { to: `/citizenship/${defaultCitizenshipSlug}`, label: 'Citizenship' },
+  { to: `/residence/${defaultResidenceSlug}`, label: 'Residence' },
+  { to: '/about', label: 'About Us' },
+  { to: '/contact', label: 'Contact Us' },
+];
 
 const Footer = () => {
   return (
@@ -36,15 +46,11 @@ const Footer = () => {
           <div className="flex flex-col gap-6">
             <h3 className="text-black font-bold text-lg mb-1">Explore</h3>
             <div className="flex flex-col gap-4">
-              <NavLink to="/" className="text-gray-500 hover:text-[#0a2769] transition-colors text-sm md:text-base cursor-pointer">
-                Home
-              </NavLink>
-              <NavLink to="/services" className="text-gray-500 hover:text-[#0a2769] transition-colors text-sm md:text-base cursor-pointer">
-                Services
-              </NavLink>
-              <NavLink to="/contact" className="text-gray-500 hover:text-[#0a2769] transition-colors text-sm md:text-base cursor-pointer">
-                Contact Us
-              </NavLink>
+              {quickLinks.map((link) => (
+                <NavLink key={link.to} to={link.to} className="text-gray-500 hover:text-[#0a2769] transition-colors text-sm md:text-base cursor-pointer">
+                  {link.label}
+                </NavLink>
+              ))}
             </div>
           </div>
 

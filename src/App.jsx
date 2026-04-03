@@ -7,6 +7,7 @@ import Residence from './pages/Residence';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import ComingSoon from './components/ComingSoon';
+import ScrollToTop from './components/ScrollToTop';
 import { defaultCitizenshipSlug } from './data/citizenshipPrograms';
 import { defaultResidenceSlug } from './data/residencePrograms';
 
@@ -14,6 +15,7 @@ import { defaultResidenceSlug } from './data/residencePrograms';
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -17,6 +17,10 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import portugalImg from '../../assets/images/portugal_residency.png';
 import greeceImg from '../../assets/images/greece_residency.png';
 import uaeImg from '../../assets/images/uae_residency.png';
@@ -13,7 +14,8 @@ const programs = [
     image: portugalImg,
     subtitle: 'Schengen Visa-Free Access',
     price: 'Investment from €200,000',
-    time: '8–9 Months'
+    time: '8–9 Months',
+    slug: 'portugal'
   },
   {
     id: 2,
@@ -21,7 +23,8 @@ const programs = [
     image: greeceImg,
     subtitle: 'Schengen Visa-Free Access',
     price: 'Investment from €250,000',
-    time: '2–3 Months'
+    time: '2–3 Months',
+    slug: 'greece'
   },
   {
     id: 3,
@@ -29,7 +32,8 @@ const programs = [
     image: uaeImg,
     subtitle: 'Visa-Free Entry to Armenia, Georgia & Montenegro',
     price: 'Investment from USD 204,500',
-    time: '1–4 Weeks'
+    time: '1–4 Weeks',
+    slug: 'uae'
   },
   {
     id: 4,
@@ -37,7 +41,8 @@ const programs = [
     image: canadaImg,
     subtitle: 'Live, Work & Study in Canada',
     price: 'Investment from USD 150,000',
-    time: '18–24 Months'
+    time: '18–24 Months',
+    slug: 'canada'
   },
   {
     id: 5,
@@ -45,7 +50,8 @@ const programs = [
     image: usaImg,
     subtitle: 'Live, Work & Study in the USA',
     price: 'Investment from USD 800,000',
-    time: '18–24 Months'
+    time: '18–24 Months',
+    slug: 'usa'
   },
   {
     id: 6,
@@ -53,7 +59,8 @@ const programs = [
     image: cyprusImg,
     subtitle: 'Visa-Free Entry to Cyprus',
     price: 'Investment from €300,000',
-    time: '2–3 Months'
+    time: '2–3 Months',
+    slug: 'cyprus'
   }
 ];
 
@@ -94,7 +101,7 @@ const ResidencePrograms = () => {
     <div className="w-full bg-gray-50">
       <section
         className="w-full py-10 md:py-20 bg-white overflow-hidden shadow-sm"
-        style={{ fontFamily: "'Helvetica Now Display', 'Inter', sans-serif" }}
+        style={{ fontFamily: "'Outfit', 'Inter', system-ui, sans-serif" }}
       >
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex flex-col items-center">
           
@@ -132,7 +139,7 @@ const ResidencePrograms = () => {
                   onMouseEnter={() => setActiveCard(program.id)}
                   onClick={() => setActiveCard(program.id)}
                   className={`program-card-residence relative rounded-[2rem] overflow-hidden cursor-pointer shrink-0 snap-center
-                    h-[480px] md:h-[490px]
+                    min-h-[440px] md:min-h-[490px]
                     ${isActive
                       ? 'w-[80vw] sm:w-[320px] md:w-[380px] lg:w-[380px] shadow-2xl z-10'
                       : 'w-[80vw] sm:w-[240px] md:w-[280px] lg:w-[320px] shadow-lg'
@@ -207,7 +214,8 @@ const ResidencePrograms = () => {
                         </span>
                       </div>
 
-                      <button
+                      <Link
+                        to={`/residence/${program.slug}`}
                         style={{
                           borderRadius: '30px',
                           fontWeight: 900,
@@ -220,7 +228,7 @@ const ResidencePrograms = () => {
                         className="w-full text-center hover:opacity-95 text-gray-900 py-3 transition-all duration-300 shadow-xl mt-auto active:scale-95"
                       >
                         Know More
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

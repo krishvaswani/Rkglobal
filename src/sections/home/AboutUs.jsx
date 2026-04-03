@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import leftTopImg from '../../assets/images/lefttop.png';
 import rightTopImg from '../../assets/images/righttop.png';
 import bottomImg from '../../assets/images/bottom.png';
@@ -59,9 +60,9 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <button className="bg-gradient-to-r from-[#002668] to-[#0A38A0] hover:opacity-90 active:scale-95 text-white font-bold md:font-semibold px-10 md:px-8 py-4 md:py-3.5 rounded-xl md:rounded-lg transition-all text-[15px] md:text-sm tracking-wide md:tracking-widest uppercase shadow-md">
+          <Link to="/about" className="bg-gradient-to-r from-[#002668] to-[#0A38A0] hover:opacity-90 active:scale-95 text-white font-bold md:font-semibold px-10 md:px-8 py-4 md:py-3.5 rounded-xl md:rounded-lg transition-all text-[15px] md:text-sm tracking-wide md:tracking-widest uppercase shadow-md">
             Know More
-          </button>
+          </Link>
         </div>
 
         {/* DESKTOP ONLY: Images on the right */}

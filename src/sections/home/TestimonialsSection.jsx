@@ -188,7 +188,7 @@ const TestimonialsSection = () => {
           </div>
           <h2
             className="text-[30px] md:text-[50px] font-medium leading-[1.41] tracking-normal text-white uppercase text-center"
-            style={{ fontFamily: "'Helvetica Now Display', sans-serif" }}
+            style={{ fontFamily: "'Outfit', 'Inter', system-ui, sans-serif" }}
           >
             What are our clients saying
           </h2>

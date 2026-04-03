@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import unlockBanner from '../../assets/images/unlock-banner.png';
 import unlockMobileBanner from '../../assets/images/unlock-global-mobile.png';
 
 const UnlockGlobalMobility = () => {
   return (
     <section className="w-full py-10 md:py-20 px-4 md:px-8 flex justify-center">
-      <div className="w-full max-w-screen-xl rounded-[24px] overflow-hidden relative shadow-sm min-h-[680px] md:min-h-[420px] flex items-start md:items-center bg-[#092257] md:bg-transparent">
+      <div className="w-full max-w-screen-xl rounded-[24px] overflow-hidden relative shadow-sm min-h-[560px] md:min-h-[420px] lg:min-h-[460px] flex items-start md:items-center bg-[#092257] md:bg-transparent">
         
         {/* Mobile Background Image */}
         <img 
@@ -37,12 +38,12 @@ const UnlockGlobalMobility = () => {
           </p>
           
           <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
-            <button className="w-full md:w-auto bg-[#C6A03E] hover:bg-[#b08e37] text-white font-semibold px-8 py-4 md:py-3.5 rounded-[2rem] transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-1 text-[16px] md:text-lg shadow-md">
+            <Link to="/contact" className="w-full md:w-auto bg-[#C6A03E] hover:bg-[#b08e37] text-white font-semibold px-8 py-4 md:py-3.5 rounded-[2rem] transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-1 text-[16px] md:text-lg shadow-md text-center">
               Book a Consultation
-            </button>
-            <button className="w-full md:w-auto bg-white hover:bg-gray-50 text-[#C6A03E] font-semibold px-8 py-4 md:py-3.5 rounded-[2rem] transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-1 text-[16px] md:text-lg shadow-md border border-transparent">
+            </Link>
+            <Link to="/citizenship" className="w-full md:w-auto bg-white hover:bg-gray-50 text-[#C6A03E] font-semibold px-8 py-4 md:py-3.5 rounded-[2rem] transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-1 text-[16px] md:text-lg shadow-md border border-transparent text-center">
               Explore Programs
-            </button>
+            </Link>
           </div>
         </div>
 
