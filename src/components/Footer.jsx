@@ -47,7 +47,7 @@ const Footer = () => {
             <h3 className="text-black font-bold text-lg mb-1">Explore</h3>
             <div className="flex flex-col gap-4">
               {quickLinks.map((link) => (
-                <NavLink key={link.to} to={link.to} className="text-gray-500 hover:text-[#0a2769] transition-colors text-sm md:text-base cursor-pointer">
+                <NavLink key={link.to} to={link.to} className="text-gray-500 hover:text-[#0a2769] transition-colors text-sm md:text-base cursor-pointer whitespace-nowrap">
                   {link.label}
                 </NavLink>
               ))}
