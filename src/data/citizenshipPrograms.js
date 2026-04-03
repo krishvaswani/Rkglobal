@@ -9,6 +9,11 @@ import vanuatuFlag from '../assets/flags/vanuatu-flag.jpg';
 import grenadaCountryImg from '../assets/country/_GRENADA.png';
 import turkeyCountryImg from '../assets/country/_TURKEY.png';
 import saoCountryImg from '../assets/country/_SAO-TOME-AND-PRINCIPE.png-1.png';
+import antiguaCountryImg from '../assets/country/ANTIGUA-AND-BARBUDA.png';
+import stkittsCountryImg from '../assets/country/ST.-KITTS-AND-NEVIS- (1).png';
+import nauruCountryImg from '../assets/country/NAURU-.2.png';
+import stluciaCountryImg from '../assets/country/st.-lucia-.png';
+import vanuatuCountryImg from '../assets/country/_VANUATU.png';
 
 const citizenshipPrograms = [
   {
@@ -147,6 +152,7 @@ const citizenshipPrograms = [
     name: 'Antigua and Barbuda',
     menuLabel: 'Antigua and Barbuda',
     flag: antiguaFlag,
+    heroImage: antiguaCountryImg,
     heroTitle: 'ANTIGUA AND BARBUDA CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       'The only Caribbean CBI offering visa-free access to South Africa, the UK, and the Schengen Area. Antigua and Barbuda combines Commonwealth membership, a minimum investment of USD 230,000, and access to 150+ countries.',
@@ -278,6 +284,7 @@ const citizenshipPrograms = [
     name: 'St. Kitts and Nevis',
     menuLabel: 'St. Kitts and Nevis',
     flag: stKittsFlag,
+    heroImage: stkittsCountryImg,
     heroTitle: 'ST. KITTS AND NEVIS CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       "The world's oldest CBI programme, established in 1984, with 157+ visa-free destinations. It combines four decades of credibility, a minimum investment of USD 250,000, and an accelerated 45-day processing option for qualifying applicants.",
@@ -408,6 +415,7 @@ const citizenshipPrograms = [
     name: 'St. Lucia',
     menuLabel: 'St. Lucia',
     flag: stLuciaFlag,
+    heroImage: stluciaCountryImg,
     heroTitle: 'ST. LUCIA CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       'The most affordable Caribbean Commonwealth CBI, from just USD 100,000. St. Lucia combines Commonwealth membership, an eight-to-ten-month processing timeline, and one of the most accessible entry points in the region.',
@@ -671,6 +679,7 @@ const citizenshipPrograms = [
     name: 'Vanuatu',
     menuLabel: 'Vanuatu',
     flag: vanuatuFlag,
+    heroImage: vanuatuCountryImg,
     heroTitle: 'VANUATU CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       "The world's fastest CBI programme, delivering citizenship in as little as 30 days. Vanuatu is the choice for investors prioritising speed, simplicity, and a zero income tax environment.",
@@ -802,6 +811,7 @@ const citizenshipPrograms = [
     name: 'Nauru',
     menuLabel: 'Nauru',
     flag: nauruFlag,
+    heroImage: nauruCountryImg,
     heroTitle: 'NAURU CITIZENSHIP\nBY INVESTMENT PROGRAM',
     heroDescription:
       'The only affordable CBI programme offering visa-free access to the United Kingdom. Launched in November 2024, Nauru combines a competitive entry point with one of the most inclusive eligibility frameworks in the market.',
