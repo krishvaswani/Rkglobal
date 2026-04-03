@@ -9,7 +9,7 @@ const ProgramHero = ({ program }) => {
   return (
     <div className="w-full bg-gray-50 p-2 md:p-[10px]">
       <section
-        className="relative isolate w-full min-h-[calc(100svh-var(--site-header-height,88px)-16px)] md:min-h-[clamp(680px,78svh,820px)] flex flex-col justify-end md:flex-row md:items-end md:justify-start py-0 md:py-8 px-0 md:px-20 rounded-[24px] md:rounded-[28px] overflow-hidden shadow-2xl "
+        className="relative isolate w-full h-[95vh] flex flex-col justify-end md:flex-row md:items-end md:justify-start py-0 md:py-8 px-0 md:px-20 rounded-[24px] md:rounded-[28px] overflow-hidden shadow-2xl "
         style={{ fontFamily: "'Outfit', 'Inter', system-ui, sans-serif" }}
       >
         <div className="absolute inset-0 z-0 overflow-hidden">
