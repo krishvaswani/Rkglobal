@@ -21,7 +21,7 @@ const fadeInUp = {
 const Home = () => {
   return (
     <div className="w-full min-h-screen font-sans bg-gray-50">
-      <div className="flex flex-col gap-5 md:gap-8">
+      <div className="flex flex-col gap-0">
         <Hero />
         <motion.div {...fadeInUp}>
           <AboutUs />

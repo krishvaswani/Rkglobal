@@ -7,7 +7,7 @@ const CountryInfo = ({ program }) => {
   const infoImage = program?.contactImage || citizenAboutImg;
 
   return (
-    <section id="country-info" className="w-full py-10 md:py-20 px-4 md:px-8 bg-white font-sans">
+    <section id="country-info" className="w-full py-8 md:py-12 px-4 md:px-8 bg-white font-sans">
       <div className="max-w-[1400px] mx-auto flex flex-col items-center">
         <div className="text-center mb-6 md:mb-12">
           <h2 className="text-[26px] md:text-[2.6rem] font-extrabold text-[#111] uppercase tracking-tight leading-[1.08] mb-2 md:mb-3">

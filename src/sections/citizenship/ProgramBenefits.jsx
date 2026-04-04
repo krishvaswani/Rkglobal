@@ -106,7 +106,7 @@ const ProgramBenefits = ({ program }) => {
   };
 
   return (
-    <div className="w-full py-10 md:py-20 px-4 md:px-8 bg-white font-sans border-t border-gray-100">
+    <div className="w-full py-8 md:py-12 px-4 md:px-8 bg-white font-sans border-t border-gray-100">
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-8 md:mb-16 text-center">
           <h2 className="text-[24px] md:text-[34px] lg:text-[38px] font-bold text-black uppercase tracking-tight leading-[1.2] mb-3 md:mb-4 w-full">

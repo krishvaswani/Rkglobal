@@ -20,6 +20,10 @@ import switzerlandContactImg from '../assets/get-in-touch/_SWITZERLAND.png';
 import canadaContactImg from '../assets/get-in-touch/canada.png';
 import ukContactImg from '../assets/get-in-touch/london-eye-.png';
 import thailandContactImg from '../assets/get-in-touch/thiland.png';
+import maltaContactImg from '../assets/get-in-touch/MALTA.jpg.jpeg';
+import panamaContactImg from '../assets/get-in-touch/PANAMA-.jpg.jpeg';
+import uaeContactImg from '../assets/get-in-touch/Burj-Khalifa.jpg.jpeg';
+import usaContactImg from '../assets/get-in-touch/usa.-.jpg.jpeg';
 import cyprusFlag from '../assets/flags/cyprus-flag.jpg';
 import greeceFlag from '../assets/flags/greece-flag.webp';
 import hungaryFlag from '../assets/flags/hungary-flag.png';
@@ -508,6 +512,7 @@ const residencePrograms = [
     menuLabel: 'Malta',
     flag: maltaFlag,
     heroImage: maltaCountryImg,
+    contactImage: maltaContactImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'MALTA PERMANENT RESIDENCY PROGRAM',
     heroDescription:
@@ -595,6 +600,7 @@ const residencePrograms = [
     menuLabel: 'Panama',
     flag: panamaFlag,
     heroImage: panamaCountryImg,
+    contactImage: panamaContactImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'PANAMA RESIDENCY BY INVESTMENT PROGRAM',
     heroDescription:
@@ -944,6 +950,7 @@ const residencePrograms = [
     menuLabel: 'UAE Golden Visa',
     flag: uaeFlag,
     heroImage: uaeCountryImg,
+    contactImage: uaeContactImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'UAE GOLDEN VISA PROGRAM',
     heroDescription:
@@ -1119,6 +1126,7 @@ const residencePrograms = [
     menuLabel: 'USA EB-5',
     flag: usaFlag,
     heroImage: usaCountryImg,
+    contactImage: usaContactImg,
     categoryLabel: 'Residency by Investment',
     heroTitle: 'USA EB-5 INVESTOR VISA PROGRAM',
     heroDescription:

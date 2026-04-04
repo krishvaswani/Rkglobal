@@ -1,7 +1,7 @@
-import React, { useId, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowDown, ArrowUpRight, BadgeCheck, Eye, Scale, ShieldCheck, Target, Users } from 'lucide-react';
+import { ArrowUpRight, BadgeCheck, Eye, Scale, ShieldCheck, Target, Users } from 'lucide-react';
 
 import heroImage from '../assets/images/hero-banner.png';
 import imageA from '../assets/images/lefttop.png';
@@ -27,36 +27,6 @@ const SectionLabel = ({ children }) => (
     </span>
   </div>
 );
-
-const HeroGetInTouchBadge = ({ className = '' }) => {
-  const ringPathId = `ring-path-${useId().replace(/:/g, '')}`;
-
-  return (
-    <NavLink
-      to="/contact"
-      className={`group rounded-full border-4 border-white bg-[#111827] text-white shadow-[0_24px_44px_rgba(17,24,39,0.32)] transition-transform duration-300 hover:-translate-y-1 ${className}`}
-      aria-label="Get in touch"
-    >
-      <div className="relative w-full h-full rounded-full overflow-hidden">
-        <svg className="absolute inset-0 w-full h-full animate-[spin_14s_linear_infinite]" viewBox="0 0 100 100" aria-hidden="true">
-          <defs>
-            <path id={ringPathId} d="M 50 50 m -34, 0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0" />
-          </defs>
-          <text className="fill-white/90 text-[8px] font-black tracking-[2px]" textLength="214">
-            <textPath href={`#${ringPathId}`} startOffset="0%">
-              GET IN TOUCH • GET IN TOUCH • GET IN TOUCH •
-            </textPath>
-          </text>
-        </svg>
-        <div className="absolute inset-0 grid place-items-center">
-          <span className="w-[46px] h-[46px] md:w-[52px] md:h-[52px] rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-            <ArrowDown size={22} className="text-white group-hover:translate-y-1 transition-transform duration-300" />
-          </span>
-        </div>
-      </div>
-    </NavLink>
-  );
-};
 
 const About = () => {
   const content = useMemo(
@@ -133,7 +103,7 @@ const About = () => {
   const marqueeItems = useMemo(() => [...allFlags, ...allFlags], [allFlags]);
 
   return (
-    <main className="w-full bg-[#f4f6f8] pt-[calc(var(--site-header-height,88px)+14px)] pb-12 md:pb-16 font-sans overflow-x-hidden">
+    <main className="w-full bg-[#f4f6f8] pt-[calc(var(--site-header-height,88px)+14px)] pb-8 md:pb-12 font-sans overflow-x-hidden">
       {/* ── Hero (near full width) ───────────────── */}
       <div className="px-2 md:px-4 lg:px-6">
         <div className="relative">
@@ -166,51 +136,34 @@ const About = () => {
                 {content.aboutHeadline}
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
+              <div className="flex flex-row gap-2.5 pt-1">
                 <NavLink
                   to="/contact"
-                  className="h-[46px] md:h-[54px] px-5 md:px-7 rounded-[12px] bg-[#C9A84C] hover:bg-[#b5933c] active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(201,168,76,0.22)] text-white font-bold uppercase tracking-[0.12em] text-[11px] md:text-[12px] inline-flex items-center justify-center"
+                  className="flex-1 sm:flex-none h-[46px] md:h-[54px] px-4 md:px-7 rounded-[12px] bg-[#C9A84C] hover:bg-[#b5933c] active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(201,168,76,0.22)] text-white font-bold uppercase tracking-[0.08em] md:tracking-[0.12em] text-[10px] md:text-[12px] inline-flex items-center justify-center text-center"
                 >
                   Get in Touch
                 </NavLink>
                 <NavLink
                   to="/citizenship"
-                  className="h-[46px] md:h-[54px] px-5 md:px-7 rounded-[12px] bg-white/95 hover:bg-white active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(0,0,0,0.16)] text-[#0a2769] font-extrabold uppercase tracking-[0.12em] text-[11px] md:text-[12px] inline-flex items-center justify-center"
+                  className="flex-1 sm:flex-none h-[46px] md:h-[54px] px-4 md:px-7 rounded-[12px] bg-white/95 hover:bg-white active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(0,0,0,0.16)] text-[#0a2769] font-extrabold uppercase tracking-[0.08em] md:tracking-[0.12em] text-[10px] md:text-[12px] inline-flex items-center justify-center text-center"
                 >
                   Explore Programmes
                 </NavLink>
               </div>
-
-              <div className="md:hidden pt-1">
-                <HeroGetInTouchBadge className="w-[120px] h-[120px] flex" />
-              </div>
             </div>
           </section>
 
-          <HeroGetInTouchBadge className="hidden md:flex w-[146px] h-[146px] lg:w-[158px] lg:h-[158px] absolute bottom-4 md:bottom-5 right-4 md:right-7 lg:right-10 md:-translate-x-5 lg:-translate-x-7 z-20" />
         </div>
       </div>
 
       {/* ── Constrained Content (max 1400px) ───── */}
-      <div className="max-w-[1400px] mx-auto px-3 md:px-6 mt-5 md:mt-8 flex flex-col gap-5 md:gap-8">
+      <div className="max-w-[1400px] mx-auto px-3 md:px-6 mt-0 flex flex-col gap-0">
         {/* ── About Narrative ───────────────────── */}
         <motion.section
           {...fadeInUp}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 items-stretch py-8 md:py-12"
         >
-          <div className="lg:col-span-7 bg-white rounded-[18px] md:rounded-[24px] p-5 md:p-8 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)]">
-            <SectionLabel>About RK Global</SectionLabel>
-            <h2 className="text-[#0a2769] text-[26px] md:text-[44px] leading-[1.06] font-extrabold tracking-tight mt-2">
-              A disciplined, transparent approach to every engagement.
-            </h2>
-            <div className="mt-4 md:mt-5 flex flex-col gap-3 text-[#6a7a88] text-[13px] md:text-[15px] leading-[1.75]">
-              {content.aboutParagraphs.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:col-span-5 bg-white rounded-[18px] md:rounded-[24px] p-5 md:p-6 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)] overflow-hidden">
+          <div className="lg:col-span-5 bg-white rounded-[18px] md:rounded-[24px] p-5 md:p-6 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)] overflow-hidden order-1 lg:order-2">
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               <div className="col-span-2 aspect-[16/7] md:aspect-[16/8] overflow-hidden rounded-[16px] md:rounded-[20px] relative group">
                 <img
@@ -248,47 +201,95 @@ const About = () => {
               </div>
             </div>
           </div>
+
+          <div className="lg:col-span-7 bg-white rounded-[18px] md:rounded-[24px] p-5 md:p-8 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)] order-2 lg:order-1">
+            <SectionLabel>About RK Global</SectionLabel>
+            <h2 className="text-[#0a2769] text-[26px] md:text-[44px] leading-[1.06] font-extrabold tracking-tight mt-2">
+              A disciplined, transparent approach to every engagement.
+            </h2>
+            <div className="mt-4 md:mt-5 flex flex-col gap-3 text-[#6a7a88] text-[13px] md:text-[15px] leading-[1.75]">
+              {content.aboutParagraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+          </div>
         </motion.section>
 
         {/* ── Mission / Vision ───────────────────── */}
-        <motion.section {...fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-          <div className="bg-white rounded-[18px] md:rounded-[24px] p-5 md:p-8 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)] relative overflow-hidden">
-            <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-[#C9A84C]/10 blur-2xl" />
-            <div className="flex items-start gap-3">
-              <div className="w-11 h-11 rounded-[14px] bg-[#0a2769]/10 text-[#0a2769] flex items-center justify-center shrink-0">
-                <Target size={22} />
-              </div>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-[#0a2769] text-[20px] md:text-[26px] font-extrabold tracking-tight">
-                  Mission
-                </h3>
-                <p className="text-[#6a7a88] text-[13px] md:text-[15px] leading-[1.75]">
-                  {content.mission}
-                </p>
-              </div>
-            </div>
-          </div>
+        <motion.section {...fadeInUp} className="grid grid-cols-1 xl:grid-cols-12 gap-4 md:gap-6 py-8 md:py-12">
+          <motion.div
+            initial={{ opacity: 0, x: -28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            whileHover={{ y: -6, scale: 1.01 }}
+            className="xl:col-span-5 relative overflow-hidden rounded-[22px] md:rounded-[28px] min-h-[260px] md:min-h-[420px] border border-[#d7e1f0] shadow-[0_18px_48px_rgba(10,39,105,0.10)]"
+          >
+            <img
+              src={imageB}
+              alt="Strategic planning and global mobility vision"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#071b49]/92 via-[#0a2769]/78 to-[#c9a84c]/24" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.18),transparent_38%)]" />
+          </motion.div>
 
-          <div className="bg-white rounded-[18px] md:rounded-[24px] p-5 md:p-8 border border-[#e4e9f0] shadow-[0_4px_32px_rgba(10,39,105,0.04)] relative overflow-hidden">
-            <div className="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-[#0a2769]/10 blur-2xl" />
-            <div className="flex items-start gap-3">
-              <div className="w-11 h-11 rounded-[14px] bg-[#C9A84C]/15 text-[#0a2769] flex items-center justify-center shrink-0">
-                <Eye size={22} />
-              </div>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-[#0a2769] text-[20px] md:text-[26px] font-extrabold tracking-tight">
-                  Vision
-                </h3>
-                <p className="text-[#6a7a88] text-[13px] md:text-[15px] leading-[1.75]">
-                  {content.vision}
-                </p>
-              </div>
-            </div>
+          <div className="xl:col-span-7 grid grid-cols-1 gap-4 md:gap-6">
+            {[
+              {
+                key: 'mission',
+                title: 'Mission',
+                text: content.mission,
+                Icon: Target,
+                accent: 'from-[#0a2769] to-[#18479e]',
+                glow: 'bg-[#0a2769]/10',
+              },
+              {
+                key: 'vision',
+                title: 'Vision',
+                text: content.vision,
+                Icon: Eye,
+                accent: 'from-[#c9a84c] to-[#b5933c]',
+                glow: 'bg-[#c9a84c]/15',
+              },
+            ].map(({ key, title, text, Icon, accent, glow }, index) => (
+              <motion.div
+                key={key}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.65, delay: index * 0.1, ease: 'easeOut' }}
+                whileHover={{ y: -6, scale: 1.01 }}
+                className="group relative overflow-hidden rounded-[22px] md:rounded-[28px] border border-[#dfe7f1] bg-white p-5 md:p-7 shadow-[0_14px_40px_rgba(10,39,105,0.08)] transition-all duration-300 hover:shadow-[0_24px_52px_rgba(10,39,105,0.14)]"
+              >
+                <div className={`absolute -right-10 -top-10 h-36 w-36 rounded-full blur-3xl ${glow}`} />
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-90 transition-opacity duration-300 group-hover:opacity-100 ${accent}" />
+
+                <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-4 md:gap-5">
+                  <div className={`w-12 h-12 md:w-14 md:h-14 rounded-[16px] bg-gradient-to-br ${accent} text-white flex items-center justify-center shadow-[0_14px_28px_rgba(10,39,105,0.18)] shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+                    <Icon size={24} />
+                  </div>
+
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-[#0a2769] text-[22px] md:text-[28px] font-extrabold tracking-tight">
+                        {title}
+                      </h3>
+                      <span className="h-px flex-1 bg-gradient-to-r from-[#d6e0ed] to-transparent" />
+                    </div>
+
+                    <p className="mt-3 text-[#6a7a88] text-[13px] md:text-[15px] leading-[1.8]">
+                      {text}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.section>
 
         {/* ── Core Values ───────────────────────── */}
-        <motion.section {...fadeInUp} className="p-2 md:p-0">
+        <motion.section {...fadeInUp} className="py-8 md:py-12">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
             <div className="flex flex-col gap-2">
               <SectionLabel>{content.coreValuesIntro.title}</SectionLabel>
@@ -301,7 +302,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="mt-5 md:mt-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+          <div className="mt-4 md:mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {content.coreValues.map(({ title, description, Icon }) => (
               <div
                 key={title}
@@ -322,7 +323,7 @@ const About = () => {
         </motion.section>
 
         {/* ── Global Reach ──────────────────────── */}
-        <motion.section {...fadeInUp} className="p-2 md:p-0 overflow-hidden">
+        <motion.section {...fadeInUp} className="py-8 md:py-12 overflow-hidden">
           <SectionLabel>Global Reach</SectionLabel>
           <h2 className="text-[#0a2769] text-[26px] md:text-[44px] leading-[1.06] font-extrabold tracking-tight mt-2">
             {content.reachTitle}
@@ -332,7 +333,7 @@ const About = () => {
           </p>
 
           <div
-            className="mt-5 md:mt-7 overflow-hidden"
+            className="mt-4 md:mt-6 overflow-hidden"
             style={{
               WebkitMaskImage:
                 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
@@ -360,7 +361,7 @@ const About = () => {
         {/* ── CTA Banner ───────────────────────── */}
         <motion.section
           {...fadeInUp}
-          className="relative overflow-hidden rounded-[20px] md:rounded-[30px] min-h-[250px] md:min-h-[340px] flex items-center px-5 md:px-8 lg:px-10 py-7 md:py-10 bg-cover bg-center shadow-[0_20px_60px_rgba(10,39,105,0.2)]"
+          className="relative overflow-hidden rounded-[20px] md:rounded-[30px] min-h-[250px] md:min-h-[340px] flex items-center px-5 md:px-8 lg:px-10 py-7 md:py-10 bg-cover bg-center shadow-[0_20px_60px_rgba(10,39,105,0.2)] my-8 md:my-12"
         >
           <img src={ctaBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-[#0a2769]/75" />

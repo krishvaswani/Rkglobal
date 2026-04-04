@@ -11,7 +11,7 @@ const ProgramProcess = ({ program }) => {
   }));
 
   return (
-    <section className="w-full bg-white py-10 md:py-20">
+    <section className="w-full bg-white py-8 md:py-12">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 text-center mb-6 md:mb-10">
         <h2 className="text-[24px] md:text-[40px] font-extrabold text-[#111] uppercase tracking-tight leading-[1.15] mb-3 mx-auto">
           {`Step-by-Step Process for ${program.name} ${program.categoryLabel || 'Citizenship by Investment'}`}

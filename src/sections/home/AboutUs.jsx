@@ -41,7 +41,7 @@ const AboutUs = () => {
   );
 
   return (
-    <section className="w-full py-10 md:py-20 px-4 md:px-8 bg-white overflow-hidden">
+    <section className="w-full py-8 md:py-12 px-4 md:px-8 bg-white overflow-hidden">
       <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-[4rem]">
 
         {/* Desktop & Mobile Heading (on mobile it stays at very top of this column) */}

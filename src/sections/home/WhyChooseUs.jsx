@@ -56,11 +56,11 @@ const WhyChooseUs = () => {
 
   return (
     <section 
-      className="w-full py-10 md:py-20 bg-[#fafafc] overflow-hidden flex flex-col items-center font-sans"
+      className="w-full py-8 md:py-12 bg-[#fafafc] overflow-hidden flex flex-col items-center font-sans"
     >
       
       {/* Background Header */}
-      <div className="w-full text-center px-4 z-20 mb-10 md:mb-16">
+      <div className="w-full text-center px-4 z-20 mb-8 md:mb-10">
         <h2 className="text-[30px] leading-[141%] md:text-4xl font-bold text-black uppercase tracking-tight mb-4">
           Why Choose Us
         </h2>
@@ -69,7 +69,7 @@ const WhyChooseUs = () => {
         </p>
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto h-auto md:h-[500px] lg:h-[600px] flex flex-col md:block items-center justify-center md:mt-10">
+      <div className="relative w-full max-w-6xl mx-auto h-auto md:h-[500px] lg:h-[600px] flex flex-col md:block items-center justify-center md:mt-4">
         
         {/* Center Globe Background Elements */}
         <div className="md:absolute md:inset-0 flex justify-center z-0 pointer-events-none mb-8 md:mb-0">

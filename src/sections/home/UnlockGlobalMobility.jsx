@@ -5,7 +5,7 @@ import unlockMobileBanner from '../../assets/images/unlock-global-mobile.png';
 
 const UnlockGlobalMobility = () => {
   return (
-    <section className="w-full py-10 md:py-20 px-4 md:px-8 flex justify-center">
+    <section className="w-full py-8 md:py-12 px-4 md:px-8 flex justify-center">
       <div className="w-full max-w-screen-xl rounded-[24px] overflow-hidden relative shadow-sm min-h-[560px] md:min-h-[420px] lg:min-h-[460px] flex items-start md:items-center bg-[#092257] md:bg-transparent">
         
         {/* Mobile Background Image */}

@@ -100,13 +100,13 @@ const ResidencePrograms = () => {
   return (
     <div className="w-full bg-gray-50">
       <section
-        className="w-full py-10 md:py-20 bg-white overflow-hidden shadow-sm"
+        className="w-full py-8 md:py-12 bg-white overflow-hidden shadow-sm"
         style={{ fontFamily: "'Outfit', 'Inter', system-ui, sans-serif" }}
       >
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex flex-col items-center">
           
           {/* Header */}
-          <div className="text-center mb-2 md:mb-16">
+          <div className="text-center mb-6 md:mb-10">
             <h2
               className="font-bold text-gray-900 uppercase mb-4 text-[30px] leading-[141%] md:text-[40px] md:leading-normal"
             >
@@ -122,7 +122,7 @@ const ResidencePrograms = () => {
           {/* Carousel / Card Grid */}
           <div 
             ref={scrollContainerRef}
-            className="flex flex-nowrap overflow-x-auto w-full gap-4 md:gap-6 lg:gap-8 pb-12 pt-4 px-4 md:px-8 lg:px-0 snap-x snap-mandatory hide-scrollbar justify-start" 
+            className="flex flex-nowrap overflow-x-auto w-full gap-4 md:gap-6 lg:gap-8 pb-8 pt-2 px-4 md:px-8 lg:px-0 snap-x snap-mandatory hide-scrollbar justify-start" 
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <style dangerouslySetInnerHTML={{__html: `
@@ -237,7 +237,7 @@ const ResidencePrograms = () => {
           </div>
 
           {/* Carousel Indicators */}
-          <div className="flex items-center justify-center gap-2 mt-12 w-full">
+          <div className="flex items-center justify-center gap-2 mt-8 w-full">
             {programs.map((prog) => (
               <div 
                 key={prog.id}

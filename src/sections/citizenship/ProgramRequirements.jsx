@@ -4,7 +4,7 @@ import requirementsBg from '../../assets/images/500M.png';
 
 const ProgramRequirements = ({ program }) => {
   return (
-    <section className="w-full py-10 md:py-20 bg-[#012BFF0A] font-sans px-4 md:px-8">
+    <section className="w-full py-8 md:py-12 bg-[#012BFF0A] font-sans px-4 md:px-8">
       <div className="max-w-[1400px] mx-auto flex flex-col">
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4 md:gap-10 mb-6 md:mb-12">
           <div className="flex-1">

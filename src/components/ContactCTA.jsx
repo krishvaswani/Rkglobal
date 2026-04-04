@@ -4,7 +4,7 @@ import bgImage from '../assets/images/got-any-question.png';
 
 const ContactCTA = () => {
   return (
-    <section className="w-full py-10 md:py-20 px-4 md:px-8 bg-white flex justify-center font-sans">
+    <section className="w-full py-8 md:py-12 px-4 md:px-8 bg-white flex justify-center font-sans">
       <div
         className="max-w-[1400px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden min-h-[290px] md:min-h-[450px] flex items-center justify-center p-4 md:p-16 relative bg-[#02050a] bg-inherit bg-center bg-no-repeat"
         style={{ backgroundImage: `url('${bgImage}')` }}

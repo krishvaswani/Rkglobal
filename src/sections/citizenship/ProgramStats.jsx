@@ -8,7 +8,7 @@ const statIcons = [donationIcon, realEstateIcon, timeIcon, visaIcon];
 
 const ProgramStats = ({ stats }) => {
   return (
-    <section className="w-full pb-10 md:pb-20 px-4 md:px-8 bg-transparent flex justify-center font-sans">
+    <section className="w-full pb-8 md:pb-12 px-4 md:px-8 bg-transparent flex justify-center font-sans">
       <div className="max-w-[1400px] mx-auto w-full grid grid-cols-2 lg:flex lg:flex-wrap justify-center gap-3 md:gap-[30px]">
         {stats.map((stat, idx) => {
           return (
