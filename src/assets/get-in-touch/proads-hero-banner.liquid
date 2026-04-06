@@ -1,0 +1,605 @@
+{% comment %}
+  Section: PROADS Click & Comb Hero Banner
+  Figma Node: 3678:24
+  Fully responsive with Shopify Schema
+{% endcomment %}
+
+<section
+  id="proads-hero-{{ section.id }}"
+  class="proads-hero-section"
+  style="
+    --hero-bg-from: {{ section.settings.bg_gradient_from }};
+    --hero-bg-mid: {{ section.settings.bg_gradient_mid }};
+    --hero-bg-to: {{ section.settings.bg_gradient_to }};
+    --hero-accent: {{ section.settings.accent_color }};
+    --hero-heading: {{ section.settings.heading_color }};
+    --hero-subtext: {{ section.settings.subtext_color }};
+    --hero-border: {{ section.settings.border_color }};
+    --hero-btn-primary-bg: {{ section.settings.btn_primary_bg }};
+    --hero-btn-primary-text: {{ section.settings.btn_primary_text }};
+    --hero-btn-secondary-bg: {{ section.settings.btn_secondary_bg }};
+    --hero-btn-secondary-text: {{ section.settings.btn_secondary_text }};
+    --hero-btn-secondary-border: {{ section.settings.btn_secondary_border }};
+  "
+>
+  <div class="proads-hero-outer">
+    <div class="proads-hero-inner">
+
+      {% comment %} Background Banner Image {% endcomment %}
+      {% if section.settings.background_image != blank %}
+        <div class="proads-hero-bg-image">
+          <img
+            src="{{ section.settings.background_image | img_url: '1600x' }}"
+            srcset="
+              {{ section.settings.background_image | img_url: '600x' }} 600w,
+              {{ section.settings.background_image | img_url: '900x' }} 900w,
+              {{ section.settings.background_image | img_url: '1200x' }} 1200w,
+              {{ section.settings.background_image | img_url: '1600x' }} 1600w
+            "
+            sizes="(max-width: 768px) 100vw, 1600px"
+            alt="{{ section.settings.background_image.alt | escape }}"
+            loading="eager"
+            width="1600"
+            height="400"
+          >
+        </div>
+      {% endif %}
+
+      {% comment %} Content Area {% endcomment %}
+      <div class="proads-hero-content">
+
+        {% comment %} Eyebrow / Label {% endcomment %}
+        {% if section.settings.eyebrow != blank %}
+          <p class="proads-hero-eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+
+        {% comment %} Heading {% endcomment %}
+        {% if section.settings.heading != blank %}
+          <h1 class="proads-hero-heading">{{ section.settings.heading }}</h1>
+        {% endif %}
+
+        {% comment %} Subheading {% endcomment %}
+        {% if section.settings.subheading != blank %}
+          <h2 class="proads-hero-subheading">{{ section.settings.subheading }}</h2>
+        {% endif %}
+
+        {% comment %} Description {% endcomment %}
+        {% if section.settings.description != blank %}
+          <p class="proads-hero-description">{{ section.settings.description }}</p>
+        {% endif %}
+
+        {% comment %} Buttons {% endcomment %}
+        <div class="proads-hero-buttons">
+          {% if section.settings.btn_primary_label != blank and section.settings.btn_primary_url != blank %}
+            <a
+              href="{{ section.settings.btn_primary_url }}"
+              class="proads-hero-btn proads-hero-btn--primary"
+              {% if section.settings.btn_primary_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+            >
+              {{ section.settings.btn_primary_label }}
+            </a>
+          {% endif %}
+
+          {% if section.settings.btn_secondary_label != blank and section.settings.btn_secondary_url != blank %}
+            <a
+              href="{{ section.settings.btn_secondary_url }}"
+              class="proads-hero-btn proads-hero-btn--secondary"
+              {% if section.settings.btn_secondary_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+            >
+              {{ section.settings.btn_secondary_label }}
+            </a>
+          {% endif %}
+        </div>
+
+      </div>
+      {% comment %} End Content Area {% endcomment %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ============================================
+     PROADS HERO BANNER — Section Styles
+     ============================================ */
+
+  .proads-hero-section {
+    width: 100%;
+    padding: {{ section.settings.section_padding_top }}px {{ section.settings.section_padding_side }}px {{ section.settings.section_padding_bottom }}px;
+    box-sizing: border-box;
+    background-color: rgba(255, 253, 250, 0.96);
+  }
+
+  .proads-hero-outer {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .proads-hero-inner {
+    position: relative;
+    border-radius: 28px;
+    border: 1px solid var(--hero-border);
+    overflow: hidden;
+    background: linear-gradient(152.89deg, var(--hero-bg-from) 0%, var(--hero-bg-mid) 58%, var(--hero-bg-to) 100%);
+    box-shadow: 0 18px 48px 0 rgba(31, 26, 23, 0.08);
+    min-height: {{ section.settings.min_height_desktop }}px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Background Image */
+  .proads-hero-bg-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .proads-hero-bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    display: block;
+    border-radius: 24px;
+  }
+
+  /* Content */
+  .proads-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 40px 40px;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Eyebrow */
+  .proads-hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2.16px;
+    text-transform: uppercase;
+    color: var(--hero-accent);
+    margin: 0 0 18px 0;
+    line-height: 1.2;
+  }
+
+  /* Heading */
+  .proads-hero-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 0.96;
+    letter-spacing: -2.86px;
+    color: var(--hero-heading);
+    margin: 0 0 16px 0;
+  }
+
+  /* Subheading */
+  .proads-hero-subheading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -1.05px;
+    color: var(--hero-heading);
+    margin: 0 0 14px 0;
+  }
+
+  /* Description */
+  .proads-hero-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--hero-subtext);
+    margin: 0 0 28px 0;
+  }
+
+  /* Buttons */
+  .proads-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .proads-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 0 28px;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+  }
+
+  .proads-hero-btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(31, 26, 23, 0.18);
+  }
+
+  .proads-hero-btn:active {
+    transform: translateY(0);
+  }
+
+  .proads-hero-btn--primary {
+    background-color: var(--hero-btn-primary-bg);
+    border-color: var(--hero-btn-primary-bg);
+    color: var(--hero-btn-primary-text);
+  }
+
+  .proads-hero-btn--secondary {
+    background-color: var(--hero-btn-secondary-bg);
+    border-color: var(--hero-btn-secondary-border);
+    color: var(--hero-btn-secondary-text);
+  }
+
+  /* ============================================
+     RESPONSIVE — Tablet (max 1024px)
+     ============================================ */
+  @media screen and (max-width: 1024px) {
+    .proads-hero-heading {
+      font-size: 42px;
+      letter-spacing: -2px;
+    }
+
+    .proads-hero-subheading {
+      font-size: 20px;
+    }
+
+    .proads-hero-content {
+      max-width: 480px;
+    }
+
+    .proads-hero-inner {
+      min-height: 300px;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE — Mobile (max 768px)
+     ============================================ */
+  @media screen and (max-width: 768px) {
+    .proads-hero-section {
+      padding: {{ section.settings.section_padding_top | divided_by: 1.5 | round }}px 16px {{ section.settings.section_padding_bottom | divided_by: 1.5 | round }}px;
+    }
+
+    .proads-hero-inner {
+      min-height: {{ section.settings.min_height_mobile }}px;
+      border-radius: 20px;
+      align-items: flex-end;
+    }
+
+    .proads-hero-bg-image {
+      border-radius: 20px;
+    }
+
+    .proads-hero-bg-image img {
+      object-position: center top;
+      border-radius: 20px;
+    }
+
+    /* Semi-transparent overlay on mobile for readability */
+    .proads-hero-inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: 20px;
+      background: linear-gradient(
+        to top,
+        rgba(255, 246, 235, 0.95) 0%,
+        rgba(255, 246, 235, 0.75) 50%,
+        rgba(255, 246, 235, 0.1) 100%
+      );
+    }
+
+    .proads-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 28px 24px 32px;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .proads-hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      margin-bottom: 12px;
+    }
+
+    .proads-hero-heading {
+      font-size: 30px;
+      letter-spacing: -1.2px;
+      line-height: 1.0;
+      margin-bottom: 10px;
+    }
+
+    .proads-hero-subheading {
+      font-size: 17px;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .proads-hero-description {
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .proads-hero-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .proads-hero-btn {
+      width: 100%;
+      justify-content: center;
+      height: 48px;
+      font-size: 14px;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE — Small Mobile (max 480px)
+     ============================================ */
+  @media screen and (max-width: 480px) {
+    .proads-hero-heading {
+      font-size: 26px;
+      letter-spacing: -0.8px;
+    }
+
+    .proads-hero-subheading {
+      font-size: 15px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PROADS Hero Banner",
+  "tag": "section",
+  "class": "proads-hero-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow / Label",
+      "default": "PROADS Click & Comb",
+      "info": "Small uppercase label above the heading"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "India's First Pre-Filled\nColor Comb System"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Clean. Controlled. Fast Grey Coverage."
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "New-age innovation for people who value their time."
+    },
+    {
+      "type": "header",
+      "content": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Recommended: 1600×400px or larger, right-aligned subject"
+    },
+    {
+      "type": "header",
+      "content": "Primary Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_primary_label",
+      "label": "Primary Button Label",
+      "default": "Choose Your Shade"
+    },
+    {
+      "type": "url",
+      "id": "btn_primary_url",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "btn_primary_new_tab",
+      "label": "Open in new tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Secondary Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_label",
+      "label": "Secondary Button Label",
+      "default": "Watch How It Works"
+    },
+    {
+      "type": "url",
+      "id": "btn_secondary_url",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "btn_secondary_new_tab",
+      "label": "Open in new tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow / Accent Color",
+      "default": "#cc5500"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading & Subheading Color",
+      "default": "#1f1a17"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Description Text Color",
+      "default": "#6f665f"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Card Border Color",
+      "default": "#eadfd5"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_from",
+      "label": "Background Gradient: Start",
+      "default": "#fbf6ef"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_mid",
+      "label": "Background Gradient: Mid",
+      "default": "#fffdfa"
+    },
+    {
+      "type": "color",
+      "id": "bg_gradient_to",
+      "label": "Background Gradient: End",
+      "default": "#f8eee4"
+    },
+    {
+      "type": "header",
+      "content": "Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "btn_primary_bg",
+      "label": "Primary Button Background",
+      "default": "#1f1a17"
+    },
+    {
+      "type": "color",
+      "id": "btn_primary_text",
+      "label": "Primary Button Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_secondary_bg",
+      "label": "Secondary Button Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_secondary_text",
+      "label": "Secondary Button Text",
+      "default": "#1f1a17"
+    },
+    {
+      "type": "color",
+      "id": "btn_secondary_border",
+      "label": "Secondary Button Border",
+      "default": "#1f1a17"
+    },
+    {
+      "type": "header",
+      "content": "Layout & Spacing"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max Content Width (px)",
+      "min": 960,
+      "max": 1600,
+      "step": 40,
+      "default": 1320
+    },
+    {
+      "type": "range",
+      "id": "min_height_desktop",
+      "label": "Min Height — Desktop (px)",
+      "min": 240,
+      "max": 560,
+      "step": 10,
+      "default": 376
+    },
+    {
+      "type": "range",
+      "id": "min_height_mobile",
+      "label": "Min Height — Mobile (px)",
+      "min": 360,
+      "max": 640,
+      "step": 10,
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_side",
+      "label": "Section Side Padding (px)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "PROADS Hero Banner",
+      "category": "Hero"
+    }
+  ]
+}
+{% endschema %}

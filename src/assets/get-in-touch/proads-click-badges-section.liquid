@@ -1,0 +1,554 @@
+{% comment %}
+  Section: PROADS Feature Badges / Trust Stamps
+  Figma Node: 3678:46
+  Features:
+    - Centered header card with eyebrow, heading, description lines
+    - Up to 6 circular badge items, each supporting image / SVG / PNG upload
+    - Each badge has an optional text label below
+    - Fully responsive (desktop grid → tablet wrap → mobile scroll or wrap)
+{% endcomment %}
+
+<section
+  id="proads-badges-{{ section.id }}"
+  class="proads-badges-section"
+  style="
+    --badge-accent: {{ section.settings.accent_color }};
+    --badge-heading-color: {{ section.settings.heading_color }};
+    --badge-subtext-color: {{ section.settings.subtext_color }};
+    --badge-card-bg: {{ section.settings.card_bg }};
+    --badge-card-border: {{ section.settings.card_border }};
+    --badge-item-bg: {{ section.settings.badge_item_bg }};
+    --badge-item-border: {{ section.settings.badge_item_border }};
+    --badge-size: {{ section.settings.badge_size }}px;
+  "
+>
+  <div class="proads-badges-outer">
+
+    {% comment %} ——— Header Card ——— {% endcomment %}
+    <div class="proads-badges-header-card">
+      {% if section.settings.eyebrow != blank %}
+        <p class="proads-badges-eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="proads-badges-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <p class="proads-badges-description">{{ section.settings.description }}</p>
+      {% endif %}
+      {% if section.settings.sub_description != blank %}
+        <p class="proads-badges-subdescription">{{ section.settings.sub_description }}</p>
+      {% endif %}
+    </div>
+
+    {% comment %} ——— Badge Items ——— {% endcomment %}
+    {% if section.blocks.size > 0 %}
+      <div class="proads-badges-grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'badge' %}
+            <div class="proads-badge-item" {{ block.shopify_attributes }}>
+
+              <div class="proads-badge-circle">
+                {% if block.settings.badge_image != blank %}
+                  {% comment %} Uploaded image (PNG, JPG, SVG via Files) {% endcomment %}
+                  <img
+                    src="{{ block.settings.badge_image | img_url: '480x' }}"
+                    srcset="
+                      {{ block.settings.badge_image | img_url: '240x' }} 240w,
+                      {{ block.settings.badge_image | img_url: '480x' }} 480w
+                    "
+                    sizes="{{ section.settings.badge_size }}px"
+                    alt="{{ block.settings.badge_image.alt | default: block.settings.badge_label | escape }}"
+                    width="{{ section.settings.badge_size }}"
+                    height="{{ section.settings.badge_size }}"
+                    loading="lazy"
+                    class="proads-badge-img"
+                  >
+                {% elsif block.settings.badge_svg != blank %}
+                  {% comment %} Raw SVG code pasted by merchant {% endcomment %}
+                  <div class="proads-badge-svg-wrap">
+                    {{ block.settings.badge_svg }}
+                  </div>
+                {% else %}
+                  {% comment %} Placeholder when no image is set {% endcomment %}
+                  <div class="proads-badge-placeholder">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+                      <path d="M20 12v16M12 20h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <span>Add badge</span>
+                  </div>
+                {% endif %}
+              </div>
+
+              {% if block.settings.badge_label != blank %}
+                <p class="proads-badge-label">{{ block.settings.badge_label }}</p>
+              {% endif %}
+
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  /* ============================================================
+     PROADS BADGES SECTION — Styles
+     ============================================================ */
+
+  .proads-badges-section {
+    width: 100%;
+    padding: {{ section.settings.section_padding_top }}px {{ section.settings.section_padding_side }}px {{ section.settings.section_padding_bottom }}px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.96);
+  }
+
+  .proads-badges-outer {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  /* ——— Header Card ——— */
+  .proads-badges-header-card {
+    background-color: var(--badge-card-bg);
+    border: 1px solid var(--badge-card-border);
+    border-radius: 22px;
+    box-shadow: 0 8px 24px 0 rgba(31, 26, 23, 0.03);
+    padding: 36px 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .proads-badges-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2.16px;
+    text-transform: uppercase;
+    color: var(--badge-accent);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .proads-badges-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -1.05px;
+    line-height: 1.15;
+    color: var(--badge-heading-color);
+    margin: 4px 0 0;
+    max-width: 760px;
+  }
+
+  .proads-badges-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--badge-subtext-color);
+    margin: 4px 0 0;
+  }
+
+  .proads-badges-subdescription {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--badge-subtext-color);
+    margin: 2px 0 0;
+    opacity: 0.85;
+  }
+
+  /* ——— Badge Grid ——— */
+  .proads-badges-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 20px;
+  }
+
+  /* ——— Single Badge Item ——— */
+  .proads-badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 0 0 auto;
+  }
+
+  .proads-badge-circle {
+    width: var(--badge-size);
+    height: var(--badge-size);
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--badge-item-bg);
+    border: 1px solid var(--badge-item-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .proads-badge-circle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(31, 26, 23, 0.1);
+  }
+
+  /* Image badge */
+  .proads-badge-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+  }
+
+  /* SVG badge */
+  .proads-badge-svg-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .proads-badge-svg-wrap svg {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  /* Placeholder */
+  .proads-badge-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--badge-accent);
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+  }
+
+  .proads-badge-placeholder span {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* Badge label */
+  .proads-badge-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--badge-heading-color);
+    text-align: center;
+    margin: 0;
+    max-width: var(--badge-size);
+    line-height: 1.3;
+  }
+
+  /* ============================================================
+     RESPONSIVE — Tablet (max 1024px)
+     ============================================================ */
+  @media screen and (max-width: 1024px) {
+    .proads-badges-heading {
+      font-size: 24px;
+    }
+
+    .proads-badges-header-card {
+      padding: 28px 28px;
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVE — Mobile (max 768px)
+     ============================================================ */
+  @media screen and (max-width: 768px) {
+    .proads-badges-section {
+      padding: {{ section.settings.section_padding_top | divided_by: 1.5 | round }}px 16px {{ section.settings.section_padding_bottom | divided_by: 1.5 | round }}px;
+    }
+
+    .proads-badges-outer {
+      gap: 24px;
+    }
+
+    .proads-badges-header-card {
+      padding: 24px 20px;
+      border-radius: 18px;
+    }
+
+    .proads-badges-heading {
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .proads-badges-description {
+      font-size: 14px;
+    }
+
+    .proads-badges-subdescription {
+      font-size: 12px;
+    }
+
+    .proads-badges-grid {
+      gap: 20px 16px;
+    }
+
+    /* On mobile, force badge size smaller via override */
+    .proads-badge-circle {
+      width: calc(var(--badge-size) * 0.72) !important;
+      height: calc(var(--badge-size) * 0.72) !important;
+    }
+
+    .proads-badge-label {
+      font-size: 11px;
+      max-width: calc(var(--badge-size) * 0.72);
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVE — Small Mobile (max 480px)
+     ============================================================ */
+  @media screen and (max-width: 480px) {
+    .proads-badges-grid {
+      gap: 16px 12px;
+    }
+
+    .proads-badge-circle {
+      width: calc(var(--badge-size) * 0.6) !important;
+      height: calc(var(--badge-size) * 0.6) !important;
+    }
+
+    .proads-badge-label {
+      font-size: 10px;
+      max-width: calc(var(--badge-size) * 0.6);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PROADS Feature Badges",
+  "tag": "section",
+  "class": "proads-badges-wrapper",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header Card Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow / Label",
+      "default": "New-Age Innovation",
+      "info": "Small uppercase label above heading"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Built for Speed. Designed for Control. Made for Real Life."
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "A smarter way to cover grey when time is limited."
+    },
+    {
+      "type": "text",
+      "id": "sub_description",
+      "label": "Sub-Description (smaller, below description)",
+      "default": "Grey coverage without the wait."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow / Accent Color",
+      "default": "#cc5500"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading & Label Color",
+      "default": "#1f1a17"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Description Text Color",
+      "default": "#6f665f"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Header Card Background",
+      "default": "#f5eae4"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Header Card Border",
+      "default": "#eadfd5"
+    },
+    {
+      "type": "color",
+      "id": "badge_item_bg",
+      "label": "Badge Circle Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "badge_item_border",
+      "label": "Badge Circle Border",
+      "default": "#eadfd5"
+    },
+    {
+      "type": "header",
+      "content": "Layout & Sizing"
+    },
+    {
+      "type": "range",
+      "id": "badge_size",
+      "label": "Badge Size (px) — Desktop",
+      "min": 140,
+      "max": 300,
+      "step": 10,
+      "default": 220,
+      "info": "Automatically scales down on tablet and mobile"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max Section Width (px)",
+      "min": 960,
+      "max": 1600,
+      "step": 40,
+      "default": 1320
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "section_padding_side",
+      "label": "Section Side Padding (px)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Badge Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "badge_image",
+          "label": "Badge Image (PNG / JPG / SVG)",
+          "info": "Upload your badge as PNG, JPG, or SVG file. This takes priority over the SVG code field below. Recommended: square image, 480×480px minimum."
+        },
+        {
+          "type": "textarea",
+          "id": "badge_svg",
+          "label": "Or Paste SVG Code",
+          "info": "Paste raw <svg>...</svg> code here if you prefer inline SVG. Only used when no image is uploaded above. The SVG will be sized to fit the badge circle.",
+          "default": ""
+        },
+        {
+          "type": "header",
+          "content": "Badge Label"
+        },
+        {
+          "type": "text",
+          "id": "badge_label",
+          "label": "Label (optional)",
+          "info": "Short text shown below the badge circle",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PROADS Feature Badges",
+      "category": "Features",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "badge_label": "Tested by Mascot Spincontrol"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "badge_label": "PROADS Trust Safety Seal"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "badge_label": "Dermatologically Tested"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "badge_label": "Non-Irritant"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "badge_label": "Designed for Repeated Use"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
