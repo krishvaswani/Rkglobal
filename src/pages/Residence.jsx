@@ -32,11 +32,11 @@ const Residence = () => {
   }
 
   return (
-    <div className="w-full min-h-screen bg-white font-sans overflow-x-hidden">
+    <div className="w-full min-h-screen bg-white font-sans" style={{ overflowX: 'clip' }}>
       <ProgramHero program={program} />
-      <CitizenshipNav sections={sections} />
 
       <div className="flex flex-col w-full gap-0">
+        <CitizenshipNav sections={sections} />
         <CountryInfo program={program} />
 
         <section id="benefit" className="w-full py-8 md:py-12 bg-[#f5f7fa]">

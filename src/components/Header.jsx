@@ -13,7 +13,6 @@ const Header = () => {
   const citizenshipCloseTimerRef = useRef(null);
   const residenceCloseTimerRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [citizenshipMenuOpen, setCitizenshipMenuOpen] = useState(false);
   const [residenceMenuOpen, setResidenceMenuOpen] = useState(false);
@@ -26,18 +25,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const lastY = lastScrollYRef.current;
-
       setIsScrolled(currentScrollY > 50);
-
-      // Hide on scroll-down, show on scroll-up
-      if (currentScrollY > lastY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else if (currentScrollY < lastY || currentScrollY <= 100) {
-        setIsVisible(true);
-      }
-
-      lastScrollYRef.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -69,7 +57,7 @@ const Header = () => {
       observer.disconnect();
       window.removeEventListener('resize', updateHeaderHeight);
     };
-  }, [isScrolled, isVisible, menuOpen, location.pathname]);
+  }, [isScrolled, menuOpen, location.pathname]);
 
   // Close menu on route change / outside scroll
   useEffect(() => {
@@ -103,10 +91,8 @@ const Header = () => {
     ? 'w-[120px] sm:w-[145px] md:w-[165px]'
     : 'w-[132px] sm:w-[165px] md:w-[190px]';
   const hamburgerColor = shouldShowBg ? '#111' : '#fff';
-  // Avoid transform-based header hiding on mobile Safari; it can cause the logo to rasterize/blur.
-  const headerTop = isVisible || menuOpen
-    ? '0px'
-    : 'calc(-1 * (var(--site-header-height, 88px) + 8px))';
+  // Always visible header
+  const headerTop = '0px';
   const citizenshipBasePath = `/citizenship/${defaultCitizenshipSlug}`;
   const residenceBasePath = `/residence/${defaultResidenceSlug}`;
   const navLinks = [
@@ -122,10 +108,9 @@ const Header = () => {
       key={program.slug}
       to={`${basePath}/${program.slug}`}
       className={({ isActive }) =>
-        `relative flex items-center gap-3 rounded-2xl border px-3 py-3 text-xs tracking-[0.08em] transition-all ${
-          isActive
-            ? 'border-[#002668] bg-[#002668] text-white shadow-lg'
-            : 'border-gray-200 bg-white text-gray-800 hover:border-gray-300 hover:bg-gray-50'
+        `relative flex items-center gap-3 rounded-2xl border px-3 py-3 text-xs tracking-[0.08em] transition-all ${isActive
+          ? 'border-[#002668] bg-[#002668] text-white shadow-lg'
+          : 'border-gray-200 bg-white text-gray-800 hover:border-gray-300 hover:bg-gray-50'
         }`
       }
     >
@@ -181,9 +166,9 @@ const Header = () => {
     <header
       ref={headerRef}
       style={{ top: headerTop }}
-      className={`p-[10px] fixed left-0 w-full z-50 transition-[top,background-color,box-shadow,backdrop-filter] duration-300 ease-in-out ${headerBgClass}`}
+      className={`fixed left-0 w-full z-50 transition-all duration-300 ease-in-out ${isScrolled ? 'p-1 md:p-0' : 'p-[10px]'} ${headerBgClass}`}
     >
-      <div className="max-w-[1350px] mx-auto w-full p-[10px]">
+      <div className={`max-w-[1200px] mx-auto w-full transition-all duration-300 ${isScrolled ? 'p-1 md:p-0' : 'p-[10px]'}`}>
         <div className="flex items-center justify-between  py-2 pointer-events-auto">
 
           {/* Logo */}
@@ -222,9 +207,8 @@ const Header = () => {
                     <div
                       onMouseEnter={openCitizenshipMenu}
                       onMouseLeave={closeCitizenshipMenuWithDelay}
-                      className={`fixed left-1/2 top-[calc(var(--site-header-height,88px)+8px)] z-50 w-screen -translate-x-1/2 px-4 md:px-6 transition-all duration-200 ${
-                      citizenshipMenuOpen ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 -translate-y-2'
-                    }`}
+                      className={`fixed left-1/2 top-[calc(var(--site-header-height,88px)+8px)] z-50 w-screen -translate-x-1/2 px-4 md:px-6 transition-all duration-200 ${citizenshipMenuOpen ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 -translate-y-2'
+                        }`}
                     >
                       <div className="mx-auto max-w-[1400px] rounded-3xl border border-gray-100 bg-white p-5 text-gray-900 shadow-2xl">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -259,9 +243,8 @@ const Header = () => {
                     <div
                       onMouseEnter={openResidenceMenu}
                       onMouseLeave={closeResidenceMenuWithDelay}
-                      className={`fixed left-1/2 top-[calc(var(--site-header-height,88px)+8px)] z-50 w-screen -translate-x-1/2 px-4 md:px-6 transition-all duration-200 ${
-                      residenceMenuOpen ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 -translate-y-2'
-                    }`}
+                      className={`fixed left-1/2 top-[calc(var(--site-header-height,88px)+8px)] z-50 w-screen -translate-x-1/2 px-4 md:px-6 transition-all duration-200 ${residenceMenuOpen ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 -translate-y-2'
+                        }`}
                     >
                       <div className="mx-auto max-w-[1400px] rounded-3xl border border-gray-100 bg-white p-5 text-gray-900 shadow-2xl">
                         <div className="grid grid-cols-4 gap-3">
@@ -334,9 +317,8 @@ const Header = () => {
                 <div key="citizenship-mobile" className="w-full">
                   <button
                     onClick={() => setCitizenshipMenuOpen((prev) => !prev)}
-                    className={`w-full py-4 border-b border-gray-100 text-sm font-bold tracking-[0.2em] text-left transition-all hover:text-[#C9A84C] ${
-                      isCitizenshipRoute ? 'text-[#C9A84C]' : 'text-gray-900'
-                    }`}
+                    className={`w-full py-4 border-b border-gray-100 text-sm font-bold tracking-[0.2em] text-left transition-all hover:text-[#C9A84C] ${isCitizenshipRoute ? 'text-[#C9A84C]' : 'text-gray-900'
+                      }`}
                   >
                     <span className="flex items-center justify-between">
                       <span>CITIZENSHIP</span>
@@ -354,8 +336,7 @@ const Header = () => {
                         to={`/citizenship/${program.slug}`}
                         onClick={() => setMenuOpen(false)}
                         className={({ isActive }) =>
-                          `block w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${
-                            isActive ? 'text-[#C9A84C]' : 'text-gray-700 hover:text-[#C9A84C]'
+                          `block w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${isActive ? 'text-[#C9A84C]' : 'text-gray-700 hover:text-[#C9A84C]'
                           }`
                         }
                       >
@@ -371,9 +352,8 @@ const Header = () => {
                 <div key="residence-mobile" className="w-full">
                   <button
                     onClick={() => setResidenceMenuOpen((prev) => !prev)}
-                    className={`w-full py-4 border-b border-gray-100 text-sm font-bold tracking-[0.2em] text-left transition-all hover:text-[#C9A84C] ${
-                      isResidenceRoute ? 'text-[#C9A84C]' : 'text-gray-900'
-                    }`}
+                    className={`w-full py-4 border-b border-gray-100 text-sm font-bold tracking-[0.2em] text-left transition-all hover:text-[#C9A84C] ${isResidenceRoute ? 'text-[#C9A84C]' : 'text-gray-900'
+                      }`}
                   >
                     <span className="flex items-center justify-between">
                       <span>RESIDENCE</span>
@@ -391,8 +371,7 @@ const Header = () => {
                         to={`/residence/${program.slug}`}
                         onClick={() => setMenuOpen(false)}
                         className={({ isActive }) =>
-                          `flex items-center gap-2 w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${
-                            isActive ? 'text-[#C9A84C]' : 'text-gray-700 hover:text-[#C9A84C]'
+                          `flex items-center gap-2 w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${isActive ? 'text-[#C9A84C]' : 'text-gray-700 hover:text-[#C9A84C]'
                           }`
                         }
                       >

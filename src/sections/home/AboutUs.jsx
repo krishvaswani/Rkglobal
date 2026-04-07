@@ -47,16 +47,16 @@ const AboutUs = () => {
         {/* Desktop & Mobile Heading (on mobile it stays at very top of this column) */}
         <div className="w-full lg:w-[60%] flex flex-col items-start gap-6">
           
-          <h2 className="text-[32px] md:text-5xl font-extrabold text-black uppercase tracking-tight">
+          <h2 className="text-[32px] md:text-4xl font-extrabold text-black uppercase tracking-tight">
             About Us
           </h2>
 
           {/* MOBILE ONLY: Images between Heading and Description */}
           <ImageGrid className="lg:hidden w-full my-2" />
 
-          <div className="flex flex-col gap-4 text-[#8C8C8C] md:text-gray-500 text-[14px] md:text-[22px] leading-[1.6] md:leading-relaxed">
+          <div className="flex flex-col gap-4 text-[#8C8C8C] md:text-gray-500 text-[14px] md:text-[18px] leading-[1.6] md:leading-relaxed">
             <p>
-              RK Global Immigration delivers a comprehensive suite of tailored residency and citizenship by investment programs, creating exceptional value for discerning clients. Through robust offshore strategies—including golden visas residencies, citizenship-by-investment pathways, international real estate, wealth management, and asset protection via sophisticated entities—we empower global families, entrepreneurs, and investors to navigate the legal and financial intricacies of international life with integrity, precision, and unwavering regulatory compliance.
+              RK Global Immigration delivers a comprehensive suite of tailored residency and citizenship by investment programs, creating exceptional value for discerning clients. Through robust offshore strategies including golden visas residencies, citizenship-by-investment pathways, international real estate, wealth management, and asset protection via sophisticated entities we empower global families, entrepreneurs, and investors to navigate the legal and financial intricacies of international life with integrity, precision, and unwavering regulatory compliance.
             </p>
           </div>
 

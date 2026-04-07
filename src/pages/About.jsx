@@ -139,13 +139,13 @@ const About = () => {
               <div className="flex flex-row gap-2.5 pt-1">
                 <NavLink
                   to="/contact"
-                  className="flex-1 sm:flex-none h-[46px] md:h-[54px] px-4 md:px-7 rounded-[12px] bg-[#C9A84C] hover:bg-[#b5933c] active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(201,168,76,0.22)] text-white font-bold uppercase tracking-[0.08em] md:tracking-[0.12em] text-[10px] md:text-[12px] inline-flex items-center justify-center text-center"
+                  className="flex-1 sm:flex-none h-[40px] md:h-[48px] px-4 md:px-6 rounded-[12px] bg-[#C9A84C] hover:bg-[#b5933c] active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(201,168,76,0.22)] text-white font-bold uppercase tracking-[0.08em] md:tracking-[0.12em] text-[9px] md:text-[11px] inline-flex items-center justify-center text-center"
                 >
                   Get in Touch
                 </NavLink>
                 <NavLink
                   to="/citizenship"
-                  className="flex-1 sm:flex-none h-[46px] md:h-[54px] px-4 md:px-7 rounded-[12px] bg-white/95 hover:bg-white active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(0,0,0,0.16)] text-[#0a2769] font-extrabold uppercase tracking-[0.08em] md:tracking-[0.12em] text-[10px] md:text-[12px] inline-flex items-center justify-center text-center"
+                  className="flex-1 sm:flex-none h-[40px] md:h-[48px] px-4 md:px-6 rounded-[12px] bg-white/95 hover:bg-white active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(0,0,0,0.16)] text-[#0a2769] font-extrabold uppercase tracking-[0.08em] md:tracking-[0.12em] text-[9px] md:text-[11px] inline-flex items-center justify-center text-center"
                 >
                   Explore Programmes
                 </NavLink>

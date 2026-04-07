@@ -3,84 +3,88 @@ import { flushSync } from 'react-dom';
 
 const CitizenshipNav = ({ sections }) => {
   const navRef = useRef(null);
+  const lastScrollY = useRef(0);
   const [activeSection, setActiveSection] = useState(sections[0].id);
-  const [isSticky, setIsSticky] = useState(false);
+  const [navHeight, setNavHeight] = useState(0);
 
-  const getHeaderHeight = () => {
-    const headerHeight = parseFloat(
+  // Single source of truth — always reads live DOM values
+  const getLiveOffset = () => {
+    const headerH = parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue('--site-header-height')
-    );
-
-    return Number.isNaN(headerHeight) ? 88 : headerHeight;
+    ) || 88;
+    const navH = navRef.current?.offsetHeight || 0;
+    return headerH + navH + 8;
   };
 
-  const getStickyTop = () => getHeaderHeight() + 8;
-
-  const getScrollOffset = () => {
-    const navHeight = navRef.current?.offsetHeight ?? 0;
-    return getStickyTop() + navHeight + 24;
-  };
-
-  const handleScroll = (id) => {
-    // Activate sticky mode on first filter click — flush synchronously
-    // so the DOM reflects position:sticky before the scroll starts
-    if (!isSticky) {
-      flushSync(() => setIsSticky(true));
-    }
+  const handleNavClick = (id) => {
+    // Immediately highlight the clicked section
+    setActiveSection(id);
 
     const element = document.getElementById(id);
     if (element) {
-      const offset = getScrollOffset();
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      const offset = getLiveOffset();
+      const top = element.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+    if (navRef.current) {
+      setNavHeight(navRef.current.offsetHeight);
+    }
+  }, []);
+
+  useEffect(() => {
+    const updateActive = () => {
+      const offset = getLiveOffset();
+      let current = sections[0].id;
+
+      sections.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top;
+          // Section is active once its top has scrolled up past the sticky bars
+          if (top <= offset + 4) {
+            current = id;
           }
-        });
-      },
-      {
-        threshold: 0.35,
-        rootMargin: `-${getScrollOffset()}px 0px -45% 0px`,
-      }
-    );
+        }
+      });
 
-    sections.forEach(({ id }) => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.style.scrollMarginTop = `${getScrollOffset()}px`;
-        observer.observe(element);
-      }
-    });
+      setActiveSection(current);
+    };
 
-    return () => observer.disconnect();
+    // Keep scrollMarginTop in sync so CSS scroll-margin works too
+    const syncMargins = () => {
+      const offset = getLiveOffset();
+      sections.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el) el.style.scrollMarginTop = `${offset}px`;
+      });
+    };
+
+    syncMargins();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+
+    return () => window.removeEventListener('scroll', updateActive);
   }, [sections]);
 
   return (
     <div
       ref={navRef}
-      className={`${isSticky ? 'sticky' : 'relative'} z-40 w-full bg-white/92 backdrop-blur-md  md:px-8 py-3 md:py-8 border-b border-gray-100 shadow-sm overflow-x-auto no-scrollbar`}
-      style={isSticky ? { top: 'calc(var(--site-header-height, 88px) + 8px)' } : {}}
+      className="sticky z-40 w-full bg-white/92 backdrop-blur-md md:px-8 py-2 md:py-4 border-b border-gray-100 shadow-sm overflow-x-auto no-scrollbar transition-all duration-300 ease-in-out"
+      style={{
+        top: 'var(--site-header-height, 88px)'
+      }}
     >
-      <div className="max-w-[1400px] mx-auto px-4 md:px-0 flex flex-row items-center gap-3 md:gap-8 justify-start md:justify-center min-w-max">
+      <div className="max-w-[1240px] mx-auto px-4 md:px-0 flex flex-row items-center gap-3 md:gap-8 justify-start md:justify-center min-w-max">
         {sections.map(({ id, label }) => (
           <button
             key={id}
-            onClick={() => handleScroll(id)}
-            className={`flex items-center justify-center min-w-[124px] md:min-w-[177px] h-[48px] md:h-[80px] px-5 md:px-8 rounded-full text-[12px] md:text-[18px] font-bold transition-all duration-300 whitespace-nowrap border ${activeSection === id
-                ? 'bg-[#002668] text-white border-[#002668] shadow-lg scale-105'
-                : 'bg-white text-gray-800 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+            onClick={() => handleNavClick(id)}
+            className={`flex items-center justify-center min-w-[110px] md:min-w-[150px] h-[36px] md:h-[54px] px-4 md:px-6 rounded-full text-[11px] md:text-[15px] font-bold transition-all duration-300 whitespace-nowrap border ${activeSection === id
+              ? 'bg-[#002668] text-white border-[#002668] shadow-lg scale-105'
+              : 'bg-white text-gray-800 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
               }`}
           >
             {label}

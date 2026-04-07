@@ -111,8 +111,8 @@ const Hero = ({ page = 'home' }) => {
                 to="/contact"
                 className={`flex-1 md:flex-none rounded-[10px] bg-[#C9A84C] hover:bg-[#b5933c] hover:-translate-y-1 hover:shadow-2xl active:scale-95 text-white transition-all duration-300 ease-out shadow-xl flex items-center justify-center font-sans font-normal uppercase tracking-wider ${
                   isCitizenshipPage
-                    ? 'md:w-[180px] lg:w-[220px] h-[48px] md:h-[52px] lg:h-[58px] text-[13px] md:text-[15px] lg:text-[18px]'
-                    : 'md:w-[170px] lg:w-[200px] h-[52px] md:h-[52px] lg:h-[60px] text-[13px] md:text-[15px] lg:text-[18px]'
+                    ? 'md:w-[160px] lg:w-[190px] h-[44px] md:h-[48px] lg:h-[50px] text-[12px] md:text-[14px] lg:text-[16px]'
+                    : 'md:w-[150px] lg:w-[150px] h-[46px] md:h-[48px] lg:h-[50px] text-[12px] md:text-[14px] lg:text-[16px]'
                 }`}
               >
                 {primaryButton}
@@ -121,8 +121,8 @@ const Hero = ({ page = 'home' }) => {
                 to="/citizenship"
                 className={`flex-1 md:flex-none rounded-[10px] bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-2xl active:scale-95 text-gray-900 transition-all duration-300 ease-out shadow-xl flex items-center justify-center font-sans font-normal uppercase tracking-wider ${
                   isCitizenshipPage
-                    ? 'md:min-w-[180px] lg:min-w-[220px] md:w-auto px-5 lg:px-6 h-[48px] md:h-[52px] lg:h-[58px] text-[13px] md:text-[15px] lg:text-[18px]'
-                    : 'md:min-w-[170px] lg:min-w-[200px] md:w-auto px-6 lg:px-8 h-[52px] md:h-[52px] lg:h-[60px] text-[13px] md:text-[15px] lg:text-[18px]'
+                    ? 'md:min-w-[160px] lg:min-w-[190px] md:w-auto px-5 lg:px-6 h-[44px] md:h-[48px] lg:h-[50px] text-[12px] md:text-[14px] lg:text-[16px]'
+                    : 'md:min-w-[150px] lg:min-w-[170px] md:w-auto px-6 lg:px-8 h-[46px] md:h-[48px] lg:h-[50px] text-[12px] md:text-[14px] lg:text-[16px]'
                 }`}
               >
                 {secondaryButton}
