@@ -55,7 +55,7 @@ const Contact = () => {
 
         {/* ── Hero Banner ───────────────────────────── */}
         <section
-          className="relative overflow-hidden rounded-[20px] md:rounded-[28px] min-h-[120px] md:min-h-[350px] flex items-center justify-center px-5 md:px-8 bg-cover bg-center"
+          className="relative overflow-hidden rounded-[20px] md:rounded-[28px] min-h-[140px] md:min-h-[220px] lg:min-h-[280px] flex items-center justify-center px-5 md:px-8 bg-cover bg-center"
           style={{ backgroundImage: `url('${bannerImage}')` }}
         >
           <div className="absolute inset-0 bg-[#0a2769]/60" />

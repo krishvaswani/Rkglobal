@@ -69,18 +69,18 @@ const WhyChooseUs = () => {
         </p>
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto h-auto md:h-[500px] lg:h-[600px] flex flex-col md:block items-center justify-center md:mt-4">
+      <div className="relative w-full max-w-6xl mx-auto h-auto lg:h-[600px] flex flex-col lg:block items-center justify-center lg:mt-4">
         
         {/* Center Globe Background Elements */}
-        <div className="md:absolute md:inset-0 flex justify-center z-0 pointer-events-none mb-8 md:mb-0">
-          <img src={bgImage} alt="Why Choose Us" className="w-[280px] sm:w-[320px] md:w-[450px] lg:w-[550px] h-auto object-contain" />
+        <div className="lg:absolute lg:inset-0 flex justify-center z-0 pointer-events-none mb-8 lg:mb-0">
+          <img src={bgImage} alt="Why Choose Us" className="w-[280px] sm:w-[320px] md:w-[420px] lg:w-[550px] h-auto object-contain" />
         </div>
 
         {/* Floating Accordion Cards Container */}
         <div className="relative w-full h-full max-w-[1200px] z-20 pointer-events-none">
           {/* Card Placements using Absolute Positioning for desktop, flow for mobile */}
           
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             {/* Top Left */}
             <div className="absolute top-[5%] -left-8 pointer-events-auto">
               <AccordionCard item={accordionData[0]} isOpen={openId === 1} onToggle={() => toggleAccordion(1)} />
@@ -113,7 +113,7 @@ const WhyChooseUs = () => {
           </div>
 
           {/* Mobile Layout (flow column instead of floating) */}
-          <div className="md:hidden flex flex-col gap-4 px-4 pointer-events-auto pb-10 w-full sm:max-w-md sm:mx-auto">
+          <div className="lg:hidden flex flex-col gap-4 px-4 pointer-events-auto pb-10 w-full md:max-w-2xl md:mx-auto">
              {accordionData.map((item) => (
                <AccordionCard 
                  key={item.id} 
@@ -135,7 +135,7 @@ const AccordionCard = ({ item, isOpen, onToggle }) => {
     <div 
       className={`bg-white rounded-[35px] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-gray-100/50 
                   transition-all duration-300 ease-in-out cursor-pointer overflow-hidden backdrop-blur-sm
-                  ${isOpen ? 'w-full md:w-[380px] z-50 shadow-[0_20px_40px_rgb(0,0,0,0.08)] scale-105' : 'w-full md:w-[350px] hover:shadow-[0_12px_35px_rgb(0,0,0,0.08)]'}`}
+                  ${isOpen ? 'w-full lg:w-[380px] z-50 shadow-[0_20px_40px_rgb(0,0,0,0.08)] scale-105' : 'w-full lg:w-[350px] hover:shadow-[0_12px_35px_rgb(0,0,0,0.08)]'}`}
       onClick={onToggle}
     >
       {/* Header Button */}

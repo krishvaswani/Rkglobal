@@ -193,7 +193,7 @@ const ProcessSection = () => {
       <div className="sticky top-0 w-full h-screen overflow-hidden flex">
 
         {/* LEFT COLUMN — full height, half width */}
-        <div className="relative hidden md:flex w-1/2 h-full items-center overflow-hidden">
+        <div className="relative hidden lg:flex w-1/2 h-full items-center overflow-hidden">
 
           {/* Circle: center at left edge, dynamic responsive sizing */}
           <div
@@ -246,9 +246,9 @@ const ProcessSection = () => {
         </div>
 
         {/* MOBILE VIEW — visible only on mobile */}
-        <div className="flex md:hidden flex-col w-full h-full relative overflow-hidden pt-[10dvh] items-center">
+        <div className="flex lg:hidden flex-col w-full h-full relative overflow-hidden pt-[10dvh] items-center">
           {/* Mobile Headers */}
-          <div className="z-10 text-center px-6 max-w-[350px]">
+          <div className="z-10 text-center px-6 max-w-[350px] md:max-w-[560px]">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-4 uppercase tracking-wider">Our Process</h2>
             <p className="text-gray-500 text-sm leading-relaxed">
               We simplify the journey to residency and citizenship by investment through a clear, structured process supported by our experienced advisors at every step.
@@ -259,9 +259,9 @@ const ProcessSection = () => {
           <motion.div
             className="absolute rounded-full border border-gray-400 pointer-events-none"
             style={{
-              width: '700px',
-              height: '700px',
-              top: '-450px',
+              width: 'min(760px, 130vw)',
+              height: 'min(760px, 130vw)',
+              top: 'clamp(-470px, -40vw, -452px)',
               left: '50%',
               x: '-50%',
               rotate: useTransform(activeIndex, (val) => val * 33)
@@ -274,7 +274,7 @@ const ProcessSection = () => {
                   key={idx}
                   className="absolute top-1/2 left-[50%]"
                   style={{
-                    transform: `translate(-50%, -50%) rotate(${-idx * 33}deg) translateY(350px)`,
+                    transform: `translate(-50%, -50%) rotate(${-idx * 33}deg) translateY(calc(min(760px, 130vw) * 0.5))`,
                     transformOrigin: 'center center'
                   }}
                 >
@@ -292,7 +292,7 @@ const ProcessSection = () => {
           </motion.div>
 
           {/* Mobile Content Card */}
-          <div className="mt-[250px] w-full px-5 pb-10 z-20 flex flex-col items-center">
+          <div className="mt-[250px] md:mt-[280px] w-full px-5 pb-10 z-20 flex flex-col items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStep}
@@ -300,10 +300,10 @@ const ProcessSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-6 w-full max-w-sm border border-gray-100 min-h-[190px] flex flex-col justify-center"
+                className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] p-6 md:p-7 w-full max-w-sm md:max-w-[620px] border border-gray-100 min-h-[190px] md:min-h-[220px] flex flex-col justify-center"
               >
-                <h3 className="text-[#0a2540] text-xl font-bold tracking-tight mb-3">{processSteps[currentStep].title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <h3 className="text-[#0a2540] text-xl md:text-2xl font-bold tracking-tight mb-3">{processSteps[currentStep].title}</h3>
+                <p className="text-gray-500 text-sm md:text-base leading-relaxed">
                   {processSteps[currentStep].description}
                 </p>
               </motion.div>
@@ -323,7 +323,7 @@ const ProcessSection = () => {
 
         {/* RIGHT COLUMN — flex on desktop only */}
         <div
-          className="hidden md:flex w-1/2 flex-col justify-center h-full px-8 lg:px-16 xl:px-20 z-10"
+          className="hidden lg:flex w-1/2 flex-col justify-center h-full px-8 lg:px-16 xl:px-20 z-10"
           style={{ perspective: '1200px' }}
         >
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-4 uppercase tracking-tight">

@@ -9,7 +9,7 @@ const AboutUs = () => {
   const ImageGrid = ({ className }) => (
     <div className={`flex flex-col gap-3 ${className}`}>
       {/* Top Row */}
-      <div className="flex gap-3 h-44 sm:h-56 md:h-[260px]">
+      <div className="flex gap-3 h-44 sm:h-56 md:h-[240px] lg:h-[260px]">
         {/* Passport image */}
         <div className="w-[62%] h-full overflow-hidden rounded-3xl md:rounded-2xl shadow-sm">
           <img
@@ -30,7 +30,7 @@ const AboutUs = () => {
       </div>
 
       {/* Bottom Row */}
-      <div className="w-full h-44 sm:h-56 md:h-[240px] overflow-hidden rounded-3xl md:rounded-2xl shadow-sm">
+      <div className="w-full h-44 sm:h-56 md:h-[220px] lg:h-[240px] overflow-hidden rounded-3xl md:rounded-2xl shadow-sm">
         <img
           src={bottomImg}
           alt="Professional handshake in office"
@@ -42,17 +42,17 @@ const AboutUs = () => {
 
   return (
     <section className="w-full py-8 md:py-12 px-4 md:px-8 bg-white overflow-hidden">
-      <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-[4rem]">
+      <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-[4rem]">
 
         {/* Desktop & Mobile Heading (on mobile it stays at very top of this column) */}
-        <div className="w-full md:w-[60%] flex flex-col items-start gap-6">
+        <div className="w-full lg:w-[60%] flex flex-col items-start gap-6">
           
           <h2 className="text-[32px] md:text-5xl font-extrabold text-black uppercase tracking-tight">
             About Us
           </h2>
 
           {/* MOBILE ONLY: Images between Heading and Description */}
-          <ImageGrid className="md:hidden w-full my-2" />
+          <ImageGrid className="lg:hidden w-full my-2" />
 
           <div className="flex flex-col gap-4 text-[#8C8C8C] md:text-gray-500 text-[14px] md:text-[22px] leading-[1.6] md:leading-relaxed">
             <p>
@@ -66,7 +66,7 @@ const AboutUs = () => {
         </div>
 
         {/* DESKTOP ONLY: Images on the right */}
-        <ImageGrid className="hidden md:flex md:w-[40%] relative" />
+        <ImageGrid className="hidden lg:flex lg:w-[40%] relative" />
 
       </div>
     </section>

@@ -35,7 +35,7 @@ const ProgramProcess = ({ program }) => {
               <img
                 src={rightImage}
                 alt={`${program.name} process`}
-                className="w-full h-[190px] md:h-[560px] object-cover object-right md:object-center rounded-[14px] md:rounded-[16px]"
+                className="w-full h-[190px] sm:h-[260px] md:h-[360px] lg:h-[560px] object-contain object-right lg:object-center rounded-[14px] md:rounded-[16px]"
               />
             </div>
           </div>

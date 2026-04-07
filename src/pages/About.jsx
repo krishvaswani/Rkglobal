@@ -361,30 +361,30 @@ const About = () => {
         {/* ── CTA Banner ───────────────────────── */}
         <motion.section
           {...fadeInUp}
-          className="relative overflow-hidden rounded-[20px] md:rounded-[30px] min-h-[250px] md:min-h-[340px] flex items-center px-5 md:px-8 lg:px-10 py-7 md:py-10 bg-cover bg-center shadow-[0_20px_60px_rgba(10,39,105,0.2)] my-8 md:my-12"
+          className="relative overflow-hidden rounded-[20px] md:rounded-[30px] min-h-[180px] md:min-h-[240px] flex items-center px-6 md:px-10 lg:px-12 py-8 md:py-10 bg-cover bg-center shadow-[0_20px_60px_rgba(10,39,105,0.15)] my-8 md:my-12"
         >
           <img src={ctaBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[#0a2769]/75" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a2769]/92 via-[#153787]/78 to-[#0a2769]/55" />
+          <div className="absolute inset-0 bg-[#0a2769]/55" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a2769]/90 via-[#153787]/55 to-[#0a2769]/50" />
 
-          <div className="relative z-10 w-full grid grid-cols-1 xl:grid-cols-[1fr_auto] items-center gap-6 xl:gap-8">
-            <div className="flex flex-col gap-2 max-w-3xl">
+          <div className="relative z-10 w-full flex flex-col items-start gap-5 md:gap-7">
+            <div className="flex flex-col gap-2 max-w-2xl lg:max-w-3xl">
               <SectionLabel>Let&apos;s Talk</SectionLabel>
-              <h2 className="text-white text-[28px] sm:text-[34px] md:text-[46px] leading-[1.06] font-extrabold tracking-tight">
+              <h2 className="text-white text-[22px] md:text-[26px] lg:text-[36px] leading-[1.1] font-extrabold tracking-tight">
                 {content.cta.heading}
               </h2>
-              <p className="text-white/80 text-[14px] md:text-[16px] leading-[1.7] max-w-2xl">
+              <p className="text-white/80 text-[12px] md:text-[13px] lg:text-[14px] leading-[1.6] max-w-2xl">
                 {content.cta.subtext}
               </p>
             </div>
-            <div className="flex items-center xl:justify-end">
+            <div className="flex items-center justify-start">
               <NavLink
                 to="/contact"
-                className="group h-[52px] md:h-[64px] px-7 md:px-10 rounded-[14px] bg-[#C9A84C] hover:bg-[#b5933c] active:scale-[0.98] transition-all shadow-[0_14px_36px_rgba(201,168,76,0.3)] text-white font-extrabold uppercase tracking-[0.14em] text-[11px] md:text-[13px] inline-flex items-center justify-center w-full sm:w-auto gap-2"
+                className="group h-[42px] md:h-[48px] px-6 md:px-8 rounded-[10px] bg-[#C9A84C] hover:bg-[#b5933c] active:scale-[0.98] transition-all shadow-[0_10px_24px_rgba(201,168,76,0.25)] text-white font-extrabold uppercase tracking-[0.12em] text-[10px] md:text-[11px] inline-flex items-center justify-center w-full sm:w-auto gap-2"
               >
                 {content.cta.button}
                 <ArrowUpRight
-                  size={18}
+                  size={16}
                   className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                 />
               </NavLink>

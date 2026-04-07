@@ -9,12 +9,12 @@ const statIcons = [donationIcon, realEstateIcon, timeIcon, visaIcon];
 const ProgramStats = ({ stats }) => {
   return (
     <section className="w-full pb-8 md:pb-12 px-4 md:px-8 bg-transparent flex justify-center font-sans">
-      <div className="max-w-[1400px] mx-auto w-full grid grid-cols-2 lg:flex lg:flex-wrap justify-center gap-3 md:gap-[30px]">
+      <div className="max-w-[1400px] mx-auto w-full grid grid-cols-2 lg:flex lg:flex-wrap justify-center gap-3 md:gap-6 lg:gap-[30px]">
         {stats.map((stat, idx) => {
           return (
             <div
               key={idx}
-              className="bg-[#0c3185] min-h-[160px] w-full rounded-[16px] px-3 py-4 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform duration-300 md:w-[313px] md:h-[364px] md:min-h-[364px] md:rounded-[20px] md:px-6 md:py-8"
+              className="bg-[#0c3185] min-h-[160px] w-full rounded-[16px] px-3 py-4 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform duration-300 lg:w-[313px] lg:h-[364px] lg:min-h-[364px] md:rounded-[20px] md:px-6 md:py-8"
             >
               <div className="w-[52px] h-[52px] md:w-[110px] md:h-[110px] rounded-full bg-white/10 flex items-center justify-center mb-3 md:mb-8 border border-white/5 shrink-0">
                 <img

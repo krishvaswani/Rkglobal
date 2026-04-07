@@ -57,9 +57,8 @@ const ProgramFaq = ({ program }) => {
                     </div>
                   </button>
 
-                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    isOpen ? 'max-h-[260px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}>
+                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[260px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
                     <div className="border-t border-[#efefef] px-4 py-4 md:px-6 md:py-7 text-[#7a7a7a] text-[13px] md:text-[18px] leading-[1.9] md:leading-[2.1] font-semibold">
                       <div className="max-w-full md:max-w-[92%]">
                         {item.answer}

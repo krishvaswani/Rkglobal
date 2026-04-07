@@ -70,7 +70,7 @@ const CitizenshipNav = ({ sections }) => {
   return (
     <div
       ref={navRef}
-      className={`${isSticky ? 'sticky' : 'relative'} z-40 w-full bg-white/92 backdrop-blur-md py-3 md:py-8 border-b border-gray-100 shadow-sm overflow-x-auto no-scrollbar`}
+      className={`${isSticky ? 'sticky' : 'relative'} z-40 w-full bg-white/92 backdrop-blur-md  md:px-8 py-3 md:py-8 border-b border-gray-100 shadow-sm overflow-x-auto no-scrollbar`}
       style={isSticky ? { top: 'calc(var(--site-header-height, 88px) + 8px)' } : {}}
     >
       <div className="max-w-[1400px] mx-auto px-4 md:px-0 flex flex-row items-center gap-3 md:gap-8 justify-start md:justify-center min-w-max">
