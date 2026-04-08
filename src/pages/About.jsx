@@ -297,9 +297,6 @@ const About = () => {
                 {content.coreValuesIntro.subtitle}
               </h2>
             </div>
-            <p className="text-[#6a7a88] text-[12px] md:text-[14px] leading-[1.6] max-w-xl">
-              A strong foundation of ethics, accountability, and clarity guides how we advise, communicate, and deliver.
-            </p>
           </div>
 
           <div className="mt-4 md:mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">

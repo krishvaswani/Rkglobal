@@ -168,7 +168,7 @@ const Header = () => {
       style={{ top: headerTop }}
       className={`fixed left-0 w-full z-50 transition-all duration-300 ease-in-out ${isScrolled ? 'p-1 md:p-0' : 'p-[10px]'} ${headerBgClass}`}
     >
-      <div className={`max-w-[1200px] mx-auto w-full transition-all duration-300 ${isScrolled ? 'p-1 md:p-0' : 'p-[10px]'}`}>
+      <div className={`max-w-[1400px] mx-auto w-full transition-all duration-300 ${isScrolled ? 'p-1 md:p-0' : 'p-[10px]'}`}>
         <div className="flex items-center justify-between  py-2 pointer-events-auto">
 
           {/* Logo */}
@@ -232,7 +232,7 @@ const Header = () => {
                       className={`transition-all hover:opacity-70 ${isResidenceRoute ? 'border-b-2 border-current pb-1' : 'opacity-90'}`}
                     >
                       <span className="inline-flex items-center gap-1.5">
-                        RESIDENCE
+                        RESIDENCY
                         <ChevronDown
                           size={16}
                           className={`transition-transform duration-200 ${residenceMenuOpen ? 'rotate-180' : 'rotate-0'}`}
@@ -356,7 +356,7 @@ const Header = () => {
                       }`}
                   >
                     <span className="flex items-center justify-between">
-                      <span>RESIDENCE</span>
+                      <span>RESIDENCY</span>
                       <ChevronDown
                         size={16}
                         className={`transition-transform duration-200 ${residenceMenuOpen ? 'rotate-180' : 'rotate-0'}`}
