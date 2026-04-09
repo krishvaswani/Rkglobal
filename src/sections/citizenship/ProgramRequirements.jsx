@@ -63,7 +63,7 @@ const ProgramRequirements = ({ program }) => {
 
           <div className="bg-white rounded-[10px] md:rounded-[10px] p-4 md:p-10 border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
             <h4 className="text-[17px] md:text-[22px] font-bold text-[#0c2b6b] mb-3 md:mb-6 leading-tight">
-              Eligible Investment Routes
+              {program.qualificationOptionsTitle || 'Eligible Investment Routes'}
             </h4>
             <ul className="flex flex-col gap-2.5 md:gap-4 list-disc pl-5">
               {program.qualificationOptions.map((option) => (

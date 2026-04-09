@@ -6,20 +6,24 @@ import logoUrl from '../assets/brand/logo.png';
 import footerLogoUrl from '../assets/brand/footer-logo.svg';
 import citizenshipPrograms, { defaultCitizenshipSlug } from '../data/citizenshipPrograms';
 import residencePrograms, { defaultResidenceSlug } from '../data/residencePrograms';
+import businessMigrationPrograms, { defaultBusinessMigrationSlug } from '../data/businessMigrationPrograms';
 
 const Header = () => {
   const headerRef = useRef(null);
   const lastScrollYRef = useRef(0);
   const citizenshipCloseTimerRef = useRef(null);
   const residenceCloseTimerRef = useRef(null);
+  const businessCloseTimerRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [citizenshipMenuOpen, setCitizenshipMenuOpen] = useState(false);
   const [residenceMenuOpen, setResidenceMenuOpen] = useState(false);
+  const [businessMenuOpen, setBusinessMenuOpen] = useState(false);
   const location = useLocation();
   const isCitizenshipRoute = location.pathname.startsWith('/citizenship');
   const isResidenceRoute = location.pathname.startsWith('/residence');
-  const isTransparentPage = location.pathname === '/' || isCitizenshipRoute || isResidenceRoute;
+  const isBusinessRoute = location.pathname.startsWith('/business-migration');
+  const isTransparentPage = location.pathname === '/' || isCitizenshipRoute || isResidenceRoute || isBusinessRoute;
 
 
   useEffect(() => {
@@ -72,14 +76,17 @@ const Header = () => {
   useEffect(() => {
     clearCloseTimer(citizenshipCloseTimerRef);
     clearCloseTimer(residenceCloseTimerRef);
+    clearCloseTimer(businessCloseTimerRef);
     setCitizenshipMenuOpen(false);
     setResidenceMenuOpen(false);
+    setBusinessMenuOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
     return () => {
       clearCloseTimer(citizenshipCloseTimerRef);
       clearCloseTimer(residenceCloseTimerRef);
+      clearCloseTimer(businessCloseTimerRef);
     };
   }, []);
 
@@ -95,10 +102,55 @@ const Header = () => {
   const headerTop = '0px';
   const citizenshipBasePath = `/citizenship/${defaultCitizenshipSlug}`;
   const residenceBasePath = `/residence/${defaultResidenceSlug}`;
+  const businessMigrationBasePath = `/business-migration/${defaultBusinessMigrationSlug}`;
+  const businessGroupOrder = {
+    canada: 0,
+    uk: 1,
+    usa: 2,
+    portugal: 3,
+    france: 4,
+  };
+  const businessProgramOrder = {
+    'canada-start-up-visa': 0,
+    'canada-ict-visa': 1,
+    'uk-innovator-founder-visa': 0,
+    'uk-expansion-worker-visa': 1,
+    'usa-e2-investor-visa': 0,
+    'usa-eb5-investor-visa': 1,
+    'portugal-d2-entrepreneur-visa': 0,
+    'portugal-d7-passive-income-visa': 1,
+    'france-talent-passport': 0,
+  };
+  const getBusinessCountryKey = (program) => {
+    if (program.slug.startsWith('canada')) return 'canada';
+    if (program.slug.startsWith('uk')) return 'uk';
+    if (program.slug.startsWith('usa')) return 'usa';
+    if (program.slug.startsWith('portugal')) return 'portugal';
+    if (program.slug.startsWith('france')) return 'france';
+    return 'zzz';
+  };
+  const businessMenuPrograms = [...businessMigrationPrograms].sort((a, b) => {
+    const countryOrderA = businessGroupOrder[getBusinessCountryKey(a)] ?? 99;
+    const countryOrderB = businessGroupOrder[getBusinessCountryKey(b)] ?? 99;
+
+    if (countryOrderA !== countryOrderB) {
+      return countryOrderA - countryOrderB;
+    }
+
+    const programOrderA = businessProgramOrder[a.slug] ?? 99;
+    const programOrderB = businessProgramOrder[b.slug] ?? 99;
+
+    if (programOrderA !== programOrderB) {
+      return programOrderA - programOrderB;
+    }
+
+    return a.menuLabel.localeCompare(b.menuLabel);
+  });
   const navLinks = [
     { to: '/', label: 'HOME', end: true },
     { type: 'citizenship' },
     { type: 'residence' },
+    { type: 'business' },
     { to: '/about', label: 'ABOUT' },
     { to: '/contact', label: 'CONTACT US' },
   ];
@@ -148,6 +200,11 @@ const Header = () => {
     setResidenceMenuOpen(true);
   };
 
+  const openBusinessMenu = () => {
+    clearCloseTimer(businessCloseTimerRef);
+    setBusinessMenuOpen(true);
+  };
+
   const closeCitizenshipMenuWithDelay = () => {
     clearCloseTimer(citizenshipCloseTimerRef);
     citizenshipCloseTimerRef.current = setTimeout(() => {
@@ -162,13 +219,20 @@ const Header = () => {
     }, 180);
   };
 
+  const closeBusinessMenuWithDelay = () => {
+    clearCloseTimer(businessCloseTimerRef);
+    businessCloseTimerRef.current = setTimeout(() => {
+      setBusinessMenuOpen(false);
+    }, 180);
+  };
+
   return (
     <header
       ref={headerRef}
       style={{ top: headerTop }}
       className={`fixed left-0 w-full z-50 transition-all duration-300 ease-in-out ${isScrolled ? 'p-1 md:p-0' : 'p-[10px]'} ${headerBgClass}`}
     >
-      <div className={`max-w-[1400px] mx-auto w-full transition-all duration-300 ${isScrolled ? 'p-1 md:p-0' : 'p-[10px]'}`}>
+      <div className={`max-w-[1400px] mx-auto w-full px-6 md:px-10 transition-all duration-300 ${isScrolled ? 'py-1 md:py-0' : 'py-[10px]'}`}>
         <div className="flex items-center justify-between  py-2 pointer-events-auto">
 
           {/* Logo */}
@@ -250,6 +314,44 @@ const Header = () => {
                         <div className="grid grid-cols-4 gap-3">
                           {residencePrograms.map((program) =>
                             renderMegaMenuLink(program, '/residence')
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              if (item.type === 'business') {
+                return (
+                  <div
+                    key="business"
+                    className="relative"
+                    onMouseEnter={openBusinessMenu}
+                    onMouseLeave={closeBusinessMenuWithDelay}
+                  >
+                    <NavLink
+                      to={businessMigrationBasePath}
+                      className={`transition-all hover:opacity-70 ${isBusinessRoute ? 'border-b-2 border-current pb-1' : 'opacity-90'}`}
+                    >
+                      <span className="inline-flex items-center gap-1.5">
+                        BUSINESS MIGRATION
+                        <ChevronDown
+                          size={16}
+                          className={`transition-transform duration-200 ${businessMenuOpen ? 'rotate-180' : 'rotate-0'}`}
+                        />
+                      </span>
+                    </NavLink>
+
+                    <div
+                      onMouseEnter={openBusinessMenu}
+                      onMouseLeave={closeBusinessMenuWithDelay}
+                      className={`fixed left-1/2 top-[calc(var(--site-header-height,88px)+8px)] z-50 w-screen -translate-x-1/2 px-4 md:px-6 transition-all duration-200 ${businessMenuOpen ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 -translate-y-2'
+                        }`}
+                    >
+                      <div className="mx-auto max-w-[1400px] rounded-3xl border border-gray-100 bg-white p-5 text-gray-900 shadow-2xl">
+                        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                          {businessMenuPrograms.map((program) =>
+                            renderMegaMenuLink(program, '/business-migration')
                           )}
                         </div>
                       </div>
@@ -369,6 +471,47 @@ const Header = () => {
                       <NavLink
                         key={program.slug}
                         to={`/residence/${program.slug}`}
+                        onClick={() => setMenuOpen(false)}
+                        className={({ isActive }) =>
+                          `flex items-center gap-2 w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${isActive ? 'text-[#C9A84C]' : 'text-gray-700 hover:text-[#C9A84C]'
+                          }`
+                        }
+                      >
+                        {program.menuLabel}
+                        {program.suspended && (
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-[8px] font-bold text-white uppercase tracking-[0.04em] shadow-sm shadow-red-500/30">
+                            <span className="w-1 h-1 rounded-full bg-white/90 shrink-0" />
+                            Suspended
+                          </span>
+                        )}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            if (item.type === 'business') {
+              return (
+                <div key="business-mobile" className="w-full">
+                  <button
+                    onClick={() => setBusinessMenuOpen((prev) => !prev)}
+                    className={`w-full py-4 border-b border-gray-100 text-sm font-bold tracking-[0.2em] text-left transition-all hover:text-[#C9A84C] ${isBusinessRoute ? 'text-[#C9A84C]' : 'text-gray-900'
+                      }`}
+                  >
+                    <span className="flex items-center justify-between">
+                      <span>BUSINESS MIGRATION</span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${businessMenuOpen ? 'rotate-180' : 'rotate-0'}`}
+                      />
+                    </span>
+                  </button>
+
+                  <div className={`w-full overflow-hidden transition-all duration-300 ${businessMenuOpen ? 'max-h-[900px]' : 'max-h-0'}`}>
+                    {businessMenuPrograms.map((program) => (
+                      <NavLink
+                        key={program.slug}
+                        to={`/business-migration/${program.slug}`}
                         onClick={() => setMenuOpen(false)}
                         className={({ isActive }) =>
                           `flex items-center gap-2 w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${isActive ? 'text-[#C9A84C]' : 'text-gray-700 hover:text-[#C9A84C]'
