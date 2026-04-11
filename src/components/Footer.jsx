@@ -5,11 +5,13 @@ import footerImg from '../assets/images/footerimg.png';
 import { FaTwitter, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa';
 import { defaultCitizenshipSlug } from '../data/citizenshipPrograms';
 import { defaultResidenceSlug } from '../data/residencePrograms';
+import { defaultBusinessMigrationSlug } from '../data/businessMigrationPrograms';
 
 const quickLinks = [
   { to: '/', label: 'Home' },
   { to: `/citizenship/${defaultCitizenshipSlug}`, label: 'Citizenship' },
   { to: `/residence/${defaultResidenceSlug}`, label: 'Residence' },
+  { to: `/business-migration/${defaultBusinessMigrationSlug}`, label: 'Business Migration' },
   { to: '/about', label: 'About Us' },
   { to: '/contact', label: 'Contact Us' },
 ];
