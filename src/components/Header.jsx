@@ -6,7 +6,8 @@ import logoUrl from '../assets/brand/logo.png';
 import footerLogoUrl from '../assets/brand/footer-logo.svg';
 import citizenshipPrograms, { defaultCitizenshipSlug } from '../data/citizenshipPrograms';
 import residencePrograms, { defaultResidenceSlug } from '../data/residencePrograms';
-import businessMigrationPrograms, { defaultBusinessMigrationSlug } from '../data/businessMigrationPrograms';
+import businessMigrationPrograms from '../data/businessMigrationPrograms';
+import digitalNomadPrograms, { defaultDigitalNomadSlug } from '../data/digitalNomadPrograms';
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -14,16 +15,24 @@ const Header = () => {
   const citizenshipCloseTimerRef = useRef(null);
   const residenceCloseTimerRef = useRef(null);
   const businessCloseTimerRef = useRef(null);
+  const digitalCloseTimerRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [citizenshipMenuOpen, setCitizenshipMenuOpen] = useState(false);
   const [residenceMenuOpen, setResidenceMenuOpen] = useState(false);
   const [businessMenuOpen, setBusinessMenuOpen] = useState(false);
+  const [digitalMenuOpen, setDigitalMenuOpen] = useState(false);
   const location = useLocation();
   const isCitizenshipRoute = location.pathname.startsWith('/citizenship');
   const isResidenceRoute = location.pathname.startsWith('/residence');
   const isBusinessRoute = location.pathname.startsWith('/business-migration');
-  const isTransparentPage = location.pathname === '/' || isCitizenshipRoute || isResidenceRoute || isBusinessRoute;
+  const isDigitalRoute = location.pathname.startsWith('/digital-nomad');
+  const isTransparentPage =
+    location.pathname === '/' ||
+    isCitizenshipRoute ||
+    isResidenceRoute ||
+    isBusinessRoute ||
+    isDigitalRoute;
 
 
   useEffect(() => {
@@ -77,9 +86,11 @@ const Header = () => {
     clearCloseTimer(citizenshipCloseTimerRef);
     clearCloseTimer(residenceCloseTimerRef);
     clearCloseTimer(businessCloseTimerRef);
+    clearCloseTimer(digitalCloseTimerRef);
     setCitizenshipMenuOpen(false);
     setResidenceMenuOpen(false);
     setBusinessMenuOpen(false);
+    setDigitalMenuOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -87,6 +98,7 @@ const Header = () => {
       clearCloseTimer(citizenshipCloseTimerRef);
       clearCloseTimer(residenceCloseTimerRef);
       clearCloseTimer(businessCloseTimerRef);
+      clearCloseTimer(digitalCloseTimerRef);
     };
   }, []);
 
@@ -95,14 +107,14 @@ const Header = () => {
   const textColorClass = shouldShowBg ? 'text-gray-900' : 'text-white';
   const currentLogo = shouldShowBg ? footerLogoUrl : logoUrl;
   const logoSizeClass = shouldShowBg
-    ? 'w-[120px] sm:w-[145px] md:w-[165px]'
-    : 'w-[132px] sm:w-[165px] md:w-[190px]';
+    ? 'w-[110px] sm:w-[135px] md:w-[155px]'
+    : 'w-[120px] sm:w-[150px] md:w-[175px]';
   const hamburgerColor = shouldShowBg ? '#111' : '#fff';
   // Always visible header
   const headerTop = '0px';
   const citizenshipBasePath = `/citizenship/${defaultCitizenshipSlug}`;
   const residenceBasePath = `/residence/${defaultResidenceSlug}`;
-  const businessMigrationBasePath = `/business-migration/${defaultBusinessMigrationSlug}`;
+  const digitalNomadBasePath = `/digital-nomad/${defaultDigitalNomadSlug}`;
   const businessGroupOrder = {
     canada: 0,
     uk: 1,
@@ -151,6 +163,7 @@ const Header = () => {
     { type: 'citizenship' },
     { type: 'residence' },
     { type: 'business' },
+    { type: 'digitalNomad' },
     { to: '/about', label: 'ABOUT' },
     { to: '/contact', label: 'CONTACT US' },
   ];
@@ -183,6 +196,29 @@ const Header = () => {
     </NavLink>
   );
 
+  const renderDisabledMegaMenuLink = (program) => (
+    <div
+      key={program.slug}
+      className="relative flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-3 py-3 text-xs tracking-[0.08em] text-gray-800 opacity-70 cursor-not-allowed"
+      aria-disabled="true"
+    >
+      <img
+        src={program.flag}
+        alt={`${program.name} flag`}
+        className="h-14 w-20 rounded-lg object-cover border border-gray-200 bg-gray-100 shrink-0 md:h-16 md:w-24"
+      />
+      <div className="flex flex-col gap-1">
+        <span className="leading-tight">{program.menuLabel}</span>
+        {program.suspended && (
+          <span className="inline-flex items-center gap-1 w-fit px-2 py-0.5 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-[9px] font-bold text-white uppercase tracking-[0.06em] shadow-sm shadow-red-500/30">
+            <span className="w-1.5 h-1.5 rounded-full bg-white/90 shrink-0" />
+            Temporarily Suspended
+          </span>
+        )}
+      </div>
+    </div>
+  );
+
 
   const clearCloseTimer = (timerRef) => {
     if (timerRef.current) {
@@ -206,6 +242,11 @@ const Header = () => {
     setBusinessMenuOpen(true);
   };
 
+  const openDigitalMenu = () => {
+    clearCloseTimer(digitalCloseTimerRef);
+    setDigitalMenuOpen(true);
+  };
+
   const closeCitizenshipMenuWithDelay = () => {
     clearCloseTimer(citizenshipCloseTimerRef);
     citizenshipCloseTimerRef.current = setTimeout(() => {
@@ -224,6 +265,13 @@ const Header = () => {
     clearCloseTimer(businessCloseTimerRef);
     businessCloseTimerRef.current = setTimeout(() => {
       setBusinessMenuOpen(false);
+    }, 180);
+  };
+
+  const closeDigitalMenuWithDelay = () => {
+    clearCloseTimer(digitalCloseTimerRef);
+    digitalCloseTimerRef.current = setTimeout(() => {
+      setDigitalMenuOpen(false);
     }, 180);
   };
 
@@ -246,7 +294,7 @@ const Header = () => {
           </NavLink>
 
           {/* Desktop Navigation */}
-          <nav className={`hidden lg:flex items-center gap-8 text-[0.8rem] font-bold tracking-[0.2em] ${textColorClass}`}>
+          <nav className={`hidden lg:flex items-center gap-5 text-[0.75rem] font-semibold tracking-[0.15em] ${textColorClass}`}>
             {navLinks.map((item) => {
               if (item.type === 'citizenship') {
                 return (
@@ -258,12 +306,12 @@ const Header = () => {
                   >
                     <NavLink
                       to={citizenshipBasePath}
-                      className={`transition-all hover:opacity-70 ${isCitizenshipRoute ? 'border-b-2 border-current pb-1' : 'opacity-90'}`}
+                      className={`transition-all hover:opacity-70 ${isCitizenshipRoute ? 'border-b border-current pb-1' : 'opacity-90'}`}
                     >
                       <span className="inline-flex items-center gap-1.5">
                         CITIZENSHIP
                         <ChevronDown
-                          size={16}
+                          size={14}
                           className={`transition-transform duration-200 ${citizenshipMenuOpen ? 'rotate-180' : 'rotate-0'}`}
                         />
                       </span>
@@ -294,12 +342,12 @@ const Header = () => {
                   >
                     <NavLink
                       to={residenceBasePath}
-                      className={`transition-all hover:opacity-70 ${isResidenceRoute ? 'border-b-2 border-current pb-1' : 'opacity-90'}`}
+                      className={`transition-all hover:opacity-70 ${isResidenceRoute ? 'border-b border-current pb-1' : 'opacity-90'}`}
                     >
                       <span className="inline-flex items-center gap-1.5">
                         RESIDENCY
                         <ChevronDown
-                          size={16}
+                          size={14}
                           className={`transition-transform duration-200 ${residenceMenuOpen ? 'rotate-180' : 'rotate-0'}`}
                         />
                       </span>
@@ -330,18 +378,19 @@ const Header = () => {
                     onMouseEnter={openBusinessMenu}
                     onMouseLeave={closeBusinessMenuWithDelay}
                   >
-                    <NavLink
-                      to={businessMigrationBasePath}
-                      className={`transition-all hover:opacity-70 ${isBusinessRoute ? 'border-b-2 border-current pb-1' : 'opacity-90'}`}
+                    <button
+                      type="button"
+                      className={`transition-all hover:opacity-70 ${isBusinessRoute ? 'border-b border-current pb-1' : 'opacity-90'}`}
+                      onClick={openBusinessMenu}
                     >
                       <span className="inline-flex items-center gap-1.5">
                         BUSINESS MIGRATION
                         <ChevronDown
-                          size={16}
+                          size={14}
                           className={`transition-transform duration-200 ${businessMenuOpen ? 'rotate-180' : 'rotate-0'}`}
                         />
                       </span>
-                    </NavLink>
+                    </button>
 
                     <div
                       onMouseEnter={openBusinessMenu}
@@ -352,7 +401,45 @@ const Header = () => {
                       <div className="mx-auto max-w-[1400px] rounded-3xl border border-gray-100 bg-white p-5 text-gray-900 shadow-2xl">
                         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
                           {businessMenuPrograms.map((program) =>
-                            renderMegaMenuLink(program, '/business-migration')
+                            renderDisabledMegaMenuLink(program)
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              if (item.type === 'digitalNomad') {
+                return (
+                  <div
+                    key="digital-nomad"
+                    className="relative"
+                    onMouseEnter={openDigitalMenu}
+                    onMouseLeave={closeDigitalMenuWithDelay}
+                  >
+                    <NavLink
+                      to={digitalNomadBasePath}
+                      className={`transition-all hover:opacity-70 ${isDigitalRoute ? 'border-b border-current pb-1' : 'opacity-90'}`}
+                    >
+                      <span className="inline-flex items-center gap-1.5">
+                        DIGITAL NOMAD
+                        <ChevronDown
+                          size={14}
+                          className={`transition-transform duration-200 ${digitalMenuOpen ? 'rotate-180' : 'rotate-0'}`}
+                        />
+                      </span>
+                    </NavLink>
+
+                    <div
+                      onMouseEnter={openDigitalMenu}
+                      onMouseLeave={closeDigitalMenuWithDelay}
+                      className={`fixed left-1/2 top-[calc(var(--site-header-height,88px)+8px)] z-50 w-screen -translate-x-1/2 px-4 md:px-6 transition-all duration-200 ${digitalMenuOpen ? 'pointer-events-auto opacity-100 translate-y-0' : 'pointer-events-none opacity-0 -translate-y-2'
+                        }`}
+                    >
+                      <div className="mx-auto max-w-[1400px] rounded-3xl border border-gray-100 bg-white p-5 text-gray-900 shadow-2xl">
+                        <div className="grid grid-cols-2 lg:grid-cols-2 gap-3">
+                          {digitalNomadPrograms.map((program) =>
+                            renderMegaMenuLink(program, '/digital-nomad')
                           )}
                         </div>
                       </div>
@@ -369,7 +456,7 @@ const Header = () => {
                   to={to}
                   end={end}
                   className={({ isActive }) =>
-                    `transition-all hover:opacity-70 ${isActive ? 'border-b-2 border-current pb-1' : 'opacity-90'}`
+                    `transition-all hover:opacity-70 ${isActive ? 'border-b border-current pb-1' : 'opacity-90'}`
                   }
                 >
                   {label}
@@ -510,14 +597,10 @@ const Header = () => {
 
                   <div className={`w-full overflow-hidden transition-all duration-300 ${businessMenuOpen ? 'max-h-[900px]' : 'max-h-0'}`}>
                     {businessMenuPrograms.map((program) => (
-                      <NavLink
+                      <div
                         key={program.slug}
-                        to={`/business-migration/${program.slug}`}
-                        onClick={() => setMenuOpen(false)}
-                        className={({ isActive }) =>
-                          `flex items-center gap-2 w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${isActive ? 'text-[#C9A84C]' : 'text-gray-700 hover:text-[#C9A84C]'
-                          }`
-                        }
+                        className="flex items-center gap-2 w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] text-gray-500 cursor-not-allowed"
+                        aria-disabled="true"
                       >
                         {program.menuLabel}
                         {program.suspended && (
@@ -526,6 +609,41 @@ const Header = () => {
                             Suspended
                           </span>
                         )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            if (item.type === 'digitalNomad') {
+              return (
+                <div key="digital-nomad-mobile" className="w-full">
+                  <button
+                    onClick={() => setDigitalMenuOpen((prev) => !prev)}
+                    className={`w-full py-4 border-b border-gray-100 text-sm font-bold tracking-[0.2em] text-left transition-all hover:text-[#C9A84C] ${isDigitalRoute ? 'text-[#C9A84C]' : 'text-gray-900'
+                      }`}
+                  >
+                    <span className="flex items-center justify-between">
+                      <span>DIGITAL NOMAD</span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${digitalMenuOpen ? 'rotate-180' : 'rotate-0'}`}
+                      />
+                    </span>
+                  </button>
+
+                  <div className={`w-full overflow-hidden transition-all duration-300 ${digitalMenuOpen ? 'max-h-[700px]' : 'max-h-0'}`}>
+                    {digitalNomadPrograms.map((program) => (
+                      <NavLink
+                        key={program.slug}
+                        to={`/digital-nomad/${program.slug}`}
+                        onClick={() => setMenuOpen(false)}
+                        className={({ isActive }) =>
+                          `flex items-center gap-2 w-full py-3 pl-4 border-b border-gray-100 text-xs font-bold tracking-[0.12em] transition-all ${isActive ? 'text-[#C9A84C]' : 'text-gray-700 hover:text-[#C9A84C]'
+                          }`
+                        }
+                      >
+                        {program.menuLabel}
                       </NavLink>
                     ))}
                   </div>
