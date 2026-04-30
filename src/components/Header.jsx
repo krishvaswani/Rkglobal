@@ -158,6 +158,27 @@ const Header = () => {
 
     return a.menuLabel.localeCompare(b.menuLabel);
   });
+  const citizenshipMenuOrder = {
+    grenada: 0,
+    'antigua-and-barbuda': 1,
+    'st-kitts-and-nevis': 2,
+    'st-lucia': 3,
+    dominica: 4,
+    turkey: 5,
+    vanuatu: 6,
+    nauru: 7,
+    'sao-tome-and-principe': 8,
+  };
+  const citizenshipMenuPrograms = [...citizenshipPrograms].sort((a, b) => {
+    const orderA = citizenshipMenuOrder[a.slug] ?? 99;
+    const orderB = citizenshipMenuOrder[b.slug] ?? 99;
+
+    if (orderA !== orderB) {
+      return orderA - orderB;
+    }
+
+    return a.menuLabel.localeCompare(b.menuLabel);
+  });
   const navLinks = [
     { to: '/', label: 'HOME', end: true },
     { type: 'citizenship' },
@@ -324,8 +345,10 @@ const Header = () => {
                         }`}
                     >
                       <div className="mx-auto max-w-[1400px] rounded-3xl border border-gray-100 bg-white p-5 text-gray-900 shadow-2xl">
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                          {citizenshipPrograms.map((program) => renderMegaMenuLink(program, '/citizenship'))}
+                        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+                          {citizenshipMenuPrograms.map((program) =>
+                            renderMegaMenuLink(program, '/citizenship')
+                          )}
                         </div>
                       </div>
                     </div>
@@ -520,7 +543,7 @@ const Header = () => {
                   </button>
 
                   <div className={`w-full overflow-hidden transition-all duration-300 ${citizenshipMenuOpen ? 'max-h-[700px]' : 'max-h-0'}`}>
-                    {citizenshipPrograms.map((program) => (
+                    {citizenshipMenuPrograms.map((program) => (
                       <NavLink
                         key={program.slug}
                         to={`/citizenship/${program.slug}`}

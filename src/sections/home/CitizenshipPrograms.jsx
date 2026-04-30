@@ -6,6 +6,7 @@ import naruImg from '../../assets/images/naru.png';
 import grenadaImg from '../../assets/images/grenada.png';
 import antiguaImg from '../../assets/images/antigua.png';
 import vanuatuImg from '../../assets/images/vanuatu.png';
+import citizenByInvestmentImg from '../../assets/images/citizen-by-investmenty.jpg';
 
 const programs = [
   {
@@ -61,6 +62,15 @@ const programs = [
     price: 'USD 130,000',
     time: '30–60 Days',
     slug: 'vanuatu'
+  },
+  {
+    id: 7,
+    name: 'DOMINICA',
+    image: citizenByInvestmentImg,
+    subtitle: 'Visa-Free Travel to 140+ Countries',
+    price: 'USD 200,000',
+    time: '3–9 Months',
+    slug: 'dominica'
   }
 ];
 
